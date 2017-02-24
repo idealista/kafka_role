@@ -1,0 +1,8 @@
+---
+
+- name: KAFKA | Configuring service
+  systemd:
+    name: kafka
+    state: "{{ kafka_service_state }}"
+    enabled: "{{ kafka_service_enabled }}"
+    daemon_reload: yes

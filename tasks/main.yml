@@ -1,0 +1,16 @@
+---
+
+- name: KAFKA | Install
+  include: install.yml
+  tags:
+    - install
+
+- name: KAFKA | Configure
+  include: config.yml
+  tags:
+    - configure
+
+- name: KAFKA | Service
+  include: service.yml
+  tags:
+    - service

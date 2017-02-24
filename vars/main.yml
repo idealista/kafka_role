@@ -1,0 +1,8 @@
+---
+required_libs: []
+
+scala_version: 2.11
+kafka_mirror: "http://apache.rediris.es/kafka"
+kafka_package_name: "kafka_{{ scala_version }}-{{ kafka_version }}"
+kafka_package: "{{ kafka_package_name }}.tgz"
+kafka_sources_url: "{{ kafka_mirror }}/{{ kafka_version }}/{{ kafka_package }}"

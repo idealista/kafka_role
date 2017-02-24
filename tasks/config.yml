@@ -1,0 +1,30 @@
+---
+
+- name: KAFKA | Create kafka config and log paths
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+    recurse: yes
+  with_items:
+    - "{{ kafka_conf_path }}"
+    - "{{ kafka_log_path }}"
+
+- name: KAFKA | Copy server config
+  template:
+    src: server.properties.j2
+    dest: "{{ kafka_conf_path }}/server.properties"
+    mode: "0640"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  notify: restart kafka
+
+- name: KAFKA | Copy log properties
+  template:
+    src: log4j.properties.j2
+    dest: "{{ kafka_conf_path }}/log4j.properties"
+    mode: "0644"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  notify: restart kafka

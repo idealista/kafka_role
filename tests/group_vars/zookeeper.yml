@@ -1,0 +1,5 @@
+---
+
+zookeeper_hosts:
+  - host: zookeeper # the machine running
+    id: 1
