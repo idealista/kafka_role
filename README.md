@@ -54,7 +54,7 @@ Use in a playbook:
 
 ## Usage
 
-Look to the defaults properties file to see the possible configuration properties.
+Look to the [defaults](defaults/main.yml) properties file to see the possible configuration properties.
 
 ## Testing
 
