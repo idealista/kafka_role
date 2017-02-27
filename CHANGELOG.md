@@ -4,5 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased]
 
+## [1.0.0](https://github.com/idealista-tech/kafka-role/tree/1.0.0) (2017-02-28)
+
 ### Added
 - *First release*
