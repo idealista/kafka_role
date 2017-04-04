@@ -2,8 +2,10 @@
 
 - hosts: zookeeper
   roles:
-    - role: zookeeper
+    - java
+    - zookeeper
 
 - hosts: kafka1
   roles:
-    - role: kafka-role
+    - java
+    - kafka-role

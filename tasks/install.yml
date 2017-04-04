@@ -24,37 +24,21 @@
     state: directory
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-    recurse: yes
 
 - name: KAFKA | Check kafka version
-  command: bash -c "ls {{ kafka_install_path }}/kafka/libs | grep 'kafka_{{ scala_version }}-{{ kafka_version }}.jar'"
+  command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_{{ scala_version }}-{{ kafka_version }}.jar'"
   register: kafka_check
   changed_when: false
   ignore_errors: true
 
-- name: KAFKA | Download kafka
-  get_url:
-    url: "{{ kafka_sources_url }}"
-    dest: /tmp
-  when: 'kafka_force_reinstall or kafka_check|failed or kafka_check.stdout == ""'
-
 - name: KAFKA | Untar kafka
   unarchive:
-    copy: no
-    src: "/tmp/{{ kafka_package }}"
+    extra_opts: ['--strip-components=1']
+    src: "{{ kafka_sources_url }}"
+    remote_src: yes
     dest: "{{ kafka_install_path }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  when: 'kafka_force_reinstall or kafka_check|failed or kafka_check.stdout == ""'
-
-- name: KAFKA | Link folder
-  file:
-    src: "{{ kafka_install_path }}/{{ kafka_package_name }}"
-    dest: "{{ kafka_install_path }}/kafka"
-    state: link
-    owner: "{{ kafka_user }}"
-    group: "{{ kafka_group }}"
-    force: True
   when: 'kafka_force_reinstall or kafka_check|failed or kafka_check.stdout == ""'
 
 - name: KAFKA | Copy Daemon script
