@@ -24,7 +24,7 @@ def test_kafka_user(User, Group, AnsibleDefaults, Hostname):
 
 
 def test_kafka_conf(File, AnsibleDefaults, Hostname):
-    if "kafka" in Hostname:
+    if "kafka.vm" in Hostname:
         conf_dir = File(AnsibleDefaults["kafka_conf_path"])
         conf_file = File(AnsibleDefaults["kafka_conf_path"] + "/server.properties")
         assert conf_dir.exists
@@ -38,7 +38,7 @@ def test_kafka_conf(File, AnsibleDefaults, Hostname):
 
 
 def test_kafka_log(File, AnsibleDefaults, Hostname):
-    if "kafka" in Hostname:
+    if "kafka.vm" in Hostname:
         log_dir = File(AnsibleDefaults["kafka_log_path"])
         assert log_dir.exists
         assert log_dir.is_directory
@@ -47,7 +47,7 @@ def test_kafka_log(File, AnsibleDefaults, Hostname):
 
 
 def test_kafka_service(File, Service, Socket, AnsibleVars, Hostname):
-    if "kafka" in Hostname:
+    if "kafka.vm" in Hostname:
         host = AnsibleVars["kafka_host_name"]
         port = AnsibleVars["kafka_port"]
         assert File("/lib/systemd/system/kafka.service").exists

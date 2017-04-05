@@ -1,6 +1,6 @@
 ## General
 
-kafka_version: 0.10.1.1
+kafka_version: 0.10.2.0
 
 ## Service options
 
@@ -9,14 +9,14 @@ kafka_user: kafka
 kafka_group: kafka
 
 # start on boot
-kafka_service_enabled: True
+kafka_service_enabled: yes
 # current state: started, stopped
 kafka_service_state: started
 
 # Files & Paths
-kafka_install_path: "/opt"
+kafka_install_path: "/opt/kafka"
 kafka_conf_path: "/etc/kafka"
-kafka_data_path: "{{ kafka_install_path }}/kafka/data"
+kafka_data_path: "{{ kafka_install_path }}/data"
 kafka_log_path: "/var/log/kafka"
 
 # Logging

@@ -1,5 +1,5 @@
 ---
 
 zookeeper_hosts:
-  - host: zookeeper # the machine running
+  - host: zookeeper.vm # the machine running
     id: 1
