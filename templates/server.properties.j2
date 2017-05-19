@@ -4,7 +4,19 @@
 ############################# Server Basics #############################
 
 # The id of the broker. This must be set to a unique integer for each broker.
-broker.id={{ kafka_broker_id }}
+{% if kafka_hosts is defined %}
+{% for server in kafka_hosts %}
+{% if server.host is defined %}
+{% if server.host == inventory_hostname %}
+broker.id={{ server.id }}
+{% endif %}
+{% else %}
+broker.id=0
+{% endif %}
+{% endfor %}
+{% else %}
+broker.id=0
+{% endif %}
 
 ############################# Socket Server Settings #############################
 

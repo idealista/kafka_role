@@ -62,3 +62,17 @@ vagrant:
         - network_name: private_network
           type: dhcp
           auto_config: true
+    - name: kafka2
+      ansible_groups:
+        - kafka
+      interfaces:
+        - network_name: private_network
+          type: dhcp
+          auto_config: true
+    - name: kafka3
+      ansible_groups:
+        - kafka
+      interfaces:
+        - network_name: private_network
+          type: dhcp
+          auto_config: true
