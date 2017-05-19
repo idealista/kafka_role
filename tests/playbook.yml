@@ -9,3 +9,11 @@
   roles:
     - java
     - kafka-role
+- hosts: kafka2
+  roles:
+    - java
+    - kafka-role
+- hosts: kafka3
+  roles:
+    - java
+    - kafka-role
