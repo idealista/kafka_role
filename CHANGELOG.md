@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.2.0](https://github.com/idealista/kafka-role/tree/1.2.0) (2017-05-19)
+## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.1.0...1.2.0)
+
+## Changed
+- *[#5](https://github.com/idealista/kafka-role/issues/5) Added kafka_hosts var to fix broker id issue* @jmonterrubio
+
 ## [1.1.0](https://github.com/idealista/kafka-role/tree/1.1.0) (2017-04-04)
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.0.0...1.1.0)
 
