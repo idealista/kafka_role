@@ -13,4 +13,4 @@ galaxy_info:
     - queue
 
 dependencies:
-  - java
+  - idealista.java
