@@ -48,28 +48,28 @@ vagrant:
         cpus: 1
 
   instances:
-    - name: zookeeper
+    - name: zookeeper.vm
       ansible_groups:
         - zookeeper
       interfaces:
         - network_name: private_network
           type: dhcp
           auto_config: true
-    - name: kafka1
+    - name: kafka1.vm
       ansible_groups:
         - kafka
       interfaces:
         - network_name: private_network
           type: dhcp
           auto_config: true
-    - name: kafka2
+    - name: kafka2.vm
       ansible_groups:
         - kafka
       interfaces:
         - network_name: private_network
           type: dhcp
           auto_config: true
-    - name: kafka3
+    - name: kafka3.vm
       ansible_groups:
         - kafka
       interfaces:
