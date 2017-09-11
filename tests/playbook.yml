@@ -1,19 +1,19 @@
 ---
 
-- hosts: zookeeper
+- hosts: zookeeper.vm
   roles:
     - java
     - zookeeper
 
-- hosts: kafka1
+- hosts: kafka1.vm
   roles:
     - java
     - kafka-role
-- hosts: kafka2
+- hosts: kafka2.vm
   roles:
     - java
     - kafka-role
-- hosts: kafka3
+- hosts: kafka3.vm
   roles:
     - java
     - kafka-role

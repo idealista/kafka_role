@@ -9,9 +9,9 @@ kafka_host_name: 127.0.0.1
 kafka_port: 9999
 
 kafka_hosts:
-  - host: kafka1
+  - host: kafka1.vm
     id: 1
-  - host: kafka2
+  - host: kafka2.vm
     id: 2
-  - host: kafka3
+  - host: kafka3.vm
     id: 3

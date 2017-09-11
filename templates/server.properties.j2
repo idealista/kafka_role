@@ -18,6 +18,10 @@ broker.id=0
 broker.id=0
 {% endif %}
 
+{% if kafka_auto_create_topics is defined %}
+auto.create.topics.enable={{ kafka_auto_create_topics }}
+{% endif %}
+
 ############################# Socket Server Settings #############################
 
 # The address the socket server listens on. It will get the value returned from
