@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
+## Added
+- *[#12](https://github.com/idealista/kafka-role/issues/12) Enable auto create topics property* @jmonterrubio
 
 ## [1.2.0](https://github.com/idealista/kafka-role/tree/1.2.0) (2017-05-19)
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.1.0...1.2.0)
