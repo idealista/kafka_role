@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 ## Added
+- *[#13](https://github.com/idealista/kafka-role/issues/13) Enable delete topics property* @jmonterrubio
 - *[#12](https://github.com/idealista/kafka-role/issues/12) Enable auto create topics property* @jmonterrubio
 
 ## [1.2.0](https://github.com/idealista/kafka-role/tree/1.2.0) (2017-05-19)
