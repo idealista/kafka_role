@@ -38,7 +38,7 @@ vagrant:
     - "landrush.guest_redirect_dns = false"
   platforms:
     - name: Debian
-      box: debian/jessie64
+      box: debian/stretch64
 
   providers:
     - name: virtualbox
