@@ -11,6 +11,3 @@ galaxy_info:
   categories:
     - clustering
     - queue
-
-dependencies:
-  - idealista.java-role
