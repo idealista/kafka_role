@@ -18,6 +18,10 @@ broker.id=0
 broker.id=0
 {% endif %}
 
+{% if kafka_delete_topic_enable is defined %}
+delete.topic.enable={{ kafka_delete_topic_enable }}
+{% endif %}
+
 {% if kafka_auto_create_topics is defined %}
 auto.create.topics.enable={{ kafka_auto_create_topics }}
 {% endif %}
