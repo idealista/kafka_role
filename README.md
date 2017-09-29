@@ -1,5 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
 
+[![Build Status](https://travis-ci.org/idealista/kafka-role.png)](https://travis-ci.org/idealista/kafka-role)
+
 # Kafka Ansible role
 
 This ansible role installs Apache Kafka in a debian environment. The server is installed using the sources.
