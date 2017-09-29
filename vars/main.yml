@@ -1,5 +1,6 @@
 ---
-required_libs: []
+required_libs:
+  - unzip
 
 scala_version: 2.11
 kafka_mirror: "http://apache.rediris.es/kafka"

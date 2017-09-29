@@ -35,7 +35,10 @@ kafka_hosts:
   - host: "{{inventory_hostname}}" # the machine running
     id: 0
 # Switch to enable topic deletion or not, default value is false
-kafka_delete_topic_enable: false
+kafka_delete_topic_enable: 'false'
+
+# Switch to enable auto create topic or not, default value is true
+kafka_auto_create_topics: 'true'
 
 # The address the socket server listens on. It will get the value returned from
 # java.net.InetAddress.getCanonicalHostName() if not configured.

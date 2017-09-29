@@ -1,4 +1,4 @@
-![Logo](logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
 
 # Kafka Ansible role
 
