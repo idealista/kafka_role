@@ -83,7 +83,8 @@ docker:
       hostname: zookeeper
       ansible_groups:
         - zookeeper
-      image: geerlingguy/docker-debian9-ansible
+      dockerfile: tests/Dockerfile
+      image: debian9-testinfra
       image_version: latest
       # All these parameters are needed for Docker testing with systemd
       privileged: True
@@ -97,7 +98,8 @@ docker:
       hostname: kafka1
       ansible_groups:
         - kafka
-      image: geerlingguy/docker-debian9-ansible
+      dockerfile: tests/Dockerfile
+      image: debian9-testinfra
       image_version: latest
       # All these parameters are needed for Docker testing with systemd
       privileged: True
@@ -113,7 +115,8 @@ docker:
       hostname: kafka2
       ansible_groups:
         - kafka
-      image: geerlingguy/docker-debian9-ansible
+      dockerfile: tests/Dockerfile
+      image: debian9-testinfra
       image_version: latest
       # All these parameters are needed for Docker testing with systemd
       privileged: True
@@ -129,7 +132,8 @@ docker:
       hostname: kafka3
       ansible_groups:
         - kafka
-      image: geerlingguy/docker-debian9-ansible
+      dockerfile: tests/Dockerfile
+      image: debian9-testinfra
       image_version: latest
       # All these parameters are needed for Docker testing with systemd
       privileged: True
