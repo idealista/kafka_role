@@ -47,3 +47,11 @@
     dest: /lib/systemd/system/kafka.service
     mode: 0644
   notify: restart kafka
+
+- name: KAFKA | Create data path
+  file:
+    path: '{{ kafka_data_path }}'
+    mode: 0760
+    state: directory
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_user }}"
