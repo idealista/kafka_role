@@ -9,20 +9,12 @@
       with_items:
         - net-tools
 
-- hosts: zookeeper.vm
+- hosts: zookeeper
   roles:
     - java
     - zookeeper
 
-- hosts: kafka1.vm
-  roles:
-    - java
-    - kafka-role
-- hosts: kafka2.vm
-  roles:
-    - java
-    - kafka-role
-- hosts: kafka3.vm
+- hosts: kafka
   roles:
     - java
     - kafka-role
