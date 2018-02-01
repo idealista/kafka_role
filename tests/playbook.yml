@@ -1,19 +1,20 @@
 ---
 
+- hosts: all
+  pre_tasks:
+    - name: KAFKA | Installing dependencies
+      apt:
+        pkg: "{{ item }}"
+        state: present
+      with_items:
+        - net-tools
+
 - hosts: zookeeper
   roles:
     - java
     - zookeeper
 
-- hosts: kafka1
-  roles:
-    - java
-    - kafka-role
-- hosts: kafka2
-  roles:
-    - java
-    - kafka-role
-- hosts: kafka3
+- hosts: kafka
   roles:
     - java
     - kafka-role

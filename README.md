@@ -1,4 +1,6 @@
-![Logo](logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
+
+[![Build Status](https://travis-ci.org/idealista/kafka-role.png)](https://travis-ci.org/idealista/kafka-role)
 
 # Kafka Ansible role
 

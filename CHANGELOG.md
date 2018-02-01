@@ -4,6 +4,21 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.3.0](https://github.com/idealista/kafka-role/tree/1.3.0) (2018-02-01)
+## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.2.0...1.3.0)
+
+## Added
+- *[#13](https://github.com/idealista/kafka-role/issues/13) Enable delete topics property* @jmonterrubio
+- *[#12](https://github.com/idealista/kafka-role/issues/12) Enable auto create topics property* @jmonterrubio
+
+## Changed
+- *Use uvigo's mirror to download Kafka* @jnogol
+- *[#16](https://github.com/idealista/kafka-role/pull/16) Remove Java role dependency* @maqdev
+
+## Fixed
+- *Fix Kafka errored version* @jnogol
+- *[#16](https://github.com/idealista/kafka-role/pull/16) Create data path if not exists* @maqdev
+
 ## [1.2.0](https://github.com/idealista/kafka-role/tree/1.2.0) (2017-05-19)
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.1.0...1.2.0)
 
