@@ -4,8 +4,16 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+
+## [1.3.1](https://github.com/idealista/kafka-role/tree/1.3.1) (2018-02-27)
+## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.3.0...1.3.1)
+
+## Changed
+- *[#23](https://github.com/idealista/kafka-role/issues/23) Using Vagrant hostmanager instead of Landrush* @dortegau
+
 ## Fixed
--  Picking up correctly Xms from KAFKA_HEAP_OPTS environment variable @didumga
+- *[#22](https://github.com/idealista/kafka-role/pull/22) Picking up Xms correctly from KAFKA_HEAP_OPTS environment variable* @didumgai
+
 
 ## [1.3.0](https://github.com/idealista/kafka-role/tree/1.3.0) (2018-02-01)
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.2.0...1.3.0)
