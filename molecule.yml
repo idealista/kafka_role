@@ -117,8 +117,6 @@ docker:
         - SYS_ADMIN
       volume_mounts:
         - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-  #    links:
-  #      zookeeper.vm: zookeeper.vm
       command: '/lib/systemd/systemd'
 
     - name: kafka2.vm
@@ -134,8 +132,6 @@ docker:
         - SYS_ADMIN
       volume_mounts:
         - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-   #   links:
-   #     zookeeper.vm: zookeeper.vm
       command: '/lib/systemd/systemd'
 
     - name: kafka3.vm
@@ -151,8 +147,6 @@ docker:
         - SYS_ADMIN
       volume_mounts:
         - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-   #   links:
-   #     zookeeper.vm: zookeeper.vm
       command: '/lib/systemd/systemd'
 
 verifier:
