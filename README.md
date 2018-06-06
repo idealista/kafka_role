@@ -23,8 +23,11 @@ These instructions will get you a copy of the role for your ansible playbook. On
 
 ### Prerequisities
 
-Ansible 2.4.2.0 version installed.
+Ansible 2.4.0.0 version installed.
 Molecule 1.25 version installed.
+Ansible-Lint 3.4.20 version installed.
+Testinfra 1.7.1 version installed.
+
 Inventory destination should be a Debian environment.
 
 For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
