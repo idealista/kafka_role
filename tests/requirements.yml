@@ -9,5 +9,5 @@
 
 - src: https://github.com/idealista/zookeeper-role.git
   scm: git
-  version: features/#19
+  version: develop
   name: zookeeper
