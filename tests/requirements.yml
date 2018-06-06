@@ -1,8 +1,13 @@
 ---
 - src: idealista.java-role
-  version: 2.0.0
+  version: 3.0.0
   name: java
 
-- src: idealista.zookeeper-role
-  version: 1.1.0
+#- src: idealista.zookeeper-role
+#  version: 1.2.0
+#  name: zookeeper
+
+- src: https://github.com/idealista/zookeeper-role.git
+  scm: git
+  version: features/#19
   name: zookeeper

@@ -5,3 +5,6 @@ tests/__pycache__
 .molecule
 .vagrant
 .cache
+
+*.iml
+.idea

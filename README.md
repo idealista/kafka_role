@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
+    ![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
 
 [![Build Status](https://travis-ci.org/idealista/kafka-role.png)](https://travis-ci.org/idealista/kafka-role)
 
@@ -23,7 +23,8 @@ These instructions will get you a copy of the role for your ansible playbook. On
 
 ### Prerequisities
 
-Ansible 2.2.1.0 version installed.
+Ansible 2.4.2.0 version installed.
+Molecule 1.25 version installed.
 Inventory destination should be a Debian environment.
 
 For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
