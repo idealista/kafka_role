@@ -8,7 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.3.1...1.4.0)
 
 ## Changed
-- *[#20](https://github.com/idealista/kafka-role/issues/2) Update to kafka v1.1* @eskabetxe
+- *[#20](https://github.com/idealista/kafka-role/issues/20) Update to kafka v1.1* @eskabetxe
+## Fixed
+- *[#26](https://github.com/idealista/kafka-role/issues/26) Testinfra tests don't pass under Vagrant* @eskabetxe
 
 
 ## [1.3.1](https://github.com/idealista/kafka-role/tree/1.3.1) (2018-02-27)
