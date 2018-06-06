@@ -11,6 +11,7 @@ install:
   - pip install ansible==2.4.0.0
   - pip install molecule==1.25.0
   - pip install ansible-lint==3.4.20
+  - pip install testinfra==1.7.1
   - pip install docker
 
 script:
