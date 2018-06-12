@@ -56,31 +56,38 @@ vagrant:
         - zookeeper
       interfaces:
         - network_name: private_network
-          type: dhcp
+          type: static
+          ip: 172.28.128.60
           auto_config: true
     - name: kafka1.vm
       ansible_groups:
         - kafka
       interfaces:
         - network_name: private_network
-          type: dhcp
+          type: static
+          ip: 172.28.128.61
           auto_config: true
     - name: kafka2.vm
       ansible_groups:
         - kafka
       interfaces:
         - network_name: private_network
-          type: dhcp
+          type: static
+          ip: 172.28.128.62
           auto_config: true
     - name: kafka3.vm
       ansible_groups:
         - kafka
       interfaces:
         - network_name: private_network
-          type: dhcp
+          type: static
+          ip: 172.28.128.63
           auto_config: true
 
 docker:
+  network:
+    - name: kafka-docker-network
+      driver: bridge
   containers:
     - name: zookeeper.vm
       hostname: zookeeper
@@ -88,6 +95,7 @@ docker:
         - zookeeper
       image: idealista/java-debian-ansible
       image_version: latest
+      network_mode: kafka-docker-network
       # All these parameters are needed for Docker testing with systemd
       privileged: True
       cap_add:
@@ -102,14 +110,13 @@ docker:
         - kafka
       image: idealista/java-debian-ansible
       image_version: latest
+      network_mode: kafka-docker-network
       # All these parameters are needed for Docker testing with systemd
       privileged: True
       cap_add:
         - SYS_ADMIN
       volume_mounts:
         - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-      links:
-        zookeeper.vm: zookeeper.vm
       command: '/lib/systemd/systemd'
 
     - name: kafka2.vm
@@ -118,14 +125,13 @@ docker:
         - kafka
       image: idealista/java-debian-ansible
       image_version: latest
+      network_mode: kafka-docker-network
       # All these parameters are needed for Docker testing with systemd
       privileged: True
       cap_add:
         - SYS_ADMIN
       volume_mounts:
         - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-      links:
-        zookeeper.vm: zookeeper.vm
       command: '/lib/systemd/systemd'
 
     - name: kafka3.vm
@@ -134,14 +140,13 @@ docker:
         - kafka
       image: idealista/java-debian-ansible
       image_version: latest
+      network_mode: kafka-docker-network
       # All these parameters are needed for Docker testing with systemd
       privileged: True
       cap_add:
         - SYS_ADMIN
       volume_mounts:
         - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-      links:
-        zookeeper.vm: zookeeper.vm
       command: '/lib/systemd/systemd'
 
 verifier:
