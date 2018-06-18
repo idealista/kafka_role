@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.3.1...1.4.0)
 
 ## Added
-- *[#28](https://github.com/idealista/kafka-role/issues/28) Adding new variables to server.properties template * @amanzanotejon
+- *[#28](https://github.com/idealista/kafka-role/issues/28) Adding new variables to server.properties template* @amanzanotejon
 ## Changed
 - *[#20](https://github.com/idealista/kafka-role/issues/20) Update to kafka v1.1* @eskabetxe
 ## Fixed
