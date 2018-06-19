@@ -43,7 +43,7 @@
 
 - name: KAFKA | Copy Daemon script
   template:
-    src: kafka.service.j2
+    src: "{{ kafka_service_template_path }}"
     dest: /lib/systemd/system/kafka.service
     mode: 0644
   notify: restart kafka

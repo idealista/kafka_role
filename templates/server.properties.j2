@@ -58,6 +58,13 @@ socket.receive.buffer.bytes={{ kafka_socket_receive_buffer_bytes }}
 # The maximum size of a request that the socket server will accept (protection against OOM)
 socket.request.max.bytes={{ kafka_socket_request_max_bytes }}
 
+############################# Internal Topic Settings  #############################
+# The replication factor for the group metadata internal topics "__consumer_offsets" and "__transaction_state"
+# For anything other than development testing, a value greater than 1 is recommended for to ensure availability such as 3.
+offsets.topic.replication.factor={{ kafka_offsets_topic_replication_factor }}
+transaction.state.log.replication.factor={{ kafka_transaction_state_log_replication_factor }}
+transaction.state.log.min.isr={{ kafka_transaction_state_log_min_isr }}
+
 
 ############################# Log Basics #############################
 

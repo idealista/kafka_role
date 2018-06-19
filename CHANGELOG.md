@@ -5,6 +5,22 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
 
+## [1.5.0](https://github.com/idealista/kafka-role/tree/1.5.0) (2018-06-06)
+## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.4.0...1.5.0)
+
+## Added
+- *[#28](https://github.com/idealista/kafka-role/issues/28) Adding new variables to server.properties template* @amanzanotejon
+- *[#30](https://github.com/idealista/kafka-role/issues/30) Kafka.service, log4j.properties and server.properties can be provided via playbooks* @jnogol
+
+## [1.4.0](https://github.com/idealista/kafka-role/tree/1.4.0) (2018-06-06)
+## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.3.1...1.4.0)
+
+## Changed
+- *[#20](https://github.com/idealista/kafka-role/issues/20) Update to kafka v1.1* @eskabetxe
+## Fixed
+- *[#26](https://github.com/idealista/kafka-role/issues/26) Testinfra tests don't pass under Vagrant* @eskabetxe
+
+
 ## [1.3.1](https://github.com/idealista/kafka-role/tree/1.3.1) (2018-02-27)
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.3.0...1.3.1)
 

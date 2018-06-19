@@ -1,6 +1,6 @@
 ## General
 
-kafka_version: 0.10.2.1
+kafka_version: 1.1.0
 
 ## Service options
 
@@ -100,5 +100,21 @@ kafka_zookeeper_hosts:
 # Timeout in ms for connecting to zookeeper
 kafka_zookeeper_connection_timeout_ms: 6000
 
+# The replication factor for the offsets topic (set higher to ensure availability).
+# Internal topic creation will fail until the cluster size meets this replication factor requirement.
+kafka_offsets_topic_replication_factor: 3
+
+# The replication factor for the transaction topic (set higher to ensure availability).
+# Internal topic creation will fail until the cluster size meets this replication factor requirement.
+kafka_transaction_state_log_replication_factor: 3
+
+#Overridden min.insync.replicas config for the transaction topic.
+kafka_transaction_state_log_min_isr: 2
+
 ## Miscellaneous
 kafka_force_reinstall: false
+
+### Templates path
+kafka_log4j_template_path: log4j.properties.j2
+kafka_server_template_path: server.properties.j2
+kafka_service_template_path: kafka.service.j2

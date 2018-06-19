@@ -15,3 +15,6 @@ kafka_hosts:
     id: 2
   - host: kafka3.vm
     id: 3
+
+kafka_xmx: "768m"
+kafka_xms: "512m"
