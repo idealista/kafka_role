@@ -13,7 +13,7 @@
 
 - name: KAFKA | Copy server config
   template:
-    src: server.properties.j2
+    src: "{{ kafka_server_template_path }}"
     dest: "{{ kafka_conf_path }}/server.properties"
     mode: "0640"
     owner: "{{ kafka_user }}"
@@ -22,7 +22,7 @@
 
 - name: KAFKA | Copy log properties
   template:
-    src: log4j.properties.j2
+    src: "{{ kafka_log4j_template_path }}"
     dest: "{{ kafka_conf_path }}/log4j.properties"
     mode: "0644"
     owner: "{{ kafka_user }}"

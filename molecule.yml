@@ -19,7 +19,7 @@ molecule:
   testinfra_dir: tests
 
   # directory containing group_vars to use with ansible
-  group_vars: ../tests/group_vars
+  group_vars: tests/group_vars
 
 dependency:
   name: galaxy
