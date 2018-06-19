@@ -100,5 +100,16 @@ kafka_zookeeper_hosts:
 # Timeout in ms for connecting to zookeeper
 kafka_zookeeper_connection_timeout_ms: 6000
 
+# The replication factor for the offsets topic (set higher to ensure availability).
+# Internal topic creation will fail until the cluster size meets this replication factor requirement.
+kafka_offsets_topic_replication_factor: 3
+
+# The replication factor for the transaction topic (set higher to ensure availability).
+# Internal topic creation will fail until the cluster size meets this replication factor requirement.
+kafka_transaction_state_log_replication_factor: 3
+
+#Overridden min.insync.replicas config for the transaction topic.
+kafka_transaction_state_log_min_isr: 2
+
 ## Miscellaneous
 kafka_force_reinstall: false
