@@ -1,6 +1,6 @@
 ## General
 
-kafka_version: 1.1.0
+kafka_version: 2.0.0
 
 ## Service options
 
@@ -14,13 +14,14 @@ kafka_service_enabled: yes
 kafka_service_state: started
 
 # Files & Paths
-kafka_install_path: "/opt/kafka"
-kafka_conf_path: "/etc/kafka"
+kafka_install_path: /opt/kafka
+kafka_conf_path: /etc/kafka
 kafka_data_path: "{{ kafka_install_path }}/data"
-kafka_log_path: "/var/log/kafka"
+kafka_log_path: /var/log/kafka
 
 # Logging
 kafka_log_level: WARN
+kafka_gc_log_enabled: false
 
 # JVM
 kafka_xmx: "{{ (ansible_memtotal_mb / 2) | int }}m"

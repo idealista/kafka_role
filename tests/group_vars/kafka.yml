@@ -3,18 +3,27 @@
 java_implementation: openjdk
 
 kafka_zookeeper_hosts:
-    - zookeeper.vm:2181
+  - zookeeper:2181
 
-kafka_host_name: 127.0.0.1
+kafka_version: 2.0.0
+
 kafka_port: 9999
 
 kafka_hosts:
-  - host: kafka1.vm
+  - host: kafka1
     id: 1
-  - host: kafka2.vm
+  - host: kafka2
     id: 2
-  - host: kafka3.vm
+  - host: kafka3
     id: 3
 
 kafka_xmx: "768m"
 kafka_xms: "512m"
+
+kafka_topics:
+  - name: 'test'
+    partitions: '3'
+    replicas: '3'
+  - name: 'test2'
+    partitions: '3'
+    replicas: '1'

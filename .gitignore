@@ -9,3 +9,5 @@ tests/__pycache__
 *.iml
 .idea
 .project
+
+*.pyc

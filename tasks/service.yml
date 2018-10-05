@@ -6,3 +6,17 @@
     state: "{{ kafka_service_state }}"
     enabled: "{{ kafka_service_enabled }}"
     daemon_reload: yes
+
+- name: KAFKA | Restart if necessary
+  meta: flush_handlers
+
+- name: KAFKA | Wait for service listening
+  wait_for:
+    host: "{{ kafka_host_name }}"
+    port: "{{ kafka_port }}"
+    state: "{{ kafka_service_state }}"
+    delay: 5
+    timeout: 300
+  when:
+    - kafka_service_enabled
+    - kafka_service_state == "started"
