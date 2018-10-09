@@ -1,9 +1,15 @@
 ---
-required_libs:
+kafka_required_libs:
   - unzip
 
-scala_version: 2.11
+kafka_scala_version: 2.11
 kafka_mirror: "http://apache.uvigo.es/kafka"
-kafka_package_name: "kafka_{{ scala_version }}-{{ kafka_version }}"
+kafka_package_name: "kafka_{{ kafka_scala_version }}-{{ kafka_version }}"
 kafka_package: "{{ kafka_package_name }}.tgz"
 kafka_sources_url: "{{ kafka_mirror }}/{{ kafka_version }}/{{ kafka_package }}"
+
+kafka_removeable_folders:
+  - bin
+  - config
+  - libs
+  - site-docs

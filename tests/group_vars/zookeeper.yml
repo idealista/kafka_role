@@ -3,5 +3,5 @@
 java_implementation: openjdk
 
 zookeeper_hosts:
-  - host: zookeeper.vm # the machine running
+  - host: zookeeper # the machine running
     id: 1

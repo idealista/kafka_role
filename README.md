@@ -1,4 +1,4 @@
-    ![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
 
 [![Build Status](https://travis-ci.org/idealista/kafka-role.png)](https://travis-ci.org/idealista/kafka-role)
 
@@ -7,8 +7,8 @@
 This ansible role installs Apache Kafka in a debian environment. The server is installed using the sources.
 
 - [Getting Started](#getting-started)
-	- [Prerequisities](#prerequisities)
-	- [Installing](#installing)
+  - [Prerequisities](#prerequisities)
+  - [Installing](#installing)
 - [Usage](#usage)
 - [Testing](#testing)
 - [Built With](#built-with)
@@ -23,10 +23,9 @@ These instructions will get you a copy of the role for your ansible playbook. On
 
 ### Prerequisities
 
-Ansible 2.4.0.0 version installed.
+Ansible 2.4.3.0 version installed.
 Molecule 1.25 version installed.
 Ansible-Lint 3.4.20 version installed.
-Testinfra 1.7.1 version installed.
 
 Inventory destination should be a Debian environment.
 
@@ -36,7 +35,7 @@ For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant
 
 Create or add to your roles dependency file (e.g requirements.yml):
 
-```
+```yml
 - src: http://github.com/idealista/kafka-role.git
   scm: git
   version: 1.0.0
@@ -45,13 +44,13 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 Install the role with ansible-galaxy command:
 
-```
+```sh
 ansible-galaxy install -p roles -r requirements.yml -f
 ```
 
 Use in a playbook:
 
-```
+```yml
 ---
 - hosts: someserver
   roles:
@@ -62,15 +61,33 @@ Use in a playbook:
 
 Look to the [defaults](defaults/main.yml) properties file to see the possible configuration properties.
 
+Kafka topics could be configured through the role. Just set the topics like:
+
+```yml
+kafka_topics:
+  - name: 'test'
+    partitions: '3'
+    replicas: '3'
+  - name: 'test2'
+    partitions: '3'
+    replicas: '1'
+```
+
+Enable delete topic var if you want to remove topics from the cluster.
+
+The number of partitions can be modified but not the replicas. Please have this in mind when create the topics.
+
+Also notice that you can't decrease the number of partitions of a created topic.
+
 ## Testing
 
-```
+```sh
 molecule test
 ```
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.2.1.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.4.3.0-green.svg)
 
 ## Versioning
 
@@ -80,7 +97,7 @@ Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGE
 
 ## Authors
 
-* **Idealista** - *Work with* - [idealista](https://github.com/idealista)
+- **Idealista** - *Work with* - [idealista](https://github.com/idealista)
 
 See also the list of [contributors](https://github.com/idealista/kafka-role/contributors) who participated in this project.
 

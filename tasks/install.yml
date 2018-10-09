@@ -4,7 +4,7 @@
   apt:
     pkg: "{{ item }}"
     state: present
-  with_items: "{{ required_libs }}"
+  with_items: "{{ kafka_required_libs }}"
   tags:
     skip_ansible_lint
 
@@ -25,11 +25,38 @@
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
 
-- name: KAFKA | Check kafka version
-  command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_{{ scala_version }}-{{ kafka_version }}.jar'"
+- name: KAFKA | Create data path
+  file:
+    path: "{{ kafka_data_path }}"
+    mode: 0760
+    state: directory
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_user }}"
+
+- name: KAFKA | Check prev installation
+  command: bash -c "ls {{ kafka_install_path }}/libs"
   register: kafka_check
   changed_when: false
   ignore_errors: true
+
+- name: KAFKA | Check kafka version
+  command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_{{ kafka_scala_version }}-{{ kafka_version }}.jar'"
+  register: kafka_version_check
+  changed_when: false
+  ignore_errors: true
+
+- name: KAFKA | Stop service
+  systemd:
+    name: kafka
+    state: stopped
+  when: kafka_check|success and (kafka_force_reinstall or kafka_version_check|failed or kafka_check.stdout == "")
+
+- name: KAFKA | Remove old version
+  file:
+    path: "{{ kafka_install_path }}/{{ item }}"
+    state: absent
+  with_items: "{{ kafka_removeable_folders }}"
+  when: kafka_check|success and (kafka_force_reinstall or kafka_version_check|failed or kafka_check.stdout == "")
 
 - name: KAFKA | Untar kafka
   unarchive:
@@ -39,7 +66,7 @@
     dest: "{{ kafka_install_path }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  when: 'kafka_force_reinstall or kafka_check|failed or kafka_check.stdout == ""'
+  when: 'kafka_force_reinstall or kafka_version_check|failed or kafka_version_check.stdout == ""'
 
 - name: KAFKA | Copy Daemon script
   template:
@@ -47,11 +74,3 @@
     dest: /lib/systemd/system/kafka.service
     mode: 0644
   notify: restart kafka
-
-- name: KAFKA | Create data path
-  file:
-    path: '{{ kafka_data_path }}'
-    mode: 0760
-    state: directory
-    owner: "{{ kafka_user }}"
-    group: "{{ kafka_user }}"
