@@ -3,14 +3,20 @@
 - name: KAFKA | Install
   include: install.yml
   tags:
-    - install
+    - kafka_install
 
 - name: KAFKA | Configure
   include: config.yml
   tags:
-    - configure
+    - kafka_configure
 
 - name: KAFKA | Service
   include: service.yml
   tags:
-    - service
+    - kafka_service
+
+- name: KAFKA | Topics
+  include: topics.yml
+  run_once: true
+  tags:
+    - kafka_topics

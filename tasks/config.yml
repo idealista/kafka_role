@@ -28,3 +28,17 @@
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
   notify: restart kafka
+
+- name: KAFKA | Enable GC log
+  replace:
+    path: "{{ kafka_install_path }}/bin/kafka-server-start.sh"
+    regexp: ^EXTRA_ARGS=\${EXTRA_ARGS-'-name kafkaServer'}
+    replace: EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer -loggc'}
+  when: kafka_gc_log_enabled
+
+- name: KAFKA | Disable GC log
+  replace:
+    path: "{{ kafka_install_path }}/bin/kafka-server-start.sh"
+    regexp: ^EXTRA_ARGS=\${EXTRA_ARGS-'-name kafkaServer -loggc'}
+    replace: EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer'}
+  when: not kafka_gc_log_enabled

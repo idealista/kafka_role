@@ -1,0 +1,57 @@
+group:
+  {{ kafka_group }}:
+    exists: true
+
+user:
+  {{ kafka_user }}:
+    exists: true
+    groups:
+      - {{ kafka_group }}
+
+file:
+  {{ kafka_data_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+  {{ kafka_install_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+  {{ kafka_log_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+  {{ kafka_conf_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+  /lib/systemd/system/kafka.service:
+    exists: true
+
+port:
+  tcp6:{{ kafka_port }}:
+    listening: true
+
+command:
+  echo dump | nc zookeeper 2181 | grep brokers:
+    exit-status: 0
+    stdout:
+    - "/brokers/ids/1"
+    - "/brokers/ids/2"
+    - "/brokers/ids/3"
+
+command:
+  {{ kafka_install_path }}/bin/kafka-topics.sh --zookeeper {{ kafka_zookeeper_hosts | join(',') }} --list:
+    exit-status: 0
+    stdout:
+    - "test"
+    - "test2"
+
+service:
+  kafka:
+    enabled: true
+    running: true
