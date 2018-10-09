@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.6.0](https://github.com/idealista/kafka-role/tree/1.6.0) (2018-10-09)
+
 ## Added
 
 - *[#33](https://github.com/idealista/kafka-role/issues/33) Enable or disable GC log by configuration* @jmonterrubio
