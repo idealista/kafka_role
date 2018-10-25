@@ -1,0 +1,75 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+
+lint:
+  name: yamllint
+
+platforms:
+  - name: deployer
+    box: debian/stretch64
+    instance_raw_config_args:
+      - "hostmanager.enabled = true"
+      # Enable for debug purpose
+      - "hostmanager.manage_host = true"
+      - "hostmanager.manage_guest = true"
+      - "hostmanager.ignore_private_ip = false"
+      - "hostmanager.include_offline = true"
+      - "vbguest.auto_update = false"
+    memory: 1024
+    cpus: 1
+    groups:
+      - deployer
+    interfaces:
+      - network_name: private_network
+        type: static
+        ip: 172.28.128.90
+        auto_config: true
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+
+scenario:
+  name: default
+  create_sequence:
+    - create
+    - prepare
+  check_sequence:
+    - destroy
+    - dependency
+    - create
+    - prepare
+    - converge
+    - check
+    - destroy
+  converge_sequence:
+    - dependency
+    - create
+    - prepare
+    - converge
+  destroy_sequence:
+    - destroy
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - destroy
+
+verifier:
+  name: goss
+  lint:
+    name: yamllint
