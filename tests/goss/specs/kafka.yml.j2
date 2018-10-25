@@ -29,6 +29,12 @@ file:
     group: {{ kafka_group }}
     exists: true
     filetype: directory
+  {{ kafka_conf_path }}/server.properties:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    contains:
+      - message.max.bytes=409715200
   /lib/systemd/system/kafka.service:
     exists: true
 

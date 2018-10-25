@@ -54,8 +54,8 @@ log4j.logger.kafka={{ kafka_log_level }}, kafkaAppender
 #log4j.logger.kafka.request.logger=TRACE, requestAppender
 #log4j.additivity.kafka.request.logger=false
 
-log4j.logger.kafka.controller=TRACE, controllerAppender
+log4j.logger.kafka.controller={{ kafka_log_level }}, controllerAppender
 log4j.additivity.kafka.controller=false
 
-log4j.logger.state.change.logger=TRACE, stateChangeAppender
+log4j.logger.state.change.logger={{ kafka_log_level }}, stateChangeAppender
 log4j.additivity.state.change.logger=false
