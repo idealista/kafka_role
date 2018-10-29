@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## Fixed
+
+- *[#40](https://github.com/idealista/kafka-role/issues/40) Avoided remove __consumer_offsets internal topic* @jmonterrubio
+
 ## Added
 
 - *[#39](https://github.com/idealista/kafka-role/issues/39) Add extra configuration properties* @jmonterrubio

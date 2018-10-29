@@ -12,6 +12,21 @@ def flatten(list):
 
     return [item for sublist in list for item in sublist]
 
+def filter_list(list, cond=None):
+    '''
+    Filter the input list by condition
+    '''
+
+    return filter(cond, list)
+
+
+def filter_evaluated_list(list, cond):
+    '''
+    Filter the input list by evaluating the input condition from string
+    '''
+
+    return filter(eval(cond), list)
+
 
 class FilterModule(object):
     '''
@@ -21,5 +36,7 @@ class FilterModule(object):
     def filters(self):
         return {
             'zip_dict': zip_dict,
-            'flatten': flatten
+            'flatten': flatten,
+            'filter': filter_list,
+            'filter_evaluated': filter_evaluated_list
         }
