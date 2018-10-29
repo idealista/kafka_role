@@ -27,3 +27,7 @@ kafka_topics:
   - name: 'test2'
     partitions: '3'
     replicas: '1'
+
+kafka_extra_properties:
+  - key: message.max.bytes
+    value: 409715200

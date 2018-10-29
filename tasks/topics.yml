@@ -45,7 +45,11 @@
 
 - name: KAFKA | Topics to remove
   set_fact:
-    kafka_topics_to_remove: "{{ kafka_topics_origin | difference(kafka_topics | map(attribute='name') | list)}}"
+    kafka_topics_to_remove: |
+      {{ kafka_topics_origin |
+        difference(kafka_topics | map(attribute='name') |
+        list) |
+        filter_evaluated(kafka_filter_function_not_removable_topic) }}
 
 - name: KAFKA | Create kafka topics
   command: >

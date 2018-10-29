@@ -1,22 +1,22 @@
 ---
 
 - name: KAFKA | Install
-  include: install.yml
+  include_tasks: install.yml
   tags:
     - kafka_install
 
 - name: KAFKA | Configure
-  include: config.yml
+  include_tasks: config.yml
   tags:
     - kafka_configure
 
 - name: KAFKA | Service
-  include: service.yml
+  include_tasks: service.yml
   tags:
     - kafka_service
 
 - name: KAFKA | Topics
-  include: topics.yml
+  include_tasks: topics.yml
   run_once: true
   tags:
     - kafka_topics
