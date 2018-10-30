@@ -14,4 +14,4 @@ kafka_removeable_folders:
   - libs
   - site-docs
 
-kafka_filter_function_not_removable_topic: "lambda k: '__consumer_offsets' not in k"
+kafka_filter_function_not_removable_topic: "lambda k: not k.startswith('__')"
