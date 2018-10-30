@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## Fixed
 
+- *[#45](https://github.com/idealista/kafka-role/issues/45) Avoided remove all internal topics* @jmonterrubio
+
+## [1.7.0](https://github.com/idealista/kafka-role/tree/1.7.0) (2018-10-29)
+
+## Fixed
+
 - *[#40](https://github.com/idealista/kafka-role/issues/40) Avoided remove __consumer_offsets internal topic* @jmonterrubio
 
 ## Added
