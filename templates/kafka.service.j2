@@ -7,6 +7,7 @@ Restart=on-failure
 Environment=KAFKA_LOG4J_OPTS=-Dlog4j.configuration=file:{{ kafka_conf_path }}/log4j.properties
 Environment="KAFKA_HEAP_OPTS=-Xmx{{ kafka_xmx }} -Xms{{ kafka_xms }}"
 Environment=JMX_PORT={{ kafka_jmx_port }}
+Environment="KAFKA_OPTS={{ kafka_opts }}"
 ExecStart={{ kafka_install_path }}/bin/kafka-server-start.sh {{ kafka_conf_path }}/server.properties
 ExecStop={{ kafka_install_path }}/bin/kafka-server-stop.sh
 User={{ kafka_user }}
