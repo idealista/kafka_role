@@ -5,13 +5,17 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
-## [1.7.0](https://github.com/idealista/kafka-role/tree/1.7.0) (2018-10-29)
+## [1.8.0](https://github.com/idealista/kafka-role/tree/1.8.0) (2018-10-31)
+
+## Added
+
+- *Add Kafka_OPTS hook* @john-delivuk
 
 ## Fixed
 
 - *[#48](https://github.com/idealista/kafka-role/issues/48) Fix error creating topics in a second launch* @jmonterrubio
 
-## [1.7.0](https://github.com/idealista/kafka-role/tree/1.7.0) (2018-10-29)
+## [1.7.1](https://github.com/idealista/kafka-role/tree/1.7.1) (2018-10-29)
 
 ## Fixed
 
