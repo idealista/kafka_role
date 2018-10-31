@@ -76,7 +76,7 @@
     --if-exists
     --force
   with_items:
-    - "{{ kafka_topics | difference(kafka_topics_to_alter) }}"
+    - "{{ kafka_topics_to_check | difference(kafka_topics_to_alter) }}"
   when: kafka_topics_to_alter != []
   tags:
     skip_ansible_lint
