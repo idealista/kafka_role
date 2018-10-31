@@ -27,6 +27,7 @@ kafka_gc_log_enabled: false
 kafka_xmx: "{{ (ansible_memtotal_mb / 2) | int }}m"
 kafka_xms: "{{ (ansible_memtotal_mb / 2) | int }}m"
 kafka_jmx_port: 9010
+kafka_opts: ""
 
 # Service properties
 
@@ -40,6 +41,8 @@ kafka_delete_topic_enable: 'false'
 
 # Switch to enable auto create topic or not, default value is true
 kafka_auto_create_topics: 'true'
+
+kafka_topics: []
 
 # The address the socket server listens on. It will get the value returned from
 # java.net.InetAddress.getCanonicalHostName() if not configured.
