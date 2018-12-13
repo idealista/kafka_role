@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.8.1](https://github.com/idealista/kafka-role/tree/1.8.1) (2018-11-13)
+
+## Fixed
+
+- *[#51](https://github.com/idealista/kafka-role/issues/51) Fix alter kafka topics* @jmonterrubio
+
 ## [1.8.0](https://github.com/idealista/kafka-role/tree/1.8.0) (2018-10-31)
 
 ## Added
