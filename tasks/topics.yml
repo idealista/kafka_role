@@ -38,7 +38,7 @@
         map(attribute='stdout_lines') |
         map('first') |
         map('regex_findall', '^Topic:(.*)\tPartitionCount:([0-9]+)\tReplicationFactor:([0-9]+)\tConfigs:') |
-        flatten |
+        flatten_list |
         map('zip_dict', ['name', 'partitions', 'replicas']) |
         list
       }}

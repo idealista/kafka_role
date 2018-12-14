@@ -36,7 +36,7 @@ class FilterModule(object):
     def filters(self):
         return {
             'zip_dict': zip_dict,
-            'flatten': flatten,
+            'flatten_list': flatten,
             'filter': filter_list,
             'filter_evaluated': filter_evaluated_list
         }
