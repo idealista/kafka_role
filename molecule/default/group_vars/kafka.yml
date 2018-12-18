@@ -1,7 +1,4 @@
 ---
-## JAVA
-java_implementation: openjdk
-
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
