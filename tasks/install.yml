@@ -62,7 +62,7 @@
   unarchive:
     extra_opts: ['--strip-components=1']
     src: "{{ kafka_sources_url }}"
-    remote_src: yes
+    remote_src: true
     dest: "{{ kafka_install_path }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"

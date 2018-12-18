@@ -1,21 +1,23 @@
 ---
 language: python
-python: "2.7.13"
 sudo: required
-group: deprecated-2017Q4
 
 services:
   - docker
 
-install:
-  - pip install ansible==2.4.0.0
-  - pip install molecule==1.25.0
-  - pip install ansible-lint==3.4.20
-  - pip install testinfra==1.7.1
-  - pip install docker
+matrix:
+  include:
+    - python: 2.7
+      env: REQUIREMENTS=test-requirements-27.txt
+    - python: 3.6
+      env: REQUIREMENTS=test-requirements-36.txt
+  fast_finish: true
 
+install:
+  - pip install pipenv
+  - pipenv install -r $REQUIREMENTS
 script:
-  - molecule test --driver docker
+  - pipenv run molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
