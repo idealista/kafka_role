@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [1.9.0](https://github.com/idealista/kafka-role/tree/1.9.0) (2018-12-18)
 
-## Added
+## Changed
 
 - *Default kafka version 2.1.0* @jmonterrubio
 
