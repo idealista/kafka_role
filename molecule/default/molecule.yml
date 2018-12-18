@@ -11,7 +11,7 @@ lint:
 platforms:
   - name: zookeeper
     hostname: zookeeper
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:latest
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -27,7 +27,7 @@ platforms:
 
   - name: kafka1
     hostname: kafka1
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:latest
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -49,7 +49,7 @@ platforms:
 
   - name: kafka2
     hostname: kafka2
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:latest
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -71,7 +71,7 @@ platforms:
 
   - name: kafka3
     hostname: kafka3
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:latest
     privileged: true
     capabilities:
       - SYS_ADMIN
