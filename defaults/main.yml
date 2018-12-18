@@ -1,6 +1,7 @@
+---
 ## General
 
-kafka_version: 2.0.0
+kafka_version: 2.1.0
 
 ## Service options
 
@@ -9,7 +10,7 @@ kafka_user: kafka
 kafka_group: kafka
 
 # start on boot
-kafka_service_enabled: yes
+kafka_service_enabled: true
 # current state: started, stopped
 kafka_service_state: started
 
@@ -34,7 +35,7 @@ kafka_opts: ""
 # The id of the broker. This must be set to a unique integer for each broker.
 # List of dict (i.e. {kafka_hosts:[{host:,id:},{host:,id:},...]})
 kafka_hosts:
-  - host: "{{inventory_hostname}}" # the machine running
+  - host: "{{inventory_hostname}}"  # the machine running
     id: 0
 # Switch to enable topic deletion or not, default value is false
 kafka_delete_topic_enable: 'false'
@@ -50,14 +51,14 @@ kafka_topics: []
 #     listeners = security_protocol://host_name:port
 #   EXAMPLE:
 #     listeners = PLAINTEXT://your.host.name:9092
-#listeners: PLAINTEXT://{{kafka_host}}:{{kafka_port}}
+# listeners: PLAINTEXT://{{kafka_host}}:{{kafka_port}}
 kafka_host_name: "{{ ansible_nodename }}"
 kafka_port: 9092
 
 # Hostname and port the broker will advertise to producers and consumers. If not set,
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
 # returned from java.net.InetAddress.getCanonicalHostName().
-#kafka_advertised_listeners: PLAINTEXT://your.host.name:9092
+# kafka_advertised_listeners: PLAINTEXT://your.host.name:9092
 
 # The number of threads handling network requests
 kafka_num_network_threads: 3
@@ -100,7 +101,7 @@ kafka_log_retention_check_interval_ms: 300000
 # You can also append an optional chroot string to the urls to specify the
 # root directory for all kafka znodes.
 kafka_zookeeper_hosts:
-    - localhost:2181
+  - localhost:2181
 # Timeout in ms for connecting to zookeeper
 kafka_zookeeper_connection_timeout_ms: 6000
 
@@ -112,7 +113,7 @@ kafka_offsets_topic_replication_factor: 3
 # Internal topic creation will fail until the cluster size meets this replication factor requirement.
 kafka_transaction_state_log_replication_factor: 3
 
-#Overridden min.insync.replicas config for the transaction topic.
+# Overridden min.insync.replicas config for the transaction topic.
 kafka_transaction_state_log_min_isr: 2
 
 ## Miscellaneous
@@ -125,5 +126,5 @@ kafka_service_template_path: kafka.service.j2
 
 ## Extra properties
 kafka_extra_properties: []
-#  - key: message.max.bytes
-#    value: 409715200
+# - key: message.max.bytes
+#   value: 409715200

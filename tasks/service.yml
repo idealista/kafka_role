@@ -5,7 +5,7 @@
     name: kafka
     state: "{{ kafka_service_state }}"
     enabled: "{{ kafka_service_enabled }}"
-    daemon_reload: yes
+    daemon_reload: true
 
 - name: KAFKA | Restart if necessary
   meta: flush_handlers

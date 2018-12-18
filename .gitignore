@@ -11,3 +11,5 @@ tests/__pycache__
 .project
 
 *.pyc
+Pipfile
+Pipfile.lock

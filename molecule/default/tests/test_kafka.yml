@@ -39,7 +39,7 @@ file:
     exists: true
 
 port:
-  tcp6:{{ kafka_port }}:
+  tcp:{{ kafka_port }}:
     listening: true
 
 command:

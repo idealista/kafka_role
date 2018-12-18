@@ -1,7 +1,4 @@
 ---
-## JAVA
-java_implementation: openjdk
-
 zookeeper_hosts:
   - host: zookeeper # the machine running
     id: 1
