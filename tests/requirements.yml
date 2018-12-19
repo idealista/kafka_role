@@ -1,8 +1,0 @@
----
-- src: idealista.java-role
-  version: 3.0.0
-  name: java
-
-- src: idealista.zookeeper-role
-  version: 1.2.0
-  name: zookeeper

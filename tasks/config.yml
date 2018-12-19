@@ -6,7 +6,7 @@
     state: directory
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-    recurse: yes
+    recurse: true
   with_items:
     - "{{ kafka_conf_path }}"
     - "{{ kafka_log_path }}"

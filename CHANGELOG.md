@@ -5,6 +5,22 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.9.0](https://github.com/idealista/kafka-role/tree/1.9.0) (2018-12-18)
+
+## Changed
+
+- *Default kafka version 2.1.0* @jmonterrubio
+
+## Fixed
+
+- *[#53](https://github.com/idealista/kafka-role/issues/53) Fix problem removing topics in python 3* @jmonterrubio
+
+## [1.8.1](https://github.com/idealista/kafka-role/tree/1.8.1) (2018-11-13)
+
+## Fixed
+
+- *[#51](https://github.com/idealista/kafka-role/issues/51) Fix alter kafka topics* @jmonterrubio
+
 ## [1.8.0](https://github.com/idealista/kafka-role/tree/1.8.0) (2018-10-31)
 
 ## Added

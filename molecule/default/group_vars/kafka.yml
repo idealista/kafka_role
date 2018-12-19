@@ -1,7 +1,4 @@
 ---
-## JAVA
-java_implementation: openjdk
-
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
@@ -25,7 +22,7 @@ kafka_topics:
     partitions: '3'
     replicas: '3'
   - name: 'test2'
-    partitions: '3'
+    partitions: '5'
     replicas: '1'
 
 kafka_extra_properties:
