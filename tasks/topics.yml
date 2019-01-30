@@ -93,3 +93,8 @@
   with_items:
     - "{{ kafka_topics_to_remove }}"
   when: kafka_delete_topic_enable == 'true'
+
+- name: KAFKA | Configure kafka topics
+  include_tasks: topic_config.yml
+  with_items:
+    - "{{ kafka_topics_config }}"

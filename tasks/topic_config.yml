@@ -1,0 +1,51 @@
+---
+- name: KAFKA | Init temp vars for {{ item.name }} config (1/3)
+  set_fact:
+    string_properties: ""
+    properties: {}
+
+- name: KAFKA | Init temp vars for {{ item.name }} config (2/3)
+  set_fact:
+    properties: "{{ properties |combine({property.key: property.value}) }}"
+  when: property.key not in ['name']
+  with_dict: "{{ item }}"
+  loop_control:
+    loop_var: property
+
+- name: KAFKA | Init temp vars for {{ item.name }} config (3/3)
+  set_fact:
+    string_properties: "{{ string_properties }}{{ (id > 0)|ternary(',','') }}{{ conf.key }}={{ conf.value }}"
+  loop: "{{  properties | dict2items }}"
+  loop_control:
+    index_var: id
+    loop_var: conf
+
+- name: KAFKA | Obtain config for topic
+  command: >
+    {{ kafka_install_path }}/bin/kafka-configs.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --entity-type topics
+    --entity-name {{ item.name }}
+    --describe
+  register: kafka_topics_config_described_full
+  changed_when: false
+
+- name: KAFKA | Topics to alter
+  set_fact:
+    kafka_topics_config_to_alter: |
+      {{ kafka_topics_config_described_full.stdout |
+          replace("Configs for topic '" + item.name + "' are ", '')
+      }}
+
+- name: KAFKA | Configure kafka topics
+  command: >
+    {{ kafka_install_path }}/bin/kafka-configs.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --entity-type topics
+    --entity-name {{ item.name }}
+    --add-config {{ string_properties }}
+    --alter
+    --force
+  when: kafka_topics_config_to_alter | trim  != string_properties
+  tags:
+    skip_ansible_lint

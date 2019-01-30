@@ -25,6 +25,14 @@ kafka_topics:
     partitions: '5'
     replicas: '1'
 
+kafka_topics_config:
+  - name: 'test'
+    delete.retention.ms: 100000
+    max.message.bytes: 1024
+  - name: 'test2'
+    delete.retention.ms: 100000
+    max.message.bytes: 2048
+
 kafka_extra_properties:
   - key: message.max.bytes
     value: 409715200
