@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## Added
+
+- *[#56](https://github.com/idealista/kafka-role/issues/56) Configure topic properties* @jmonterrubio
+
+## Changed
+
+- *[#56](https://github.com/idealista/kafka-role/issues/56) Remove compatibility with ansible < 2.7* @jmonterrubio
+
 ## [1.9.0](https://github.com/idealista/kafka-role/tree/1.9.0) (2018-12-18)
 
 ## Changed

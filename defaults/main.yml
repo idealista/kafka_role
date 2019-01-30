@@ -125,6 +125,10 @@ kafka_server_template_path: server.properties.j2
 kafka_service_template_path: kafka.service.j2
 
 ## Extra properties
+kafka_topics_config: []
+# - name: 'test'
+#   delete.retention.ms: 100000
+#   max.message.bytes: 1024
 kafka_extra_properties: []
 # - key: message.max.bytes
 #   value: 409715200
