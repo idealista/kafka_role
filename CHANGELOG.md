@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.10.0](https://github.com/idealista/kafka-role/tree/1.10.0) (2019-01-30)
 ## Added
 
 - *[#56](https://github.com/idealista/kafka-role/issues/56) Configure topic properties* @jmonterrubio
