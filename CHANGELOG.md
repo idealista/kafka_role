@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
+## Fixed
+
+- *[#59](https://github.com/idealista/kafka-role/issues/59) Fix scala version cannot be setted* @jmonterrubio
+
+## Changed
+
+- *[#59](https://github.com/idealista/kafka-role/issues/59) Set 2.12 as default scala version* @jmonterrubio
 
 ## [1.10.0](https://github.com/idealista/kafka-role/tree/1.10.0) (2019-01-30)
 ## Added
