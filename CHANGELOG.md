@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
+## Added
+
+- *[#62](https://github.com/idealista/kafka-role/issues/62) Provide the KAFKA_JVM_PERFORMANCE_OPTS* @jmonterrubio
 
 ## [1.11.0](https://github.com/idealista/kafka-role/tree/1.11.0) (2019-02-05)
 ## Fixed
