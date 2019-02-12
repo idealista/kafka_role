@@ -30,6 +30,7 @@ kafka_xmx: "{{ (ansible_memtotal_mb / 2) | int }}m"
 kafka_xms: "{{ (ansible_memtotal_mb / 2) | int }}m"
 kafka_jmx_port: 9010
 kafka_opts: ""
+kafka_jvm_performance_opts: ""
 
 # Service properties
 
