@@ -135,7 +135,7 @@ zookeeper.connection.timeout.ms={{ kafka_zookeeper_connection_timeout_ms }}
 
 ############################# Extra Properties #############################
 {% if kafka_extra_properties is defined %}
-  {% for config in kafka_extra_properties %}
+{% for config in kafka_extra_properties %}
 {{ config.key }}={{ config.value }}
-  {% endfor %}
+{% endfor %}
 {% endif %}

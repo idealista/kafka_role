@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka-role/tree/develop)
 
+## [1.12.1](https://github.com/idealista/kafka-role/tree/1.12.1) (2019-02-19)
+
+## Fixed
+
+- *[#65](https://github.com/idealista/kafka-role/issues/65) Remove space before extra properties* @jmonterrubio
+
 ## [1.12.0](https://github.com/idealista/kafka-role/tree/1.12.0) (2019-02-12)
 
 ## [Full Changelog](https://github.com/idealista/kafka-role/compare/1.11.0...1.12.0)
