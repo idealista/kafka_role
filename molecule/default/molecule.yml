@@ -11,14 +11,14 @@ lint:
 platforms:
   - name: zookeeper
     hostname: zookeeper
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/zookeeper:latest
     privileged: true
     capabilities:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
     groups:
-      - zookeeper_group
+      - zookeeper
     command: '/lib/systemd/systemd'
     networks:
       - name: kafka-network
@@ -27,7 +27,7 @@ platforms:
 
   - name: kafka1
     hostname: kafka1
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:8u181-stretch-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -49,7 +49,7 @@ platforms:
 
   - name: kafka2
     hostname: kafka2
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:8u181-stretch-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
@@ -71,7 +71,7 @@ platforms:
 
   - name: kafka3
     hostname: kafka3
-    image: idealista/java-debian-ansible:3.2.0-debian9
+    image: idealista/jdk:8u181-stretch-openjdk-headless
     privileged: true
     capabilities:
       - SYS_ADMIN
