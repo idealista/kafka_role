@@ -46,6 +46,7 @@ kafka_delete_topic_enable: 'false'
 kafka_auto_create_topics: 'true'
 
 kafka_topics: []
+kafka_not_removable_topics: ['KSTREAM-AGGREGATE-STATE-STORE']  # Contains filter
 
 # The address the socket server listens on. It will get the value returned from
 # java.net.InetAddress.getCanonicalHostName() if not configured.
