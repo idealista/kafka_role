@@ -1,7 +1,7 @@
 ---
 ## General
 
-kafka_version: 2.1.0
+kafka_version: 2.2.0
 kafka_scala_version: 2.12  # Recommended
 
 ## Service options
