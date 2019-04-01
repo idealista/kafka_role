@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
+
+## [1.13.1](https://github.com/idealista/kafka_role/tree/1.13.0) (2019-04-01)
 ## Fixed
 - *[#75](https://github.com/idealista/kafka-role/issues/75) Default kafka version 2.2.0* @frantsao
 ## Changed
