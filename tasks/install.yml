@@ -1,8 +1,8 @@
 ---
 
 - name: KAFKA | Installing dependencies
-  apt:
-    pkg: "{{ kafka_required_libs }}"
+  package:
+    name: "{{ kafka_required_libs }}"
     state: present
   tags:
     skip_ansible_lint
