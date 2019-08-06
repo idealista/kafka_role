@@ -3,4 +3,4 @@
 - name: Converge
   hosts: kafka
   roles:
-    - kafka-role
+    - kafka_role

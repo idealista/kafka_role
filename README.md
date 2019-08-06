@@ -1,7 +1,7 @@
-![Logo](https://raw.githubusercontent.com/idealista/kafka-role/master/logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/kafka_role/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/kafka-role.png)](https://travis-ci.org/idealista/kafka-role)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-idealista.kafka--role-B62682.svg)](https://galaxy.ansible.com/idealista/kafka-role)
+[![Build Status](https://travis-ci.org/idealista/kafka_role.png)](https://travis-ci.org/idealista/kafka_role)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-idealista.kafka--role-B62682.svg)](https://galaxy.ansible.com/idealista/kafka_role)
 [![Docker Hub pulls](https://img.shields.io/docker/pulls/idealista/kafka.svg)](https://hub.docker.com/r/idealista/kafka/)
 
 # Kafka Ansible role
@@ -48,7 +48,7 @@ Inventory destination should be a Debian environment. Notice that you will need 
 Create or add to your roles dependency file (e.g requirements.yml):
 
 ```yml
-- src: http://github.com/idealista/kafka-role.git
+- src: http://github.com/idealista/kafka_role.git
   scm: git
   version: 1.13.0
   name: kafka
@@ -111,7 +111,7 @@ pipenv run molecule test
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/idealista/kafka-role/tags).
+For the versions available, see the [tags on this repository](https://github.com/idealista/kafka_role/tags).
 
 Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGELOG.md) file.
 
@@ -119,7 +119,7 @@ Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGE
 
 - **Idealista** - *Work with* - [idealista](https://github.com/idealista)
 
-See also the list of [contributors](https://github.com/idealista/kafka-role/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/idealista/kafka_role/contributors) who participated in this project.
 
 ## License
 
