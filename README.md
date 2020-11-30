@@ -25,7 +25,7 @@ These instructions will get you a copy of the role for your Ansible Playbook. On
 
 ### Prerequisities
 
-Ansible {{ cookiecutter.ansible_version }} version installed.
+Ansible 2.8.8 version installed.
 
 Molecule 3.x.x version installed.
 
