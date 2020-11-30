@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/kafka_role/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/kafka_role.png)](https://travis-ci.org/idealista/kafka_role)
+[![Build Status](https://travis-ci.com/idealista/kafka_role.svg?branch=develop)](https://travis-ci.com/idealista/kafka_role)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-idealista.kafka--role-B62682.svg)](https://galaxy.ansible.com/idealista/kafka_role)
 [![Docker Hub pulls](https://img.shields.io/docker/pulls/idealista/kafka.svg)](https://hub.docker.com/r/idealista/kafka/)
 
@@ -25,48 +25,35 @@ These instructions will get you a copy of the role for your Ansible Playbook. On
 
 ### Prerequisities
 
-#### To execute this role:
+Ansible {{ cookiecutter.ansible_version }} version installed.
 
-Ansible 2.7.5.0
-Python 3.6 or Python 2.7
-Other combinations may work but they're not tested.
+Molecule 3.x.x version installed.
 
-Inventory destination should be a Debian environment. Notice that you will need to [install Java](https://github.com/idealista/java_role) in that environment after execute this role.
-
-#### For testing purposes:
-
-* [Pipenv](https://github.com/pypa/pipenv) 
-* \>= Python 2.7 (See [test-requirements-27](test-requirements-27.txt) and [test-requirements-36](test-requirements-36.txt))
-* [Docker](https://www.docker.com/) as driver
-
-:warning: As this role is ready to use in production, the image hosted in [Docker Hub]((https://hub.docker.com/r/idealista/kafka/)) is only for testing purposes. That image is deployed using *rolling tags* and major changes could break your tests. 
-
-**We strongly do not recommend to use containers in production based on that image** (maybe it will be ready in future releases). 
+For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Docker](https://www.docker.com/) as driver and [Goss](https://github.com/aelsabbahy/goss) as verifier.
 
 ### Installing
 
 Create or add to your roles dependency file (e.g requirements.yml):
 
-```yml
-- src: http://github.com/idealista/kafka_role.git
-  scm: git
-  version: 1.13.0
-  name: kafka
+```
+- src: idealista.kafka_role
+  version: 1.0.0
+  name: kafka_role
 ```
 
 Install the role with ansible-galaxy command:
 
-```sh
+```
 ansible-galaxy install -p roles -r requirements.yml -f
 ```
 
 Use in a playbook:
 
-```yml
+```
 ---
 - hosts: someserver
   roles:
-    - role: kafka
+    - role: kafka_role
 ```
 
 ## Usage
@@ -93,16 +80,18 @@ Also notice that you can't decrease the number of partitions of a created topic.
 
 ## Testing
 
+### Install dependencies
+
 ```sh
-pipenv install -r test-requirements-27.txt --python 2.7
-pipenv run molecule test
+$ pipenv sync
 ```
 
-and
+For more information read the [pipenv docs](ipenv-fork.readthedocs.io/en/latest/).
+
+### Testing
 
 ```sh
-pipenv install -r test-requirements-36.txt --python 3.6
-pipenv run molecule test
+$ pipenv run molecule test 
 ```
 
 ## Built With

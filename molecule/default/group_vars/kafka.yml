@@ -2,10 +2,7 @@
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
-kafka_version: 2.2.0
-
 kafka_port: 9999
-
 kafka_jvm_performance_opts: "-XX:MetaspaceSize=96m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:G1HeapRegionSize=16M -XX:MinMetaspaceFreeRatio=50 -XX:MaxMetaspaceFreeRatio=80"
 
 kafka_hosts:

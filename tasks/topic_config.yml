@@ -47,5 +47,6 @@
     --alter
     --force
   when: kafka_topics_config_to_alter | trim  != string_properties
+  changed_when: false
   tags:
     skip_ansible_lint
