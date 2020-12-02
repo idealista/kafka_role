@@ -16,3 +16,6 @@ rules:
 ignore: |
     .molecule/
     molecule/
+
+skip_list:
+  - '602' # see: https://github.com/ansible/ansible-lint/issues/457
