@@ -48,14 +48,14 @@
   systemd:
     name: kafka
     state: stopped
-  when: kafka_check is success and (kafka_force_reinstall or kafka_version_check is failed or kafka_check.stdout == "")
+  when: kafka_check is success and (kafka_force_reinstall or kafka_version_check is failed or kafka_check.stdout | length > 0)
 
 - name: KAFKA | Remove old version
   file:
     path: "{{ kafka_install_path }}/{{ item }}"
     state: absent
   with_items: "{{ kafka_removeable_folders }}"
-  when: kafka_check is success and (kafka_force_reinstall or kafka_version_check is failed or kafka_check.stdout == "")
+  when: kafka_check is success and (kafka_force_reinstall or kafka_version_check is failed or kafka_check.stdout | length > 0)
 
 - name: KAFKA | Untar kafka
   unarchive:
@@ -65,7 +65,7 @@
     dest: "{{ kafka_install_path }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  when: 'kafka_force_reinstall or kafka_version_check is failed or kafka_version_check.stdout == ""'
+  when: 'kafka_force_reinstall or kafka_version_check is failed or kafka_version_check.stdout | length > 0'
 
 - name: KAFKA | Copy Daemon script
   template:
