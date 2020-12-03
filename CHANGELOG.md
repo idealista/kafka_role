@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
+
+## Changed
+- *[#81](https://github.com/idealista/kafka_role/issues/81) Allowing to override kafka_mirror uri via group_vars* @dortegau
+
 ## [1.13.2](https://github.com/idealista/kafka_role/tree/1.13.2) (2019-08-06)
 ## Fixed
 - *[#78](https://github.com/idealista/kafka-role/issues/78) Fixed not removable topics was only considering the first one in the list* @jmonterrubio
