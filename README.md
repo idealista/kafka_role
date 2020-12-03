@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.com/idealista/kafka_role.svg?branch=develop)](https://travis-ci.com/idealista/kafka_role)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-idealista.kafka--role-B62682.svg)](https://galaxy.ansible.com/idealista/kafka_role)
-[![Docker Hub pulls](https://img.shields.io/docker/pulls/idealista/kafka.svg)](https://hub.docker.com/r/idealista/kafka/)
 
 # Kafka Ansible role
 
@@ -37,7 +36,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
 - src: idealista.kafka_role
-  version: 1.0.0
+  version: 1.14.0
   name: kafka_role
 ```
 
