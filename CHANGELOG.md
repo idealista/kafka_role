@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
 
+## [1.14.0](https://github.com/idealista/kafka_role/tree/1.14.0) (2020-12-03)
 ## Changed
 - *[#81](https://github.com/idealista/kafka_role/issues/81) Allowing to override kafka_mirror uri via group_vars* @dortegau
 
