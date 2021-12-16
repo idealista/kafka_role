@@ -1,0 +1,106 @@
+---
+
+- name: KAFKA | agent installation | Install required packages
+  apt:
+    pkg: "{{ item }}"
+    state: present
+    update_cache: yes
+  when: kafka_agents_required_libs is defined
+  with_items: '{{ kafka_agents_required_libs }}'
+
+- name: KAFKA | agent installation | Ensure install path
+  file:
+    path: "{{ kafka_install_path }}/{{ item.name }}"
+    state: directory
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  with_items: '{{ kafka_agents_config }}'
+
+- name: KAFKA | agent installation | Check if agent is installed
+  stat:
+    path: "{{ kafka_install_path }}/{{ item.0.name }}/{{ item.1 | basename }}"
+  register: agent_file_exists
+  with_subelements:
+    - "{{ kafka_agents_config }}"
+    - java_opts
+
+- name: KAFKA | agent installation | Check agent version
+  command: "cat {{ kafka_install_path }}/{{ item.0.name }}/version.txt"
+  register: agent_version_checked
+  changed_when: false
+  ignore_errors: true
+  with_subelements:
+    - "{{ kafka_agents_config }}"
+    - java_opts
+
+- name: KAFKA | agent installation | Download agent
+  get_url:
+    dest: "/tmp"
+    url: "{{ item.download_url }}"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  register: agent_downloaded
+  loop: "{{ kafka_agents_config | flatten(levels=1) }}"
+  loop_control:
+    index_var: index
+  when: >
+    item.download_url | basename | splitext | last in kafka_supported_agents_extensions and
+    (kafka_agents_force_reinstall or not
+    agent_file_exists.results[index].stat.exists or
+    item.version != agent_version_checked.results[index].stdout)
+
+- name: KAFKA | agent installation | Unarchive package
+  unarchive:
+    src: "/tmp/{{ item.download_url | basename }}"
+    dest: "{{ kafka_install_path }}"
+    remote_src: yes
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+    mode: 0755
+  when: item.download_url | basename | splitext | last in kafka_supported_agents_extensions and agent_downloaded.changed
+  with_items: '{{ kafka_agents_config }}'
+  tags:
+    - skip_ansible_lint
+
+- name: KAFKA | agent installation | Download agent jar
+  get_url:
+    dest: "{{ kafka_install_path }}/{{ item.name }}"
+    url: "{{ item.download_url }}"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  loop: '{{ kafka_agents_config | flatten(levels=1) }}'
+  register: agent_jar_downloaded
+  when: item.download_url | basename | splitext | last not in kafka_supported_agents_extensions
+
+- name: KAFKA | agent installation | Copy version number file
+  template:
+    src: "agent-version.txt.j2"
+    dest: "{{ kafka_install_path }}/{{ item.name }}/version.txt"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+    mode: 0644
+  with_items: '{{ kafka_agents_config }}'
+
+- name: KAFKA | agent installation | Check configuration files
+  set_fact:
+    kafka_agents_configuration: "{{ kafka_agents_configuration|default([]) + [ {'name': item.0.name, 'file': item.1, 'params': item.0.params}] }}"
+  with_subelements:
+    - "{{ kafka_agents_config }}"
+    - configuration_files
+
+- name: KAFKA | agent installation | Configure the Java agent
+  template:
+    src: "{{ playbook_dir }}/templates/agents/{{ item.name }}/{{ item.file }}.j2"
+    dest: "{{ kafka_install_path }}/{{ item.name }}/{{ item.file }}"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  notify: restart kafka
+  with_items: '{{ kafka_agents_configuration }}'
+
+- name: KAFKA | agent installation | Check java options
+  set_fact:
+    kafka_agent_java_opts: "{% set kafka_agent_java_opts = kafka_agent_java_opts|default([]) + [item.1] %}{{ kafka_agent_java_opts|list }}"
+  notify: restart kafka
+  with_subelements:
+    - "{{ kafka_agents_config }}"
+    - java_opts

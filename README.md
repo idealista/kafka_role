@@ -36,7 +36,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
 - src: idealista.kafka_role
-  version: 1.14.0
+  version: 1.15.0
   name: kafka_role
 ```
 

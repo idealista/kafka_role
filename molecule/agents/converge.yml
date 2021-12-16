@@ -1,0 +1,6 @@
+---
+
+- name: Converge
+  hosts: kafka
+  roles:
+    - kafka_role

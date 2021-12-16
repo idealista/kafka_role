@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
+## [1.15.0](https://github.com/idealista/kafka_role/tree/1.15.0) (2021-12-17)
+## Added
+- *[#95](https://github.com/idealista/kafka_role/issues/95) Support for agent installation.* @jmonterrubio
 
 ## [1.14.0](https://github.com/idealista/kafka_role/tree/1.14.0) (2020-12-03)
 ## Changed

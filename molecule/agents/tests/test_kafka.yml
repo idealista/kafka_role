@@ -1,0 +1,7 @@
+---
+
+file:
+  /opt/kafka/newrelic/newrelic.jar:
+    owner: kafka
+    group: kafka
+    exists: true

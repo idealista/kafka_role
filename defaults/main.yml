@@ -136,7 +136,29 @@ kafka_extra_properties: []
 # - key: message.max.bytes
 #   value: 409715200
 
-kafka_mirror: "http://apache.uvigo.es/kafka"
+kafka_mirror: "https://archive.apache.org/dist/kafka"
 kafka_package_name: "kafka_{{ kafka_scala_version }}-{{ kafka_version }}"
 kafka_package: "{{ kafka_package_name }}.tgz"
 kafka_sources_url: "{{ kafka_mirror }}/{{ kafka_version }}/{{ kafka_package }}"
+
+
+## Agent configuration (optional)
+kafka_agents_required_libs:
+  - unzip
+  - tar
+  - apt-transport-https
+
+kafka_agents_force_reinstall: false
+
+# kafka_agents_config:
+#   - name: "agent_name"
+#     download_url: "download_url"
+#     version: "x.x.x"
+#     java_opts:
+#       - '-javaagent:{{ kafka_root_path }}/agent_name/agent_file'
+#     configuration_files:
+#       - "configuration_file.yml"
+#     params: {
+#       application_name: "application_name",
+#       license_key: "license_key"
+#     }

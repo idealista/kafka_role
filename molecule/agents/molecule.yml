@@ -1,0 +1,96 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  yamllint .
+  ansible-lint .
+
+platforms:
+  - name: zookeeper
+    hostname: zookeeper
+    image: idealista/zookeeper:latest
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - zookeeper
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - zookeeper
+
+  - name: kafka1
+    hostname: kafka1
+    image: idealista/jdk:8u265-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - kafka
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - kafka1
+        links:
+          - zookeeper:zookeeper
+          - kafka2:kafka2
+          - kafka3:kafka3
+    published_ports:
+      - 0.0.0.0:9999:9999/tcp
+
+  - name: kafka2
+    hostname: kafka2
+    image: idealista/jdk:8u265-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - kafka
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - kafka2
+        links:
+          - zookeeper:zookeeper
+          - kafka1:kafka1
+          - kafka3:kafka3
+    published_ports:
+      - 0.0.0.0:9998:9999/tcp
+
+  - name: kafka3
+    hostname: kafka3
+    image: idealista/jdk:8u265-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - kafka
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - kafka3
+        links:
+          - zookeeper:zookeeper
+          - kafka1:kafka1
+          - kafka2:kafka2
+    published_ports:
+      - 0.0.0.0:9997:9999/tcp
+
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
