@@ -1,3 +1,5 @@
+---
+
 group:
   {{ kafka_group }}:
     exists: true

@@ -5,6 +5,12 @@
   tags:
     - kafka_install
 
+- name: KAFKA | Agent config
+  import_tasks: agent.yml
+  tags:
+    - kafka_agents_config
+  when: kafka_agents_config is defined
+
 - name: KAFKA | Configure
   import_tasks: config.yml
   tags:

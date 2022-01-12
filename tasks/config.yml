@@ -42,3 +42,10 @@
     regexp: ^EXTRA_ARGS=\${EXTRA_ARGS-'-name kafkaServer -loggc'}
     replace: EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer'}
   when: not kafka_gc_log_enabled
+
+- name: KAFKA | Copy Daemon script
+  template:
+    src: "{{ kafka_service_template_path }}"
+    dest: /lib/systemd/system/kafka.service
+    mode: 0644
+  notify: restart kafka

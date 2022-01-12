@@ -1,0 +1,28 @@
+---
+
+kafka_zookeeper_hosts:
+  - zookeeper:2181
+
+kafka_port: 9999
+kafka_jvm_performance_opts: "-XX:MetaspaceSize=96m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:G1HeapRegionSize=16M -XX:MinMetaspaceFreeRatio=50 -XX:MaxMetaspaceFreeRatio=80"
+
+kafka_hosts:
+  - host: kafka1
+    id: 1
+  - host: kafka2
+    id: 2
+  - host: kafka3
+    id: 3
+
+kafka_agents_config:
+  - name: "newrelic"
+    download_url: "http://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip"
+    version: "5.11.0"
+    java_opts:
+      - '-javaagent:{{ kafka_install_path }}/newrelic/newrelic.jar'
+    configuration_files:
+      - "newrelic.yml"
+    params: {
+      application_name: "application_sample_name",
+      license_key: "sddsasd"
+    }

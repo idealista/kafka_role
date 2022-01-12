@@ -1,0 +1,11 @@
+# Molecule managed
+
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+RUN apt-get update \ 
+    && apt-get install -y python sudo bash ca-certificates systemd systemd-sysv \ 
+    && apt-get clean; 
