@@ -66,10 +66,3 @@
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
   when: 'kafka_force_reinstall or kafka_version_check is failed or kafka_version_check.stdout == ""'
-
-- name: KAFKA | Copy Daemon script
-  template:
-    src: "{{ kafka_service_template_path }}"
-    dest: /lib/systemd/system/kafka.service
-    mode: 0644
-  notify: restart kafka
