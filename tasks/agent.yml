@@ -94,13 +94,13 @@
     dest: "{{ kafka_install_path }}/{{ item.name }}/{{ item.file }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  notify: restart kafka
+  notify: Restart kafka
   with_items: '{{ kafka_agents_configuration }}'
 
 - name: KAFKA | agent installation | Check java options
   set_fact:
     kafka_agent_java_opts: "{% set kafka_agent_java_opts = kafka_agent_java_opts|default([]) + [item.1] %}{{ kafka_agent_java_opts|list }}"
-  notify: restart kafka
+  notify: Restart kafka
   with_subelements:
     - "{{ kafka_agents_config }}"
     - java_opts

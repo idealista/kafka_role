@@ -1,14 +1,20 @@
 ---
+
 galaxy_info:
-  author: Idealista S.A.U.
+  role_name: kafka
+  author: idealista
   company: Idealista S.A.U.
-  description: Kafka distributed streaming platform
-  min_ansible_version: 2.7.5.0
+  description: Ansible role for Kafka distributed streaming platform
+  min_ansible_version: 2.9.9
   license: Apache 2.0
+  standalone: true
   platforms:
     - name: Debian
       versions:
-        - stretch
+        - bullseye
+        - buster
   galaxy_tags:
     - clustering
     - queue
+    - kafka
+    - events

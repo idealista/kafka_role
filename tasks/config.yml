@@ -18,7 +18,7 @@
     mode: "0640"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  notify: restart kafka
+  notify: Restart kafka
 
 - name: KAFKA | Copy log properties
   template:
@@ -27,7 +27,7 @@
     mode: "0644"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  notify: restart kafka
+  notify: Restart kafka
 
 - name: KAFKA | Enable GC log
   replace:
@@ -48,4 +48,4 @@
     src: "{{ kafka_service_template_path }}"
     dest: /lib/systemd/system/kafka.service
     mode: 0644
-  notify: restart kafka
+  notify: Restart kafka
