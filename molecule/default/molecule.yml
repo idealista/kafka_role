@@ -27,7 +27,7 @@ platforms:
   - name: kafka1
     hostname: kafka1
     image: idealista/jdk:8u265-stretch-openjdk-headless
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -49,7 +49,7 @@ platforms:
   - name: kafka2
     hostname: kafka2
     image: idealista/jdk:8u265-stretch-openjdk-headless
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
@@ -71,7 +71,7 @@ platforms:
   - name: kafka3
     hostname: kafka3
     image: idealista/jdk:8u265-stretch-openjdk-headless
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
