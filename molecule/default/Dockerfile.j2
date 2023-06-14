@@ -6,6 +6,9 @@ FROM {{ item.registry.url }}/{{ item.image }}
 FROM {{ item.image }}
 {% endif %}
 
-RUN apt-get update \ 
-    && apt-get install -y python sudo bash ca-certificates systemd systemd-sysv \ 
-    && apt-get clean; 
+STOPSIGNAL SIGRTMIN+3
+RUN systemctl set-default multi-user.target
+# TIP 2 solution 2
+# RUN systemctl mask getty.target
+
+RUN mkdir -p /usr/share/man/man1

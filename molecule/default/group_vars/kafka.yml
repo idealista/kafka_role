@@ -1,4 +1,7 @@
 ---
+
+kafka_version: 3.5.0
+
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
