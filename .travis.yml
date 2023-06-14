@@ -1,14 +1,19 @@
 ---
-dist: xenial
+dist: focal
 language: python
-python: "3.7"
+python: "3.11"
 os: linux
 services:
   - docker
-
 install:
   - pip install pipenv
   - pipenv sync
+env:
+  global:
+    - PIPENV_IGNORE_VIRTUALENVS=1
+  jobs:  # TODO: Revisar estas variables <-> molecule image
+    - MOLECULE_DISTRO=debian:bullseye-slim
+    - MOLECULE_DISTRO=debian:buster-slim
 script:
   - pipenv run molecule test --all
 
