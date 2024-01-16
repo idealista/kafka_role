@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -12,12 +20,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.15.0](https://github.com/idealista/kafka_role/tree/1.15.0) (2021-12-17)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -30,12 +54,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.14.0](https://github.com/idealista/kafka_role/tree/1.14.0) (2020-12-03)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -48,12 +88,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.13.2](https://github.com/idealista/kafka_role/tree/1.13.2) (2019-08-06)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -66,12 +122,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.13.1](https://github.com/idealista/kafka_role/tree/1.13.1) (2019-04-01)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -81,6 +153,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#75](https://github.com/idealista/kafka-role/issues/75) Default kafka version 2.2.0* @frantsao
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -93,12 +173,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.13.0](https://github.com/idealista/kafka_role/tree/1.13.0) (2019-03-20)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -111,12 +207,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.12.1](https://github.com/idealista/kafka_role/tree/1.12.1) (2019-02-19)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -129,6 +241,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -137,12 +257,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [Full Changelog](https://github.com/idealista/kafka_role/compare/1.11.0...1.12.0)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -155,12 +291,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.11.0](https://github.com/idealista/kafka_role/tree/1.11.0) (2019-02-05)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -170,6 +322,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#59](https://github.com/idealista/kafka_role/issues/59) Fix scala version cannot be setted* @jmonterrubio
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -182,12 +342,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.10.0](https://github.com/idealista/kafka_role/tree/1.10.0) (2019-01-30)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -197,6 +373,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#56](https://github.com/idealista/kafka_role/issues/56) Configure topic properties* @jmonterrubio
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -209,12 +393,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.9.0](https://github.com/idealista/kafka_role/tree/1.9.0) (2018-12-18)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -224,6 +424,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Default kafka version 2.1.0* @jmonterrubio
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -236,12 +444,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.8.1](https://github.com/idealista/kafka_role/tree/1.8.1) (2018-11-13)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -253,6 +477,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -262,6 +494,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -269,6 +509,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Add Kafka_OPTS hook* @john-delivuk
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -281,12 +529,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.7.1](https://github.com/idealista/kafka_role/tree/1.7.1) (2018-10-29)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -299,12 +563,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.7.0](https://github.com/idealista/kafka_role/tree/1.7.0) (2018-10-29)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -314,6 +594,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#40](https://github.com/idealista/kafka_role/issues/40) Avoided remove __consumer_offsets internal topic* @jmonterrubio
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -326,12 +614,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.6.0](https://github.com/idealista/kafka_role/tree/1.6.0) (2018-10-09)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -345,6 +649,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -355,6 +667,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -363,12 +683,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [Full Changelog](https://github.com/idealista/kafka_role/compare/1.4.0...1.5.0)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -382,12 +718,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.4.0](https://github.com/idealista/kafka_role/tree/1.4.0) (2018-06-06)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -398,6 +750,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -405,6 +765,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#20](https://github.com/idealista/kafka_role/issues/20) Update to kafka v1.1* @eskabetxe
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -417,12 +785,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.3.1](https://github.com/idealista/kafka_role/tree/1.3.1) (2018-02-27)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -433,6 +817,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -440,6 +832,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#23](https://github.com/idealista/kafka_role/issues/23) Using Vagrant hostmanager instead of Landrush* @dortegau
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -452,6 +852,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -460,12 +868,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [Full Changelog](https://github.com/idealista/kafka_role/compare/1.2.0...1.3.0)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -478,6 +902,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -486,6 +918,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#16](https://github.com/idealista/kafka_role/pull/16) Remove Java role dependency* @maqdev
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -499,6 +939,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -507,12 +955,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [Full Changelog](https://github.com/idealista/kafka_role/compare/1.1.0...1.2.0)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -525,6 +989,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
@@ -533,12 +1005,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [Full Changelog](https://github.com/idealista/kafka_role/compare/1.0.0...1.1.0)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
@@ -551,12 +1039,28 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Intro text here*
 
 
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+
 ## Added
 - *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.0.0](https://github.com/idealista/kafka_role/tree/1.0.0) (2017-02-28)
 
 - *Intro text here*
+
+
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 
 ## Added
