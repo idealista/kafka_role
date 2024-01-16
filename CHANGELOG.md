@@ -1,6 +1,9 @@
 # Change Log
 
 All notable changes to this project will be documented in this file.
+## Added
+- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
