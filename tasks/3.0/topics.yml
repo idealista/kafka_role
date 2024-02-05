@@ -3,8 +3,8 @@
 - name: KAFKA | Check kafka topics
   command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
-    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --list
+    --bootstrap-server 0.0.0.0:{{ kafka_port }}
   register: kafka_topics_listed
   changed_when: false
 
@@ -23,9 +23,9 @@
 - name: KAFKA | Obtain info of topics to check
   command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
-    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --topic {{ item.name }}
     --describe
+    --bootstrap-server 0.0.0.0:{{ kafka_port }}
   with_items:
     - "{{ kafka_topics_to_check }}"
   register: kafka_topics_described_full
@@ -55,13 +55,12 @@
 - name: KAFKA | Create kafka topics
   command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
-    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --topic {{ item.name }}
     --partitions {{ item.partitions }}
     --replication-factor {{ item.replicas }}
     --create
     --if-not-exists
-    --force
+    --bootstrap-server 0.0.0.0:{{ kafka_port }}
   with_items:
     - "{{ kafka_topics_to_create }}"
   tags:
@@ -93,6 +92,8 @@
   with_items:
     - "{{ kafka_topics_to_remove }}"
   when: kafka_delete_topic_enable == 'true'
+  register: cmd_output
+  changed_when: cmd_output.rc != 0
 
 - name: KAFKA | Configure kafka topics
   include_tasks: topic_config.yml

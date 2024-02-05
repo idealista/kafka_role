@@ -37,7 +37,7 @@ kafka_jvm_performance_opts: ""
 # The id of the broker. This must be set to a unique integer for each broker.
 # List of dict (i.e. {kafka_hosts:[{host:,id:},{host:,id:},...]})
 kafka_hosts:
-  - host: "{{inventory_hostname}}"  # the machine running
+  - host: "{{ inventory_hostname }}"  # the machine running
     id: 0
 # Switch to enable topic deletion or not, default value is false
 kafka_delete_topic_enable: 'false'

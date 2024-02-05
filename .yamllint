@@ -1,9 +1,5 @@
 ---
-# Based on ansible-lint config
 extends: default
-
-ignore: |
-  molecule/**/tests/
 
 rules:
   braces:
@@ -18,6 +14,7 @@ rules:
   commas:
     max-spaces-after: -1
     level: error
+  comments: disable
   empty-lines:
     max: 3
     level: error
@@ -28,3 +25,10 @@ rules:
   new-lines:
     type: unix
   truthy: disable
+
+ignore: |
+  .molecule/
+  *vault*
+  test_*yml
+  roles/
+  .ansible-lint
