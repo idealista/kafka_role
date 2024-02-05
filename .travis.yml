@@ -11,9 +11,8 @@ install:
 env:
   global:
     - PIPENV_IGNORE_VIRTUALENVS=1
-  jobs:  # TODO: Revisar estas variables <-> molecule image
-    - MOLECULE_DISTRO=debian:bullseye-slim
-    - MOLECULE_DISTRO=debian:buster-slim
+  jobs:
+    - MOLECULE_DISTRO=jdk:8u302-bullseye-corretto-headless
 script:
   - pipenv run molecule test --all
 
