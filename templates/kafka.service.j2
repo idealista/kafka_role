@@ -3,6 +3,7 @@ Description=Kafka distributed streaming platform
 After=network.target
 
 [Service]
+PrivateTmp= {{ kafka_private_tmp }}
 Restart=on-failure
 Environment=KAFKA_LOG4J_OPTS=-Dlog4j.configuration=file:{{ kafka_conf_path }}/log4j.properties
 Environment="KAFKA_HEAP_OPTS=-Xmx{{ kafka_xmx }} -Xms{{ kafka_xms }}"

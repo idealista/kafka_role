@@ -34,13 +34,44 @@ auto.create.topics.enable={{ kafka_auto_create_topics }}
 #     listeners = security_protocol://host_name:port
 #   EXAMPLE:
 #     listeners = PLAINTEXT://your.host.name:9092
+{% if kafka_listeners is defined %}
+listeners={% set listener_str = '' %}
+{%- for listener in kafka_listeners %}
+{%- set listener_str = listener_str ~ listener.name ~ '://' ~ listener.hostname ~ ':' ~ listener.port %}{{ listener_str }}{{ "," if not loop.last else "" }}
+{%- endfor %}
+{% else %}
 listeners=PLAINTEXT://{{ kafka_host_name }}:{{ kafka_port }}
+{% endif %}
 
+
+{% if kafka_listeners is defined %}
+# Map between listener names and security protocols. This must be defined for the same security protocol to be usable in more than one port or IP. For example, internal and external traffic can be separated even if SSL is required for both. Concretely, the user could define listeners with names INTERNAL and EXTERNAL and this property as: `INTERNAL:SSL,EXTERNAL:SSL`. As shown, key and value are separated by a colon and map entries are separated by commas. Each listener name should only appear once in the map. Different security (SSL and SASL) settings can be configured for each listener by adding a normalised prefix (the listener name is lowercased) to the config name. For example, to set a different keystore for the INTERNAL listener, a config with name listener.name.internal.ssl.keystore.location would be set. If the config for the listener name is not set, the config will fallback to the generic config (i.e. ssl.keystore.location). Note that in KRaft a default mapping from the listener names defined by controller.listener.names to PLAINTEXT is assumed if no explicit mapping is provided and no other security protocol is in use.
+listener.security.protocol.map={% set listener_str = '' %}
+{%- for listener in kafka_listeners %}
+{%- set listener_str = listener_str ~ listener.name ~ ':' ~ listener.protocol %}{{ listener_str }}{{ "," if not loop.last else "" }}
+{%- endfor %}
+{% endif %}
+
+{% if kafka_inter_broker_listener_name is defined %}
+# Name of listener used for communication between brokers. If this is unset, the listener name is defined by security.inter.broker.protocol. It is an error to set this and security.inter.broker.protocol properties at the same time.
+inter.broker.listener.name={{ kafka_inter_broker_listener_name }}
+{% endif %}
+
+{% if kafka_control_plane_listener_name is defined %}
+# Name of listener used for communication between brokers. If this is unset, the listener name is defined by security.inter.broker.protocol. It is an error to set this and security.inter.broker.protocol properties at the same time.
+control.plane.listener.name={{ kafka_control_plane_listener_name }}
+{% endif %}
+
+{% if kafka_listeners is defined %}
 # Hostname and port the broker will advertise to producers and consumers. If not set,
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
 # returned from java.net.InetAddress.getCanonicalHostName().
-{% if kafka_advertised_listeners is defined %}
-advertised.listeners={{ kafka_advertised_listeners }}
+advertised.listeners={% set listener_str = '' %}
+{%- for listener in kafka_listeners %}
+{%- if listener.advertised %}
+{%- set listener_str = listener_str ~ listener.name ~ '://' ~ listener.hostname ~ ':' ~ listener.port %}{{ listener_str }}{{ "," if not loop.last else "" }}
+{%- endif %}
+{%- endfor %}
 {% endif %}
 
 # The number of threads handling network requests #
@@ -57,6 +88,25 @@ socket.receive.buffer.bytes={{ kafka_socket_receive_buffer_bytes }}
 
 # The maximum size of a request that the socket server will accept (protection against OOM)
 socket.request.max.bytes={{ kafka_socket_request_max_bytes }}
+
+############################# Security  #############################
+
+# The list of SASL mechanisms enabled in the Kafka server. The list may contain any mechanism for which a security provider is available. Only GSSAPI is enabled by default.
+{% if kafka_sasl_enabled_mechanisms is defined %}
+sasl.enabled.mechanisms={{ kafka_sasl_enabled_mechanisms }}
+{% endif %}
+
+{% if kafka_sasl_mechanism_inter_broker_protocol is defined %}
+sasl.mechanism.inter.broker.protocol={{ kafka_sasl_mechanism_inter_broker_protocol }}
+{% endif %}
+
+{% if kafka_allow_everyone_if_no_acl_found is defined %}
+allow.everyone.if.no.acl.found={{ kafka_allow_everyone_if_no_acl_found }}
+{% endif %}
+
+{% if kafka_authorizer_class_name is defined %}
+authorizer.class.name={{ kafka_authorizer_class_name }}
+{% endif %}
 
 ############################# Internal Topic Settings  #############################
 # The replication factor for the group metadata internal topics "__consumer_offsets" and "__transaction_state"
@@ -132,6 +182,10 @@ zookeeper.connect={{ kafka_zookeeper_hosts | join(',') }}
 
 # Timeout in ms for connecting to zookeeper
 zookeeper.connection.timeout.ms={{ kafka_zookeeper_connection_timeout_ms }}
+
+{% if kafka_zookeeper_sasl_enabled is defined %}
+zookeeper.sasl.enabled={{ kafka_zookeeper_sasl_enabled }}
+{% endif %}
 
 ############################# Extra Properties #############################
 {% if kafka_extra_properties is defined %}

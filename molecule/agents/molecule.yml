@@ -1,8 +1,10 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
+
 lint: |
   yamllint .
   ansible-lint .
@@ -10,7 +12,7 @@ lint: |
 platforms:
   - name: zookeeper
     hostname: zookeeper
-    image: idealista/zookeeper:latest
+    image: zookeeper:latest
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -26,7 +28,7 @@ platforms:
 
   - name: kafka1
     hostname: kafka1
-    image: idealista/jdk:8u265-stretch-openjdk-headless
+    image: idealista/jdk:8u302-bullseye-corretto-headless
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -48,7 +50,7 @@ platforms:
 
   - name: kafka2
     hostname: kafka2
-    image: idealista/jdk:8u265-stretch-openjdk-headless
+    image: idealista/jdk:8u302-bullseye-corretto-headless
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -70,7 +72,7 @@ platforms:
 
   - name: kafka3
     hostname: kafka3
-    image: idealista/jdk:8u265-stretch-openjdk-headless
+    image: idealista/jdk:8u302-bullseye-corretto-headless
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -92,5 +94,12 @@ platforms:
 
 provisioner:
   name: ansible
+  lint:
+    - name: ansible-lint
+    - name: yamllint
+
+scenario:
+  name: agents
+
 verifier:
   name: ansible

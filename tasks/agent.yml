@@ -1,7 +1,7 @@
 ---
 
 - name: KAFKA | agent installation | Install required packages
-  apt:
+  ansible.builtin.apt:
     pkg: "{{ item }}"
     state: present
     update_cache: yes
@@ -9,7 +9,7 @@
   with_items: '{{ kafka_agents_required_libs }}'
 
 - name: KAFKA | agent installation | Ensure install path
-  file:
+  ansible.builtin.file:
     path: "{{ kafka_install_path }}/{{ item.name }}"
     state: directory
     owner: "{{ kafka_user }}"
@@ -17,7 +17,7 @@
   with_items: '{{ kafka_agents_config }}'
 
 - name: KAFKA | agent installation | Check if agent is installed
-  stat:
+  ansible.builtin.stat:
     path: "{{ kafka_install_path }}/{{ item.0.name }}/{{ item.1 | basename }}"
   register: agent_file_exists
   with_subelements:
@@ -25,7 +25,7 @@
     - java_opts
 
 - name: KAFKA | agent installation | Check agent version
-  command: "cat {{ kafka_install_path }}/{{ item.0.name }}/version.txt"
+  ansible.builtin.command: "cat {{ kafka_install_path }}/{{ item.0.name }}/version.txt"
   register: agent_version_checked
   changed_when: false
   ignore_errors: true
@@ -34,7 +34,7 @@
     - java_opts
 
 - name: KAFKA | agent installation | Download agent
-  get_url:
+  ansible.builtin.get_url:
     dest: "/tmp"
     url: "{{ item.download_url }}"
     owner: "{{ kafka_user }}"
@@ -50,7 +50,7 @@
     item.version != agent_version_checked.results[index].stdout)
 
 - name: KAFKA | agent installation | Unarchive package
-  unarchive:
+  ansible.builtin.unarchive:
     src: "/tmp/{{ item.download_url | basename }}"
     dest: "{{ kafka_install_path }}"
     remote_src: yes
@@ -63,7 +63,7 @@
     - skip_ansible_lint
 
 - name: KAFKA | agent installation | Download agent jar
-  get_url:
+  ansible.builtin.get_url:
     dest: "{{ kafka_install_path }}/{{ item.name }}"
     url: "{{ item.download_url }}"
     owner: "{{ kafka_user }}"
@@ -73,7 +73,7 @@
   when: item.download_url | basename | splitext | last not in kafka_supported_agents_extensions
 
 - name: KAFKA | agent installation | Copy version number file
-  template:
+  ansible.builtin.template:
     src: "agent-version.txt.j2"
     dest: "{{ kafka_install_path }}/{{ item.name }}/version.txt"
     owner: "{{ kafka_user }}"
@@ -82,14 +82,14 @@
   with_items: '{{ kafka_agents_config }}'
 
 - name: KAFKA | agent installation | Check configuration files
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_agents_configuration: "{{ kafka_agents_configuration|default([]) + [ {'name': item.0.name, 'file': item.1, 'params': item.0.params}] }}"
   with_subelements:
     - "{{ kafka_agents_config }}"
     - configuration_files
 
 - name: KAFKA | agent installation | Configure the Java agent
-  template:
+  ansible.builtin.template:
     src: "{{ playbook_dir }}/templates/agents/{{ item.name }}/{{ item.file }}.j2"
     dest: "{{ kafka_install_path }}/{{ item.name }}/{{ item.file }}"
     owner: "{{ kafka_user }}"
@@ -98,7 +98,7 @@
   with_items: '{{ kafka_agents_configuration }}'
 
 - name: KAFKA | agent installation | Check java options
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_agent_java_opts: "{% set kafka_agent_java_opts = kafka_agent_java_opts|default([]) + [item.1] %}{{ kafka_agent_java_opts|list }}"
   notify: Restart kafka
   with_subelements:

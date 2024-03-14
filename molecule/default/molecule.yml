@@ -11,25 +11,23 @@ lint: |
 
 platforms:
   - name: zookeeper
+    image: confluentinc/cp-zookeeper:7.5.0
     hostname: zookeeper
-    image: idealista/zookeeper:latest
-    privileged: false
-    capabilities:
-      - SYS_ADMIN
-    tmpfs:
-      - /tmp
-      - /run
-      - /run/lock
+    exposed_ports:
+      - 2181/tcp
+    published_ports:
+      - 2181:2181
+    command: "sh /etc/confluent/docker/run"
+    env:
+      ZOOKEEPER_CLIENT_PORT: "2181"
+      ZOOKEEPER_TICK_TIME: "2000"
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - zookeeper
-    command: '/lib/systemd/systemd'
-    stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
-    published_ports:
-      - 0.0.0.0:2181:2181/tcp
+    cgroupns_mode: host
 
   - name: kafka1
     hostname: kafka1
@@ -42,7 +40,7 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
@@ -51,6 +49,7 @@ platforms:
       - name: kafka-network
     published_ports:
       - 0.0.0.0:9999:9999/tcp
+    cgroupns_mode: host
 
   - name: kafka2
     hostname: kafka2
@@ -63,7 +62,7 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
@@ -72,6 +71,7 @@ platforms:
       - name: kafka-network
     published_ports:
       - 0.0.0.0:9998:9999/tcp
+    cgroupns_mode: host
 
   - name: kafka3
     hostname: kafka3
@@ -84,7 +84,7 @@ platforms:
       - /run
       - /run/lock
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
@@ -93,13 +93,13 @@ platforms:
       - name: kafka-network
     published_ports:
       - 0.0.0.0:9997:9999/tcp
+    cgroupns_mode: host
 
 provisioner:
   name: ansible
   lint:
     - name: ansible-lint
     - name: yamllint
-  log: True
 
 scenario:
   name: default

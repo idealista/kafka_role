@@ -6,6 +6,8 @@ kafka_scala_version: 2.12  # Recommended
 
 ## Service options
 
+kafka_private_tmp: true
+
 # Owner
 kafka_user: kafka
 kafka_group: kafka
