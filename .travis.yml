@@ -12,7 +12,7 @@ env:
   global:
     - PIPENV_IGNORE_VIRTUALENVS=1
   jobs:
-    - MOLECULE_DISTRO=jdk:8u302-bullseye-corretto-headless
+    - MOLECULE_DISTRO=idealista/jdk:8u302-bullseye-corretto-headless
 script:
   - pipenv run molecule test --all
 
