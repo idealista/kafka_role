@@ -108,6 +108,30 @@ allow.everyone.if.no.acl.found={{ kafka_allow_everyone_if_no_acl_found }}
 authorizer.class.name={{ kafka_authorizer_class_name }}
 {% endif %}
 
+{% if kafka_listeners_sasl_jaas_config is defined %}
+{# listener.name.clients.plain.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required \
+    username="admin" \
+    password="admin-secret" \
+    user_admin="admin-secret"; #}
+{% for listener_config in kafka_listeners_sasl_jaas_config %}
+listener.name.{{ listener_config.name|lower }}.{{ listener_config.mechanism|lower }}.sasl.jaas.config={{ listener_config.module }} required \
+{% if listener_config.broker_auth is defined %}
+    username="{{ listener_config.broker_auth.user }}" \
+    password="{{ listener_config.broker_auth.pass }}" \
+{% endif %}
+{% if listener_config.acl_auth is defined %}
+{% for user in listener_config.acl_auth %}
+    user_{{ user.user }}="{{ user.pass }}"{{ ";" if loop.last else " \\"}}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if kafka_super_users is defined %}
+super.users={{ ['User:'] | product(kafka_super_users) | map('join') | list | product([';']) | map('join') | list | join }}
+{% endif %}
+
+
 ############################# Internal Topic Settings  #############################
 # The replication factor for the group metadata internal topics "__consumer_offsets" and "__transaction_state"
 # For anything other than development testing, a value greater than 1 is recommended for to ensure availability such as 3.

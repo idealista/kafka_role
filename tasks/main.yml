@@ -34,3 +34,9 @@
   when: kafka_version is version('3.0.0', ">=")
   tags:
     - kafka_topics
+
+- name: KAFKA | ACLs
+  ansible.builtin.import_tasks: acls.yml
+  tags:
+    - kafka_acls
+  when: kafka_acls is defined

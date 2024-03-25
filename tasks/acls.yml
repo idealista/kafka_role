@@ -1,0 +1,34 @@
+---
+
+- name: KAFKA | Check kafka ACLs
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-acls.sh
+    --bootstrap-server {{ kafka_acl_bootstrap_server }}:{{ kafka_acl_port }}
+    --list
+  register: kafka_acls_described_full
+  changed_when: false
+
+- name: KAFKA | ACLs in server
+  ansible.builtin.set_fact:
+    kafka_acls_in_server: "{{ kafka_acls_described_full.stdout_lines }}"
+
+# - name: KAFKA | Debug Create ACLs
+#   ansible.builtin.debug:
+#     msg: "{{ lookup('template', 'kafka-acls-command.j2') }}"
+#   vars:
+#     acl_action: add
+#   loop: "{{ kafka_acls }}"
+#   loop_control:
+#     loop_var: acl
+
+- name: KAFKA | Create ACLs
+  ansible.builtin.command:
+    cmd: "{{ lookup('template', 'kafka-acls-command.j2') }}"
+  vars:
+    acl_action: add
+  loop: "{{ kafka_acls }}"
+  loop_control:
+    loop_var: acl
+  register: kafka_acls_create_output
+  changed_when: kafka_acls_create_output.rc == 0
+  failed_when: kafka_acls_create_output.rc != 0
