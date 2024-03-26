@@ -37,7 +37,7 @@ auto.create.topics.enable={{ kafka_auto_create_topics }}
 {% if kafka_listeners is defined %}
 listeners={% set listener_str = '' %}
 {%- for listener in kafka_listeners %}
-{%- set listener_str = listener_str ~ listener.name ~ '://' ~ listener.hostname ~ ':' ~ listener.port %}{{ listener_str }}{{ "," if not loop.last else "" }}
+{%- set listener_str = listener_str ~ listener.name ~ '://' ~ listener.host %}{{ listener_str }}{{ "," if not loop.last else "" }}
 {%- endfor %}
 {% else %}
 listeners=PLAINTEXT://{{ kafka_host_name }}:{{ kafka_port }}
@@ -68,8 +68,8 @@ control.plane.listener.name={{ kafka_control_plane_listener_name }}
 # returned from java.net.InetAddress.getCanonicalHostName().
 advertised.listeners={% set listener_str = '' %}
 {%- for listener in kafka_listeners %}
-{%- if listener.advertised %}
-{%- set listener_str = listener_str ~ listener.name ~ '://' ~ listener.hostname ~ ':' ~ listener.port %}{{ listener_str }}{{ "," if not loop.last else "" }}
+{%- if listener.advertised_host is defined %}
+{%- set listener_str = listener_str ~ listener.name ~ '://' ~ listener.advertised_host %}{{ listener_str }}{{ "," if not loop.last else "" }}
 {%- endif %}
 {%- endfor %}
 {% endif %}
