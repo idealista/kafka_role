@@ -1,7 +1,7 @@
 ---
 
 - name: KAFKA | Check kafka topics
-  command: >
+  ansible.builtin.command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
     --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --list
@@ -9,19 +9,19 @@
   changed_when: false
 
 - name: KAFKA | Topics in server
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_topics_origin: "{{ kafka_topics_listed.stdout_lines }}"
 
 - name: KAFKA | Topics to create
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_topics_to_create: "{{ kafka_topics | not_in_list('name', kafka_topics_origin) }}"
 
 - name: KAFKA | Topics to check
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_topics_to_check: "{{ kafka_topics | in_list('name', kafka_topics_origin) }}"
 
 - name: KAFKA | Obtain info of topics to check
-  command: >
+  ansible.builtin.command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
     --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --topic {{ item.name }}
@@ -32,7 +32,7 @@
   changed_when: false
 
 - name: KAFKA | Topics to alter
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_topics_to_alter: |
       {{ kafka_topics_described_full.results |
         map(attribute='stdout_lines') |
@@ -44,7 +44,7 @@
       }}
 
 - name: KAFKA | Topics to remove
-  set_fact:
+  ansible.builtin.set_fact:
     kafka_topics_to_remove: |
       {{ kafka_topics_origin |
         difference(kafka_topics | map(attribute='name') |
@@ -53,7 +53,7 @@
         list }}
 
 - name: KAFKA | Create kafka topics
-  command: >
+  ansible.builtin.command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
     --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --topic {{ item.name }}
@@ -68,7 +68,7 @@
     skip_ansible_lint
 
 - name: KAFKA | Alter kafka topics
-  command: >
+  ansible.builtin.command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
     --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --topic {{ item.name }}
@@ -83,7 +83,7 @@
     skip_ansible_lint
 
 - name: KAFKA | Remove kafka topics
-  command: >
+  ansible.builtin.command: >
     {{ kafka_install_path }}/bin/kafka-topics.sh
     --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
     --topic {{ item }}
@@ -97,6 +97,6 @@
   changed_when: cmd_output.rc != 0
 
 - name: KAFKA | Configure kafka topics
-  include_tasks: topic_config.yml
+  ansible.builtin.include_tasks: topic_config.yml
   with_items:
     - "{{ kafka_topics_config }}"
