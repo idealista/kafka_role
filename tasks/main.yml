@@ -40,3 +40,4 @@
   tags:
     - kafka_acls
   when: kafka_acls is defined
+  run_once: true
