@@ -1,25 +1,54 @@
 ---
 
-- name: KAFKA | Check kafka ACLs
+- name: KAFKA | Get current kafka ACLs in server
   ansible.builtin.command: >
     {{ kafka_install_path }}/bin/kafka-acls.sh
     --bootstrap-server {{ kafka_acl_bootstrap_server }}:{{ kafka_acl_port }}
     --list
-  register: kafka_acls_described_full
+  register: current_kafka_acls_in_server
   changed_when: false
 
-- name: KAFKA | ACLs in server
+- name: KAFKA | Set var with ACLs in server
   ansible.builtin.set_fact:
-    kafka_acls_in_server: "{{ kafka_acls_described_full.stdout_lines }}"
+    current_kafka_acls_in_server: "{{ current_kafka_acls_in_server.stdout | regex_findall('(?s)(Current ACLs.*?)(?=^$)', multiline=True) | list }}"
 
-# - name: KAFKA | Debug Create ACLs
+- name: KAFKA | Set var with ACLs Resources in server
+  ansible.builtin.set_fact:
+    current_kafka_acls_resources_in_server: |
+      {{
+        current_kafka_acls_in_server |
+        map('regex_findall', 'resourceType=(.*), name=(.*), patternType=(.*)\)') |
+        flatten_list |
+        map('zip_dict', ['resource_type', 'name', 'pattern_type']) |
+        list
+      }}
+
+- name: KAFKA | Set var with all ACLs in server
+  ansible.builtin.set_fact:
+    current_kafka_acls: |
+      {{
+        current_kafka_acls |
+        default([]) |
+        union(
+          current_kafka_acls_in_server[index] |
+          split('\n') |
+          map('regex_findall', 'principal=(.*), host=(.*), operation=(.*), permissionType=(.*)\)') |
+          flatten_list |
+          map('zip_dict', ['principals', 'hosts', 'operations', 'permission_type']) |
+          map('combine', item)
+        )
+      }}
+  loop: "{{ current_kafka_acls_resources_in_server }}"
+  loop_control:
+    index_var: index
+  when:
+    - item.resource_type in current_kafka_acls_in_server[index]
+    - item.name in current_kafka_acls_in_server[index]
+    - item.pattern_type in current_kafka_acls_in_server[index]
+
+# - name: KAFKA | Debug | ACLs in server
 #   ansible.builtin.debug:
-#     msg: "{{ lookup('template', 'kafka-acls-command.j2') }}"
-#   vars:
-#     acl_action: add
-#   loop: "{{ kafka_acls }}"
-#   loop_control:
-#     loop_var: acl
+#     msg: "{{ current_kafka_acls }}"
 
 - name: KAFKA | Create ACLs
   ansible.builtin.command:
