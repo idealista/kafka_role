@@ -12,21 +12,24 @@
 - name: Verify
   hosts: kafka
   become: true
+  gather_facts: true
   vars:
-    goss_version: v0.3.14
+    goss_version: v0.4.6
     goss_arch: amd64
     goss_dst: /usr/local/bin/goss
-    goss_sha256sum: 26c481073d346028451d56af600a71ec2d6c7bc960c3e207f610e32c5e1f5144
-    goss_url: "https://github.com/aelsabbahy/goss/releases/download/{{ goss_version }}/goss-linux-{{ goss_arch }}"
+    goss_sha256sum: bc818caf99cbab563126297ec568d98911d61d2d7a25f4f37068b7a7916130b5
+    goss_url: "https://github.com/goss-org/goss/releases/download/{{ goss_version }}/goss-linux-{{ goss_arch }}"
     goss_test_directory: /tmp
     goss_format: documentation
 
   vars_files:
     - ../../defaults/main.yml
+    - group_vars/kafka.yml
+    - group_vars/zookeeper.yml
 
   tasks:
     - name: Download and install Goss
-      get_url:
+      ansible.builtin.get_url:
         url: "{{ goss_url }}"
         dest: "{{ goss_dst }}"
         checksum: "sha256:{{ goss_sha256sum }}"
@@ -36,28 +39,43 @@
       retries: 3
 
     - name: Copy Goss tests to remote
-      template:
+      ansible.builtin.template:
         src: "{{ item }}"
         dest: "{{ goss_test_directory }}/{{ item | basename }}"
+        mode: "0755"
+      when: kafka_version is version('3.0.0', ">=")
       with_fileglob:
         - "tests/test_*.yml"
+        - "tests/3.0/test_*.yml"
+
+    - name: Copy Goss tests to remote
+      ansible.builtin.template:
+        src: "{{ item }}"
+        dest: "{{ goss_test_directory }}/{{ item | basename }}"
+        mode: "0755"
+      when: kafka_version is version('3.0.0', "<")
+      with_fileglob:
+        - "tests/test_*.yml"
+        - "tests/2.0/test_*.yml"
 
     - name: Register test files
-      shell: "ls {{ goss_test_directory }}/test_*.yml"
+      ansible.builtin.shell: "ls {{ goss_test_directory }}/test_*.yml"
       register: test_files
+      changed_when: test_files.rc != 0
 
     - name: Execute Goss tests
-      command: "{{ goss_dst }} -g {{ item }} validate --format {{ goss_format }}"
+      ansible.builtin.command: "{{ goss_dst }} -g {{ item }} validate --format {{ goss_format }}"
       register: test_results
+      changed_when: test_results.rc != 0
       with_items: "{{ test_files.stdout_lines }}"
 
     - name: Display details about the Goss results
-      debug:
+      ansible.builtin.debug:
         msg: "{{ item.stdout_lines }}"
       with_items: "{{ test_results.results }}"
 
     - name: Fail when tests fail
-      fail:
+      ansible.builtin.fail:
         msg: "Goss failed to validate"
       when: item.rc != 0
       with_items: "{{ test_results.results }}"

@@ -1,5 +1,7 @@
 ---
 
+kafka_private_tmp: false
+
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
