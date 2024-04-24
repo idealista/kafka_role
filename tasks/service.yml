@@ -2,7 +2,7 @@
 - name: KAFKA | Copy Daemon script
   ansible.builtin.template:
     src: "{{ kafka_service_template_path }}"
-    dest: /etc/systemd/system/kafka.service
+    dest: "{{ kafka_service_file_path }}"
     mode: 0644
   notify: Restart kafka
 

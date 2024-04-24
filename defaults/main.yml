@@ -16,6 +16,7 @@ kafka_group: kafka
 kafka_service_enabled: true
 # current state: started, stopped
 kafka_service_state: started
+kafka_service_file_path: /etc/systemd/system/kafka.service
 
 # Files & Paths
 kafka_install_path: /opt/kafka
