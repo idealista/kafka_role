@@ -14,6 +14,7 @@
     state: directory
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
+    mode: "0755"
   with_items: '{{ kafka_agents_config }}'
 
 - name: KAFKA | agent installation | Check if agent is installed

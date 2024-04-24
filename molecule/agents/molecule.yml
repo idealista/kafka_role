@@ -46,7 +46,7 @@ platforms:
           - kafka2:kafka2
           - kafka3:kafka3
     published_ports:
-      - 0.0.0.0:9999:9999/tcp
+      - 0.0.0.0:9092:9092/tcp
 
   - name: kafka2
     hostname: kafka2
@@ -68,7 +68,7 @@ platforms:
           - kafka1:kafka1
           - kafka3:kafka3
     published_ports:
-      - 0.0.0.0:9998:9999/tcp
+      - 0.0.0.0:9093:9092/tcp
 
   - name: kafka3
     hostname: kafka3
@@ -90,7 +90,7 @@ platforms:
           - kafka1:kafka1
           - kafka2:kafka2
     published_ports:
-      - 0.0.0.0:9997:9999/tcp
+      - 0.0.0.0:9094:9092/tcp
 
 provisioner:
   name: ansible

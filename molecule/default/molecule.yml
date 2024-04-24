@@ -48,7 +48,7 @@ platforms:
     networks:
       - name: kafka-network
     published_ports:
-      - 0.0.0.0:9999:9999/tcp
+      - 0.0.0.0:9092:9092/tcp
     cgroupns_mode: host
 
   - name: kafka2
@@ -70,7 +70,7 @@ platforms:
     networks:
       - name: kafka-network
     published_ports:
-      - 0.0.0.0:9998:9999/tcp
+      - 0.0.0.0:9093:9092/tcp
     cgroupns_mode: host
 
   - name: kafka3
@@ -92,7 +92,7 @@ platforms:
     networks:
       - name: kafka-network
     published_ports:
-      - 0.0.0.0:9997:9999/tcp
+      - 0.0.0.0:9094:9092/tcp
     cgroupns_mode: host
 
 provisioner:
