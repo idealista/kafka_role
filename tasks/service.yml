@@ -22,7 +22,7 @@
     port: "{{ kafka_port }}"
     state: "{{ kafka_service_state }}"
     delay: 5
-    timeout: 300
+    timeout: {{ kafka_service_state_timeout }}
   when:
     - kafka_service_enabled
     - kafka_service_state == "started"
