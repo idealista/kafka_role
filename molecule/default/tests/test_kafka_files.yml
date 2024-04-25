@@ -1,0 +1,33 @@
+---
+
+file:
+  {{ kafka_data_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+
+  {{ kafka_install_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+
+  {{ kafka_log_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+
+  {{ kafka_conf_path }}:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    filetype: directory
+
+  {{ kafka_conf_path }}/server.properties:
+    owner: {{ kafka_user }}
+    group: {{ kafka_group }}
+    exists: true
+    contains:
+      - message.max.bytes=409715200

@@ -1,14 +1,18 @@
 ---
-dist: xenial
+dist: focal
 language: python
-python: "3.7"
+python: "3.11"
 os: linux
 services:
   - docker
-
 install:
   - pip install pipenv
   - pipenv sync
+env:
+  global:
+    - PIPENV_IGNORE_VIRTUALENVS=1
+  jobs:
+    - MOLECULE_DISTRO=idealista/jdk:8u302-bullseye-corretto-headless
 script:
   - pipenv run molecule test --all
 

@@ -1,96 +1,108 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
+
 lint: |
   yamllint .
   ansible-lint .
 
 platforms:
   - name: zookeeper
+    image: confluentinc/cp-zookeeper:7.5.0
     hostname: zookeeper
-    image: idealista/zookeeper:latest
-    privileged: true
-    capabilities:
-      - SYS_ADMIN
+    exposed_ports:
+      - 2181/tcp
+    published_ports:
+      - 2181:2181
+    command: "sh /etc/confluent/docker/run"
+    env:
+      ZOOKEEPER_CLIENT_PORT: "2181"
+      ZOOKEEPER_TICK_TIME: "2000"
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - zookeeper
-    command: '/lib/systemd/systemd'
     networks:
       - name: kafka-network
-        aliases:
-          - zookeeper
+    cgroupns_mode: host
 
   - name: kafka1
     hostname: kafka1
-    image: idealista/jdk:8u265-stretch-openjdk-headless
-    privileged: true
+    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
+    privileged: false
     capabilities:
       - SYS_ADMIN
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
-        aliases:
-          - kafka1
-        links:
-          - zookeeper:zookeeper
-          - kafka2:kafka2
-          - kafka3:kafka3
     published_ports:
-      - 0.0.0.0:9999:9999/tcp
+      - 0.0.0.0:9092:9092/tcp
+    cgroupns_mode: host
 
   - name: kafka2
     hostname: kafka2
-    image: idealista/jdk:8u265-stretch-openjdk-headless
-    privileged: true
+    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
+    privileged: false
     capabilities:
       - SYS_ADMIN
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
-        aliases:
-          - kafka2
-        links:
-          - zookeeper:zookeeper
-          - kafka1:kafka1
-          - kafka3:kafka3
     published_ports:
-      - 0.0.0.0:9998:9999/tcp
+      - 0.0.0.0:9093:9092/tcp
+    cgroupns_mode: host
 
   - name: kafka3
     hostname: kafka3
-    image: idealista/jdk:8u265-stretch-openjdk-headless
-    privileged: true
+    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
+    privileged: false
     capabilities:
       - SYS_ADMIN
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
-        aliases:
-          - kafka3
-        links:
-          - zookeeper:zookeeper
-          - kafka1:kafka1
-          - kafka2:kafka2
     published_ports:
-      - 0.0.0.0:9997:9999/tcp
+      - 0.0.0.0:9094:9092/tcp
+    cgroupns_mode: host
 
 provisioner:
   name: ansible
+  lint:
+    - name: ansible-lint
+    - name: yamllint
+
+scenario:
+  name: agents
+
 verifier:
   name: ansible

@@ -1,0 +1,22 @@
+---
+
+command:
+  {{ kafka_install_path }}/bin/kafka-topics.sh --zookeeper {{ kafka_zookeeper_hosts | join(',') }} --list:
+    exit-status: 0
+    stdout:
+    - "test"
+    - "test2"
+
+command:
+  {{ kafka_install_path }}/bin/kafka-configs.sh --zookeeper {{ kafka_zookeeper_hosts | join(',') }} --entity-type topics --entity-name test --describe:
+    exit-status: 0
+    stdout:
+    - "Configs for topic 'test' are delete.retention.ms=100000,max.message.bytes=1024"
+    timeout: 20000
+
+command:
+  {{ kafka_install_path }}/bin/kafka-configs.sh --zookeeper {{ kafka_zookeeper_hosts | join(',') }} --entity-type topics --entity-name test2 --describe:
+    exit-status: 0
+    stdout:
+    - "Configs for topic 'test2' are delete.retention.ms=100000,max.message.bytes=2048"
+    timeout: 20000

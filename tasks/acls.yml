@@ -1,0 +1,94 @@
+---
+
+- name: KAFKA | Get current kafka ACLs in server
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-acls.sh
+    --bootstrap-server {{ kafka_acl_bootstrap_server }}:{{ kafka_acl_port }}
+    --list
+  register: current_raw_kafka_acls_in_server
+  changed_when: false
+
+- name: KAFKA | Set var with raw ACLs in server
+  ansible.builtin.set_fact:
+    current_kafka_acls_in_server: "{{ current_raw_kafka_acls_in_server.stdout | regex_findall('(?s)(Current ACLs.*?)(?=Current ACLs.*|$)') | list }}"
+
+- name: KAFKA | Set var with ACLs Resources in server
+  ansible.builtin.set_fact:
+    current_kafka_acls_resources_in_server: |
+      {{
+        current_kafka_acls_in_server |
+        map('regex_findall', 'resourceType=(.*), name=(.*), patternType=(.*)\)') |
+        flatten_list |
+        map('zip_dict', ['resource_type', 'names', 'pattern_type']) |
+        list
+      }}
+
+- name: KAFKA | Set var with all ACLs in server
+  ansible.builtin.set_fact:
+    current_kafka_acls: |
+      {{
+        current_kafka_acls |
+        default([]) |
+        union(
+          current_kafka_acls_in_server[index]
+          | split('\n')
+          | map('regex_findall', 'principal=(.*), host=(.*), operation=(.*), permissionType=(.*)\)')
+          | flatten_list
+          | map('zip_dict', ['principals', 'hosts', 'operations', 'permission_type'])
+          | map('combine', item)
+        )
+      }}
+  loop: "{{ current_kafka_acls_resources_in_server }}"
+  loop_control:
+    index_var: index
+  when:
+    - item.resource_type in current_kafka_acls_in_server[index]
+    - item.names in current_kafka_acls_in_server[index]
+    - item.pattern_type in current_kafka_acls_in_server[index]
+    - current_kafka_acls_in_server | length > 0
+
+- name: KAFKA | Set var with already ACLs in server
+  ansible.builtin.set_fact:
+    current_created_kafka_acls: |
+      {{
+        current_created_kafka_acls |
+        default([]) |
+        union(
+          current_kafka_acls
+          | selectattr('resource_type', 'match', ('(?i)' ~ item.resource_type))
+          | selectattr('names', 'in', item.names)
+          | selectattr('pattern_type', 'match', ('(?i)' ~ item.pattern_type | default('LITERAL')))
+          | selectattr('principals', 'in', item.principals)
+          | selectattr('hosts', 'in', item.hosts)
+          | selectattr('operations', 'in', item.operations|upper)
+          | selectattr('permission_type', 'match', ('(?i)' ~ item.permission_type))
+        )
+      }}
+  loop: "{{ kafka_acls }}"
+  when: current_kafka_acls_in_server | length > 0
+
+- name: KAFKA | Remove ACLs
+  ansible.builtin.command:
+    cmd: "{{ lookup('template', 'kafka-acls-command.j2') }}"
+  vars:
+    acl_action: remove
+  loop: "{{ current_kafka_acls if kafka_acls == [] else current_kafka_acls | difference(current_created_kafka_acls) }}"
+  # loop: "{{ current_kafka_acls | difference(current_created_kafka_acls) }}"
+  loop_control:
+    loop_var: acl
+  when: current_kafka_acls_in_server | length > 0
+  register: kafka_acls_create_output
+  changed_when: kafka_acls_create_output.rc == 0
+  failed_when: kafka_acls_create_output.rc != 0
+
+- name: KAFKA | Create ACLs
+  ansible.builtin.command:
+    cmd: "{{ lookup('template', 'kafka-acls-command.j2') }}"
+  vars:
+    acl_action: add
+  loop: "{{ kafka_acls }}"
+  loop_control:
+    loop_var: acl
+  register: kafka_acls_create_output
+  changed_when: kafka_acls_create_output.rc == 0
+  failed_when: kafka_acls_create_output.rc != 0

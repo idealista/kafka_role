@@ -1,31 +1,32 @@
 ---
 
 - name: KAFKA | Installing dependencies
-  apt:
+  ansible.builtin.apt:
     pkg: "{{ kafka_required_libs }}"
     state: present
   tags:
     skip_ansible_lint
 
 - name: KAFKA | Ensure kafka group
-  group:
+  ansible.builtin.group:
     name: "{{ kafka_group }}"
 
 - name: KAFKA | Ensure kafka user
-  user:
+  ansible.builtin.user:
     name: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
     home: /bin/false
 
 - name: KAFKA | Create install path
-  file:
+  ansible.builtin.file:
     path: "{{ kafka_install_path }}"
     state: directory
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
+    mode: "0755"
 
 - name: KAFKA | Create data path
-  file:
+  ansible.builtin.file:
     path: "{{ kafka_data_path }}"
     mode: 0760
     state: directory
@@ -33,32 +34,32 @@
     group: "{{ kafka_user }}"
 
 - name: KAFKA | Check prev installation
-  command: bash -c "ls {{ kafka_install_path }}/libs"
+  ansible.builtin.command: bash -c "ls {{ kafka_install_path }}/libs"
   register: kafka_check
   changed_when: false
   ignore_errors: true
 
 - name: KAFKA | Check kafka version
-  command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_{{ kafka_scala_version }}-{{ kafka_version }}.jar'"
+  ansible.builtin.command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_{{ kafka_scala_version }}-{{ kafka_version }}.jar'"
   register: kafka_version_check
   changed_when: false
   ignore_errors: true
 
 - name: KAFKA | Stop service
-  systemd:
+  ansible.builtin.systemd:
     name: kafka
     state: stopped
   when: kafka_check is success and (kafka_force_reinstall or kafka_version_check is failed or kafka_check.stdout == "")
 
 - name: KAFKA | Remove old version
-  file:
+  ansible.builtin.file:
     path: "{{ kafka_install_path }}/{{ item }}"
     state: absent
   with_items: "{{ kafka_removeable_folders }}"
   when: kafka_check is success and (kafka_force_reinstall or kafka_version_check is failed or kafka_check.stdout == "")
 
 - name: KAFKA | Untar kafka
-  unarchive:
+  ansible.builtin.unarchive:
     extra_opts: ['--strip-components=1']
     src: "{{ kafka_sources_url }}"
     remote_src: true

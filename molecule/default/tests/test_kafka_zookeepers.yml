@@ -1,0 +1,15 @@
+---
+
+command:
+  {{ kafka_install_path }}/bin/zookeeper-shell.sh zookeeper:2181/brokers/ids ls -R /:
+    exit-status: 0
+    stdout: |
+      Connecting to zookeeper:2181/brokers/ids
+
+      WATCHER::
+
+      WatchedEvent state:SyncConnected type:None path:null
+      /
+      /1
+      /2
+      /3

@@ -1,22 +1,28 @@
 ---
+- name: KAFKA | Copy Daemon script
+  ansible.builtin.template:
+    src: "{{ kafka_service_template_path }}"
+    dest: "{{ kafka_service_file_path }}"
+    mode: 0644
+  notify: Restart kafka
 
 - name: KAFKA | Configuring service
-  systemd:
+  ansible.builtin.systemd:
     name: kafka
     state: "{{ kafka_service_state }}"
     enabled: "{{ kafka_service_enabled }}"
     daemon_reload: true
 
 - name: KAFKA | Restart if necessary
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: KAFKA | Wait for service listening
-  wait_for:
+  ansible.builtin.wait_for:
     host: "{{ kafka_host_name }}"
     port: "{{ kafka_port }}"
     state: "{{ kafka_service_state }}"
     delay: 5
-    timeout: 300
+    timeout: {{ kafka_service_state_timeout }}
   when:
     - kafka_service_enabled
     - kafka_service_state == "started"
