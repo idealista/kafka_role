@@ -12,15 +12,27 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## Added
 
-- .gitattributes
+- ACLs handling
 
 ## Changed
 
 - Updated role to allow install of 3.X versions
-- Updated test-requirements file
+- Updated test-requirements
 - Updated linting
 - Updated molecule default scenario
+- Updated molecule tests
 - Updated travis config file
+- [.gitattributes linguist detection](https://github.com/idealista/kafka_role/pull/104) by @YaraGomezSaiz
+- [Service listening timeout parametrizable](https://github.com/idealista/kafka_role/pull/98) by @devnix
+
+## Fixed
+
+- Update tasks modules to use FQDN
+
+## Deprecated
+
+- Buster general support
+
 
 ## [1.15.0](https://github.com/idealista/kafka_role/tree/1.15.0) (2021-12-17)
 
