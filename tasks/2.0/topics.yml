@@ -1,0 +1,102 @@
+---
+
+- name: KAFKA | Check kafka topics
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-topics.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --list
+  register: kafka_topics_listed
+  changed_when: false
+
+- name: KAFKA | Topics in server
+  ansible.builtin.set_fact:
+    kafka_topics_origin: "{{ kafka_topics_listed.stdout_lines }}"
+
+- name: KAFKA | Topics to create
+  ansible.builtin.set_fact:
+    kafka_topics_to_create: "{{ kafka_topics | not_in_list('name', kafka_topics_origin) }}"
+
+- name: KAFKA | Topics to check
+  ansible.builtin.set_fact:
+    kafka_topics_to_check: "{{ kafka_topics | in_list('name', kafka_topics_origin) }}"
+
+- name: KAFKA | Obtain info of topics to check
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-topics.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --topic {{ item.name }}
+    --describe
+  with_items:
+    - "{{ kafka_topics_to_check }}"
+  register: kafka_topics_described_full
+  changed_when: false
+
+- name: KAFKA | Topics to alter
+  ansible.builtin.set_fact:
+    kafka_topics_to_alter: |
+      {{ kafka_topics_described_full.results |
+        map(attribute='stdout_lines') |
+        map('first') |
+        map('regex_findall', '^Topic:(.*)\tPartitionCount:([0-9]+)\tReplicationFactor:([0-9]+)\tConfigs:') |
+        flatten_list |
+        map('zip_dict', ['name', 'partitions', 'replicas']) |
+        list
+      }}
+
+- name: KAFKA | Topics to remove
+  ansible.builtin.set_fact:
+    kafka_topics_to_remove: |
+      {{ kafka_topics_origin |
+        difference(kafka_topics | map(attribute='name') |
+        list) |
+        filter_evaluated(kafka_filter_function_not_removable_topic) |
+        list }}
+
+- name: KAFKA | Create kafka topics
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-topics.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --topic {{ item.name }}
+    --partitions {{ item.partitions }}
+    --replication-factor {{ item.replicas }}
+    --create
+    --if-not-exists
+    --force
+  with_items:
+    - "{{ kafka_topics_to_create }}"
+  tags:
+    skip_ansible_lint
+
+- name: KAFKA | Alter kafka topics
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-topics.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --topic {{ item.name }}
+    --partitions {{ item.partitions }}
+    --alter
+    --if-exists
+    --force
+  with_items:
+    - "{{ kafka_topics_to_check | difference(kafka_topics_to_alter) }}"
+  when: kafka_topics_to_alter != []
+  tags:
+    skip_ansible_lint
+
+- name: KAFKA | Remove kafka topics
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-topics.sh
+    --zookeeper {{ kafka_zookeeper_hosts | join(',') }}
+    --topic {{ item }}
+    --delete
+    --if-exists
+    --force
+  with_items:
+    - "{{ kafka_topics_to_remove }}"
+  when: kafka_delete_topic_enable == 'true'
+  register: cmd_output
+  changed_when: cmd_output.rc != 0
+
+- name: KAFKA | Configure kafka topics
+  ansible.builtin.include_tasks: topic_config.yml
+  with_items:
+    - "{{ kafka_topics_config }}"

@@ -1,0 +1,43 @@
+{# Command construction #}
+{{ kafka_install_path }}/bin/kafka-acls.sh --bootstrap-server {{ kafka_acl_bootstrap_server }}:{{ kafka_acl_port }} --{{ acl_action }}
+{# Whether to use the force #}
+{%- if acl_action|lower == 'remove' %} --force{% endif %}
+{# Resource type #}
+{%- if acl.resource_type|lower == 'topic' %}
+    {%- set resource = 'topic' %}
+{%- elif acl.resource_type|lower == 'group' %}
+    {%- set resource = 'group' %}
+{%- elif acl.resource_type|lower == 'cluster' %}
+    {%- set resource = 'cluster' %}
+{%- elif acl.resource_type|lower == 'transactionalid' %}
+    {%- set resource = 'transactional-id' %}
+{%- elif acl.resource_type|lower == 'delegationtoken' %}
+    {%- set resource = 'delegation-token' %}
+{% endif %}
+{%- if acl.names is string %}
+    --{{ resource }} '{{ acl.names }}'
+{%- else %}
+    {%- for name in acl.names %} --{{ resource }} '{{ name }}'{% endfor %}
+{%- endif %}
+{# Pattern type #}
+{%- if acl.pattern_type is defined %} --resource-pattern-type {{ acl.pattern_type}}{%- endif %}
+{# Principals #}
+{%- if acl.principals is string %}
+ --{{ acl.permission_type|lower}}-principal '{{ acl.principals }}'
+{%- else %}
+    {%- for principal in acl.principals %} --{{ acl.permission_type|lower }}-principal '{{ principal }}'{% endfor %}
+{%- endif %}
+{# Hosts #}
+{%- if acl.hosts is defined %}
+    {%- if acl.hosts is string %}
+         --{{ acl.permission_type|lower }}-host '{{ acl.hosts }}'
+    {%- else %}
+        {%- for host in acl.hosts %} --{{ acl.permission_type|lower }}-host '{{ host }}'{% endfor %}
+    {%- endif %}
+{%- endif %}
+{# Operations #}
+{%- if acl.operations is string %}
+ --operation '{{ acl.operations }}'
+{%- else %}
+    {%- for operation in acl.operations %} --operation '{{ operation }}'{% endfor %}
+{%- endif %}

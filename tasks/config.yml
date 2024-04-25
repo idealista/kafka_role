@@ -1,7 +1,7 @@
 ---
 
 - name: KAFKA | Create kafka config and log paths
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ kafka_user }}"
@@ -12,40 +12,46 @@
     - "{{ kafka_log_path }}"
 
 - name: KAFKA | Copy server config
-  template:
+  ansible.builtin.template:
     src: "{{ kafka_server_template_path }}"
     dest: "{{ kafka_conf_path }}/server.properties"
     mode: "0640"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  notify: restart kafka
+  notify: Restart kafka
+  tags: [server_properties]
 
 - name: KAFKA | Copy log properties
-  template:
+  ansible.builtin.template:
     src: "{{ kafka_log4j_template_path }}"
     dest: "{{ kafka_conf_path }}/log4j.properties"
     mode: "0644"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-  notify: restart kafka
+  notify: Restart kafka
 
 - name: KAFKA | Enable GC log
-  replace:
+  ansible.builtin.replace:
     path: "{{ kafka_install_path }}/bin/kafka-server-start.sh"
     regexp: ^EXTRA_ARGS=\${EXTRA_ARGS-'-name kafkaServer'}
     replace: EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer -loggc'}
   when: kafka_gc_log_enabled
 
 - name: KAFKA | Disable GC log
-  replace:
+  ansible.builtin.replace:
     path: "{{ kafka_install_path }}/bin/kafka-server-start.sh"
     regexp: ^EXTRA_ARGS=\${EXTRA_ARGS-'-name kafkaServer -loggc'}
     replace: EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer'}
   when: not kafka_gc_log_enabled
 
-- name: KAFKA | Copy Daemon script
-  template:
-    src: "{{ kafka_service_template_path }}"
-    dest: /lib/systemd/system/kafka.service
-    mode: 0644
-  notify: restart kafka
+- name: KAFKA | Copy optional config
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ kafka_conf_path }}/{{ item.name }}"
+    mode: "0640"
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  with_items: "{{ kafka_optional_conf_files }}"
+  when: kafka_optional_conf_files is defined
+  notify: Restart kafka
+  tags: [server_properties]

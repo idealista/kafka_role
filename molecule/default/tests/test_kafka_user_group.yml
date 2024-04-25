@@ -1,0 +1,11 @@
+---
+
+group:
+  {{ kafka_group }}:
+    exists: true
+
+user:
+  {{ kafka_user }}:
+    exists: true
+    groups:
+      - {{ kafka_group }}

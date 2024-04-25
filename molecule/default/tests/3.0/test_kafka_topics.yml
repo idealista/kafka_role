@@ -1,0 +1,24 @@
+---
+
+command:
+  {{ kafka_install_path }}/bin/kafka-topics.sh --bootstrap-server {{ ansible_default_ipv4.address }}:{{ kafka_port }} --list:
+    exit-status: 0
+    stdout:
+    - "test"
+    - "test2"
+
+  {{ kafka_install_path }}/bin/kafka-configs.sh --bootstrap-server {{ ansible_default_ipv4.address }}:{{ kafka_port }} --entity-type topics --entity-name test --describe:
+    exit-status: 0
+    stdout:
+    - "Dynamic configs for topic test are:"
+    - "delete.retention.ms=100000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:delete.retention.ms=100000, DEFAULT_CONFIG:log.cleaner.delete.retention.ms=86400000}"
+    - "max.message.bytes=1024 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.message.bytes=1024, STATIC_BROKER_CONFIG:message.max.bytes=409715200, DEFAULT_CONFIG:message.max.bytes=1048588}"
+    timeout: 20000
+
+  {{ kafka_install_path }}/bin/kafka-configs.sh --bootstrap-server {{ ansible_default_ipv4.address }}:{{ kafka_port }} --entity-type topics --entity-name test2 --describe:
+    exit-status: 0
+    stdout:
+    - "Dynamic configs for topic test2 are:"
+    - "delete.retention.ms=100000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:delete.retention.ms=100000, DEFAULT_CONFIG:log.cleaner.delete.retention.ms=86400000}"
+    - "max.message.bytes=2048 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.message.bytes=2048, STATIC_BROKER_CONFIG:message.max.bytes=409715200, DEFAULT_CONFIG:message.max.bytes=1048588}"
+    timeout: 20000
