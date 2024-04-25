@@ -1,0 +1,53 @@
+---
+
+- name: KAFKA | Init temp vars config (1/3) for {{ item.name }}
+  ansible.builtin.set_fact:
+    string_properties: ""
+    properties: {}
+
+- name: KAFKA | Init temp vars config (2/3) for {{ item.name }}
+  ansible.builtin.set_fact:
+    properties: "{{ properties | combine({property.key: property.value}) }}"
+  when: property.key not in ['name']
+  with_dict: "{{ item }}"
+  loop_control:
+    loop_var: property
+
+- name: KAFKA | Init temp vars config (3/3) for {{ item.name }}
+  ansible.builtin.set_fact:
+    string_properties: "{{ string_properties }}{{ (id > 0) | ternary(',', '') }}{{ conf.key }}={{ conf.value }}"
+  loop: "{{  properties | dict2items }}"
+  loop_control:
+    index_var: id
+    loop_var: conf
+
+- name: KAFKA | Obtain config for topic
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-configs.sh
+    --entity-type topics
+    --entity-name {{ item.name }}
+    --describe
+    --bootstrap-server 0.0.0.0:{{ kafka_port }}
+  register: kafka_topics_config_described_full
+  changed_when: false
+
+- name: KAFKA | Topics to alter
+  ansible.builtin.set_fact:
+    kafka_topics_config_to_alter: |
+      {{ kafka_topics_config_described_full.stdout |
+          replace("Configs for topic '" + item.name + "' are ", '')
+      }}
+
+- name: KAFKA | Configure kafka topics
+  ansible.builtin.command: >
+    {{ kafka_install_path }}/bin/kafka-configs.sh
+    --entity-type topics
+    --entity-name {{ item.name }}
+    --add-config {{ string_properties }}
+    --alter
+    --force
+    --bootstrap-server 0.0.0.0:{{ kafka_port }}
+  when: kafka_topics_config_to_alter | trim  != string_properties
+  changed_when: false
+  tags:
+    skip_ansible_lint

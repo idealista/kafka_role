@@ -1,28 +1,43 @@
 ---
 
 - name: KAFKA | Install
-  import_tasks: install.yml
+  ansible.builtin.import_tasks: install.yml
   tags:
     - kafka_install
 
 - name: KAFKA | Agent config
-  import_tasks: agent.yml
+  ansible.builtin.import_tasks: agent.yml
   tags:
     - kafka_agents_config
   when: kafka_agents_config is defined
 
 - name: KAFKA | Configure
-  import_tasks: config.yml
+  ansible.builtin.import_tasks: config.yml
   tags:
     - kafka_configure
 
 - name: KAFKA | Service
-  import_tasks: service.yml
+  ansible.builtin.import_tasks: service.yml
   tags:
     - kafka_service
 
-- name: KAFKA | Topics
-  import_tasks: topics.yml
+- name: KAFKA | Topics (2.X Version)
+  ansible.builtin.import_tasks: 2.0/topics.yml
   run_once: true
+  when: kafka_version is version('3.0.0', "<")
   tags:
     - kafka_topics
+
+- name: KAFKA | Topics (3.X Version)
+  ansible.builtin.import_tasks: 3.0/topics.yml
+  run_once: true
+  when: kafka_version is version('3.0.0', ">=")
+  tags:
+    - kafka_topics
+
+- name: KAFKA | ACLs
+  ansible.builtin.import_tasks: acls.yml
+  tags:
+    - kafka_acls
+  when: kafka_acls is defined
+  run_once: true
