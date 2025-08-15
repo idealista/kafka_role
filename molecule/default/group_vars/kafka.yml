@@ -1,6 +1,6 @@
 ---
 
-kafka_version: 3.5.0
+kafka_version: 3.9.1
 
 kafka_private_tmp: false
 

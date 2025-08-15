@@ -4,6 +4,7 @@
   ansible.builtin.apt:
     pkg: "{{ kafka_required_libs }}"
     state: present
+  become: true
   tags:
     skip_ansible_lint
 
