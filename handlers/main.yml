@@ -1,7 +1,12 @@
 ---
 
 - name: Restart kafka
-  systemd:
+  ansible.builtin.systemd:
     name: kafka
     state: restarted
   when: kafka_service_state != 'stopped'
+
+- name: Kafka | Notify about upgrading to 4.x
+  ansible.builtin.debug:
+    msg: "⚠️  Kafka is being upgraded to version 4.x consider following the upgrade directions from https://kafka.apache.org/documentation/#upgrade_servers_4_0_0 and don't forget to update your configuration to use KRaft mode."
+  listen: message about upgrading
