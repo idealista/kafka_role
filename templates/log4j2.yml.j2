@@ -1,0 +1,62 @@
+
+Configuration:
+	status: {{ kafka_log_level }}
+	name: KafkaLog4j2
+	Appenders:
+		Console:
+			name: STDOUT
+			target: SYSTEM_OUT
+			PatternLayout:
+				pattern: "[%d] %p %m (%c)%n"
+		RollingFile:
+			- name: KAFKA
+				fileName: {{ kafka_log_path }}/kafka-server.log
+				filePattern: {{ kafka_log_path }}/kafka-server.log.%i
+				PatternLayout:
+					pattern: "[%d] %p %m (%c)%n"
+				Policies:
+					SizeBasedTriggeringPolicy:
+						size: 50MB
+				DefaultRolloverStrategy:
+					max: 4
+			- name: STATECHANGE
+				fileName: {{ kafka_log_path }}/state-change.log
+				filePattern: {{ kafka_log_path }}/state-change.log.%i
+				PatternLayout:
+					pattern: "[%d] %p %m (%c)%n"
+				Policies:
+					SizeBasedTriggeringPolicy:
+						size: 50MB
+				DefaultRolloverStrategy:
+					max: 4
+			- name: CONTROLLER
+				fileName: {{ kafka_log_path }}/controller.log
+				filePattern: {{ kafka_log_path }}/controller.log.%i
+				PatternLayout:
+					pattern: "[%d] %p %m (%c)%n"
+				Policies:
+					SizeBasedTriggeringPolicy:
+						size: 50MB
+				DefaultRolloverStrategy:
+					max: 4
+	Loggers:
+		Root:
+			level: {{ kafka_log_level }}
+			AppenderRef:
+				- ref: STDOUT
+		Logger:
+			- name: kafka
+				level: {{ kafka_log_level }}
+				additivity: false
+				AppenderRef:
+					- ref: KAFKA
+			- name: kafka.controller
+				level: {{ kafka_log_level }}
+				additivity: false
+				AppenderRef:
+					- ref: CONTROLLER
+			- name: state.change.logger
+				level: {{ kafka_log_level }}
+				additivity: false
+				AppenderRef:
+					- ref: STATECHANGE

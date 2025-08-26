@@ -65,7 +65,7 @@
 - name: KAFKA | Copy log properties
   ansible.builtin.template:
     src: "{{ kafka_log4j_template_path }}"
-    dest: "{{ kafka_conf_path }}/log4j.properties"
+    dest: "{{ kafka_conf_path }}/{{ kafka_log4j_file_name }}"
     mode: "0644"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"

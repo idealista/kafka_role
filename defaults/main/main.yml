@@ -131,7 +131,8 @@ kafka_transaction_state_log_min_isr: 2
 kafka_force_reinstall: false
 
 ### Templates path
-kafka_log4j_template_path: log4j.properties.j2
+kafka_log4j_template_path: log4j2.yml.j2
+kafka_log4j_file_name: log4j2.yml
 kafka_server_template_path: "{{ 'server.properties.kraft.j2' if kafka_use_kraft else 'server.properties.j2' }}"
 kafka_broker_template_path: broker.properties.kraft.j2
 kafka_controller_template_path: controller.properties.kraft.j2
