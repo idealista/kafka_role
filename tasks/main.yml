@@ -28,7 +28,7 @@
   tags:
     - kafka_topics
 
-- name: KAFKA | Topics (3.X Version)
+- name: KAFKA | Topics (>= 3.X Version)
   ansible.builtin.import_tasks: 3.0/topics.yml
   run_once: true
   when: kafka_version is version('3.0.0', ">=")

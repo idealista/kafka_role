@@ -40,6 +40,7 @@
     url: "{{ item.download_url }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
+    mode: "0644"
   register: agent_downloaded
   loop: "{{ kafka_agents_config | flatten(levels=1) }}"
   loop_control:
@@ -69,6 +70,7 @@
     url: "{{ item.download_url }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
+    mode: "0644"
   loop: '{{ kafka_agents_config | flatten(levels=1) }}'
   register: agent_jar_downloaded
   when: item.download_url | basename | splitext | last not in kafka_supported_agents_extensions
@@ -95,6 +97,7 @@
     dest: "{{ kafka_install_path }}/{{ item.name }}/{{ item.file }}"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
+    mode: "0644"
   notify: Restart kafka
   with_items: '{{ kafka_agents_configuration }}'
 
