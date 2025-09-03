@@ -1,18 +1,18 @@
 ---
 dist: focal
 language: python
-python: "3.11"
+python: "3.12"
 os: linux
 services:
   - docker
 install:
-  - pip install pipenv
+  - pip install -I pipenv
   - pipenv sync
 env:
   global:
     - PIPENV_IGNORE_VIRTUALENVS=1
   jobs:
-    - MOLECULE_DISTRO=idealista/jdk:8u302-bullseye-corretto-headless
+    - MOLECULE_DISTRO=MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk
 script:
   - pipenv run molecule test --all
 
