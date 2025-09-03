@@ -28,7 +28,7 @@ kafka_log_path: /var/log/kafka
 
 # Brokers
 kafka_process_roles: "broker,controller"  # broker, controller, or both
-kafka_cluster_uuid: "{{ 'kafka_role' | to_uuid | uuid_to_base64(short=true) }}"
+kafka_cluster_uuid: "{{ 'kafka_role' | to_uuid | uuid_to_base64 }}"
 
 # Controllers
 kafka_controller_bootstrap_command: "{{ kafka_install_path }}/bin/kafka-storage.sh format --cluster-id {{ kafka_cluster_uuid }} --initial-controllers {{ kafka_initial_controllers }} -c {{ kafka_conf_path }}/server.properties --ignore-formatted"

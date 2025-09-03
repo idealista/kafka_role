@@ -60,6 +60,7 @@
   when:
     - kafka_check is success
     - kafka_installed_version.stdout | regex_search('^kafka_[^|-]+-(\\d+\\.\\d+\\.\\d)(?=\\.jar)', '\\1') | first is version('3.3', '>=')
+    - kafka_installed_version.stdout | regex_search('^kafka_[^|-]+-(\\d+\\.\\d+\\.\\d)(?=\\.jar)', '\\1') | first is version('4.0', '<')
     - kafka_version is version('4.0.0', '>=')
 
 - name: KAFKA | Stop service

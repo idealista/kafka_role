@@ -56,6 +56,8 @@
 
     - name: KAFKA | Bootstrap storage controller
       ansible.builtin.command: "{{ kafka_controller_bootstrap_command }}"
+      args:
+        creates: "{{ kafka_data_path }}/meta.properties"
       when:
         - kafka_use_kraft
         - bootstrap_storage_controller is defined
