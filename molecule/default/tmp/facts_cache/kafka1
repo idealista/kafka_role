@@ -1,0 +1,1290 @@
+_ansible_facts_gathered: true
+ansible_all_ipv4_addresses:
+- 172.18.0.2
+ansible_all_ipv6_addresses: []
+ansible_apparmor:
+  status: disabled
+ansible_architecture: aarch64
+ansible_bios_date: NA
+ansible_bios_vendor: NA
+ansible_bios_version: NA
+ansible_board_asset_tag: NA
+ansible_board_name: NA
+ansible_board_serial: NA
+ansible_board_vendor: NA
+ansible_board_version: NA
+ansible_chassis_asset_tag: NA
+ansible_chassis_serial: NA
+ansible_chassis_vendor: NA
+ansible_chassis_version: NA
+ansible_cmdline:
+  --: true
+  console: hvc0
+  eth0.dhcp: true
+  eth1.dhcp: true
+  init: /init
+  linuxkit.unified_cgroup_hierarchy: '1'
+  loglevel: '1'
+  panic: '0'
+  ro: true
+  root: /dev/vdb
+  rootfstype: erofs
+  virtio_net.disable_csum: '1'
+  vpnkit.connect: connect://2/1999
+  vsyscall: emulate
+ansible_date_time:
+  date: '2025-09-03'
+  day: '03'
+  epoch: '1756892182'
+  epoch_int: '1756892182'
+  hour: 09
+  iso8601: '2025-09-03T09:36:22Z'
+  iso8601_basic: 20250903T093622774049
+  iso8601_basic_short: 20250903T093622
+  iso8601_micro: '2025-09-03T09:36:22.774049Z'
+  minute: '36'
+  month: 09
+  second: '22'
+  time: 09:36:22
+  tz: UTC
+  tz_dst: UTC
+  tz_offset: '+0000'
+  weekday: Wednesday
+  weekday_number: '3'
+  weeknumber: '35'
+  year: '2025'
+ansible_default_ipv4:
+  address: 172.18.0.2
+  alias: eth0
+  broadcast: 172.18.255.255
+  gateway: 172.18.0.1
+  interface: eth0
+  macaddress: ea:63:ae:4e:00:47
+  mtu: 1500
+  netmask: 255.255.0.0
+  network: 172.18.0.0
+  prefix: '16'
+  type: ether
+ansible_default_ipv6: {}
+ansible_device_links:
+  ids: {}
+  labels: {}
+  masters: {}
+  uuids: {}
+ansible_devices:
+  loop0:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop1:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop2:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop3:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop4:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop5:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop6:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  loop7:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: none
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd0:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd1:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd10:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd11:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd12:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd13:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd14:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd15:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd2:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd3:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd4:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd5:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd6:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd7:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd8:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  nbd9:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 0
+    sectorsize: '512'
+    size: 0.00 Bytes
+    support_discard: '0'
+    vendor: null
+    virtual: 1
+  ram0:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram1:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram10:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram11:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram12:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram13:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram14:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram15:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram2:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram3:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram4:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram5:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram6:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram7:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram8:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  ram9:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '0'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: ''
+    sectors: 8192
+    sectorsize: '512'
+    size: 4.00 MB
+    support_discard: '4096'
+    vendor: null
+    virtual: 1
+  vda:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions:
+      vda1:
+        holders: []
+        links:
+          ids: []
+          labels: []
+          masters: []
+          uuids: []
+        sectors: 2147481600
+        sectorsize: 512
+        size: 1024.00 GB
+        start: '2048'
+        uuid: null
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 2147483648
+    sectorsize: '512'
+    size: 1.00 TB
+    support_discard: '4096'
+    vendor: '0x0000'
+    virtual: 1
+  vdb:
+    holders: []
+    host: ''
+    links:
+      ids: []
+      labels: []
+      masters: []
+      uuids: []
+    model: null
+    partitions: {}
+    removable: '0'
+    rotational: '1'
+    sas_address: null
+    sas_device_handle: null
+    scheduler_mode: mq-deadline
+    sectors: 1140896
+    sectorsize: '512'
+    size: 557.08 MB
+    support_discard: '4096'
+    vendor: '0x0000'
+    virtual: 1
+ansible_distribution: Debian
+ansible_distribution_file_parsed: true
+ansible_distribution_file_path: /etc/os-release
+ansible_distribution_file_variety: Debian
+ansible_distribution_major_version: '11'
+ansible_distribution_minor_version: '10'
+ansible_distribution_release: bullseye
+ansible_distribution_version: '11.10'
+ansible_dns:
+  nameservers:
+  - 127.0.0.11
+  options:
+    ndots: '0'
+ansible_domain: ''
+ansible_effective_group_id: 0
+ansible_effective_user_id: 0
+ansible_env:
+  HOME: /root
+  HOSTNAME: kafka1
+  LC_CTYPE: C.UTF-8
+  LOGNAME: root
+  MAIL: /var/mail/root
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  PWD: /
+  SHELL: /bin/bash
+  SUDO_COMMAND: /bin/sh -c echo BECOME-SUCCESS-wljmkxcgoijhqebwbcshdfeonnnnplpq ;
+    /usr/bin/python3.9 /root/.ansible/tmp/ansible-tmp-1756892182.335649-65541-188922645161356/AnsiballZ_setup.py
+  SUDO_GID: '0'
+  SUDO_UID: '0'
+  SUDO_USER: root
+  TERM: unknown
+  USER: root
+ansible_erspan0:
+  active: false
+  device: erspan0
+  mtu: 1450
+  promisc: false
+  type: ether
+ansible_eth0:
+  active: true
+  device: eth0
+  ipv4:
+    address: 172.18.0.2
+    broadcast: 172.18.255.255
+    netmask: 255.255.0.0
+    network: 172.18.0.0
+    prefix: '16'
+  macaddress: ea:63:ae:4e:00:47
+  mtu: 1500
+  promisc: false
+  speed: 10000
+  type: ether
+ansible_fibre_channel_wwn: []
+ansible_fips: false
+ansible_form_factor: NA
+ansible_fqdn: kafka1
+ansible_gre0:
+  active: false
+  device: gre0
+  macaddress: 00:00:00:00
+  mtu: 1476
+  promisc: false
+  type: unknown
+ansible_gretap0:
+  active: false
+  device: gretap0
+  mtu: 1462
+  promisc: false
+  type: ether
+ansible_hostname: kafka1
+ansible_hostnqn: ''
+ansible_interfaces:
+- gretap0
+- eth0
+- ip6_vti0
+- gre0
+- lo
+- ip6tnl0
+- ip6gre0
+- sit0
+- ip_vti0
+- erspan0
+- tunl0
+ansible_ip6_vti0:
+  active: false
+  device: ip6_vti0
+  macaddress: 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+  mtu: 1428
+  promisc: false
+  type: unknown
+ansible_ip6gre0:
+  active: false
+  device: ip6gre0
+  macaddress: 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+  mtu: 1448
+  promisc: false
+  type: unknown
+ansible_ip6tnl0:
+  active: false
+  device: ip6tnl0
+  macaddress: 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+  mtu: 1452
+  promisc: false
+  type: unknown
+ansible_ip_vti0:
+  active: false
+  device: ip_vti0
+  macaddress: 00:00:00:00
+  mtu: 1480
+  promisc: false
+  type: unknown
+ansible_is_chroot: false
+ansible_iscsi_iqn: ''
+ansible_kernel: 6.10.14-linuxkit
+ansible_kernel_version: '#1 SMP Sat May 17 08:28:57 UTC 2025'
+ansible_lo:
+  active: true
+  device: lo
+  ipv4:
+    address: 127.0.0.1
+    broadcast: ''
+    netmask: 255.0.0.0
+    network: 127.0.0.0
+    prefix: '8'
+  ipv6:
+  - address: ::1
+    prefix: '128'
+    scope: host
+  mtu: 65536
+  promisc: false
+  type: loopback
+ansible_loadavg:
+  15m: 1.5
+  1m: 2.84
+  5m: 1.22
+ansible_local: {}
+ansible_locally_reachable_ips:
+  ipv4:
+  - 127.0.0.0/8
+  - 127.0.0.1
+  - 172.18.0.2
+  ipv6:
+  - ::1
+ansible_lsb:
+  codename: bullseye
+  description: Debian GNU/Linux 11 (bullseye)
+  id: Debian
+  major_release: '11'
+  release: '11'
+ansible_lvm: N/A
+ansible_machine: aarch64
+ansible_machine_id: d701a875caf84b338cb3c18e4ae2cfc7
+ansible_memfree_mb: 13622
+ansible_memory_mb:
+  nocache:
+    free: 14966
+    used: 2491
+  real:
+    free: 13622
+    total: 17457
+    used: 3835
+  swap:
+    cached: 0
+    free: 1023
+    total: 1023
+    used: 0
+ansible_memtotal_mb: 17457
+ansible_mounts:
+- block_available: 226011066
+  block_size: 4096
+  block_total: 264139349
+  block_used: 38128283
+  device: /dev/vda1
+  dump: 0
+  fstype: ext4
+  inode_available: 65200656
+  inode_total: 67108864
+  inode_used: 1908208
+  mount: /etc/resolv.conf
+  options: rw,relatime,discard,bind
+  passno: 0
+  size_available: 925741326336
+  size_total: 1081914773504
+  uuid: N/A
+- block_available: 226011066
+  block_size: 4096
+  block_total: 264139349
+  block_used: 38128283
+  device: /dev/vda1
+  dump: 0
+  fstype: ext4
+  inode_available: 65200656
+  inode_total: 67108864
+  inode_used: 1908208
+  mount: /etc/hostname
+  options: rw,relatime,discard,bind
+  passno: 0
+  size_available: 925741326336
+  size_total: 1081914773504
+  uuid: N/A
+- block_available: 226011066
+  block_size: 4096
+  block_total: 264139349
+  block_used: 38128283
+  device: /dev/vda1
+  dump: 0
+  fstype: ext4
+  inode_available: 65200656
+  inode_total: 67108864
+  inode_used: 1908208
+  mount: /etc/hosts
+  options: rw,relatime,discard,bind
+  passno: 0
+  size_available: 925741326336
+  size_total: 1081914773504
+  uuid: N/A
+ansible_nodename: kafka1
+ansible_os_family: Debian
+ansible_pkg_mgr: apt
+ansible_proc_cmdline:
+  --: true
+  console: hvc0
+  eth0.dhcp: true
+  eth1.dhcp: true
+  init: /init
+  linuxkit.unified_cgroup_hierarchy: '1'
+  loglevel: '1'
+  panic: '0'
+  ro: true
+  root: /dev/vdb
+  rootfstype: erofs
+  virtio_net.disable_csum: '1'
+  vpnkit.connect: connect://2/1999
+  vsyscall: emulate
+ansible_processor:
+- '0'
+- '1'
+- '2'
+- '3'
+- '4'
+- '5'
+- '6'
+- '7'
+- '8'
+- '9'
+- '10'
+ansible_processor_cores: 1
+ansible_processor_count: 11
+ansible_processor_nproc: 11
+ansible_processor_threads_per_core: 1
+ansible_processor_vcpus: 11
+ansible_product_name: NA
+ansible_product_serial: NA
+ansible_product_uuid: NA
+ansible_product_version: NA
+ansible_python:
+  executable: /usr/bin/python3.9
+  has_sslcontext: true
+  type: cpython
+  version:
+    major: 3
+    micro: 2
+    minor: 9
+    releaselevel: final
+    serial: 0
+  version_info:
+  - 3
+  - 9
+  - 2
+  - final
+  - 0
+ansible_python_version: 3.9.2
+ansible_real_group_id: 0
+ansible_real_user_id: 0
+ansible_selinux:
+  status: disabled
+ansible_selinux_python_present: true
+ansible_service_mgr: systemd
+ansible_sit0:
+  active: false
+  device: sit0
+  macaddress: 00:00:00:00
+  mtu: 1480
+  promisc: false
+  type: unknown
+ansible_swapfree_mb: 1023
+ansible_swaptotal_mb: 1023
+ansible_system: Linux
+ansible_system_capabilities:
+- ep
+ansible_system_capabilities_enforced: 'True'
+ansible_system_vendor: NA
+ansible_systemd:
+  features: +PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP
+    +GCRYPT +GNUTLS +ACL +XZ +LZ4 +ZSTD +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN
+    +PCRE2 default-hierarchy=unified
+  version: 247
+ansible_tunl0:
+  active: false
+  device: tunl0
+  macaddress: 00:00:00:00
+  mtu: 1480
+  promisc: false
+  type: unknown
+ansible_uptime_seconds: 50951
+ansible_user_dir: /root
+ansible_user_gecos: root
+ansible_user_gid: 0
+ansible_user_id: root
+ansible_user_shell: /bin/bash
+ansible_user_uid: 0
+ansible_userspace_bits: '64'
+ansible_virtualization_role: guest
+ansible_virtualization_tech_guest:
+- docker
+- container
+ansible_virtualization_tech_host: []
+ansible_virtualization_type: docker
+discovered_interpreter_python: /usr/bin/python3.9
+gather_subset:
+- all
+module_setup: true

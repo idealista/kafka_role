@@ -2,6 +2,5 @@
 
 - name: Converge
   hosts: kafka
-  serial: 3
   roles:
     - kafka_role

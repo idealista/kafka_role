@@ -1,0 +1,6 @@
+---
+
+kafka_node_id: 3
+kafka_node_uuid: "{{ kafka_node_id | to_uuid | uuid_to_base64 }}"
+kafka_controller_uri: "{{ kafka_node_id }}@{{ ansible_hostname }}:{{ kafka_controller_port }}"
+kafka_initial_controller: "{{ kafka_controller_uri }}:{{ kafka_node_uuid }}"

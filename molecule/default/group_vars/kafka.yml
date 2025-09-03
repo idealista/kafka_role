@@ -1,24 +1,75 @@
 ---
 
-kafka_version: 3.9.1
+kafka_version: 4.0.0
 
 kafka_private_tmp: false
 
-kafka_zookeeper_hosts:
-  - zookeeper:2181
-
 kafka_jvm_performance_opts: "-XX:MetaspaceSize=96m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:G1HeapRegionSize=16M -XX:MinMetaspaceFreeRatio=50 -XX:MaxMetaspaceFreeRatio=80"
 
-kafka_hosts:
-  - host: kafka1
-    id: 1
-  - host: kafka2
-    id: 2
-  - host: kafka3
-    id: 3
+kafka_controller_quorum_bootstrap_servers: kafka1:9093,kafka2:9093,kafka3:9093
+kafka_controller_quorum_voters: "1@kafka1:9093,2@kafka2:9093,3@kafka3:9093"
+
+kafka_brokers_port: 9091
+kafka_clients_port: 9092
+kafka_controller_port: 9093
+
+kafka_advertised_ports:
+  kafka1:
+    clients_advertised_port: 19092
+    brokers_advertised_port: 19091
+    controller_advertised_port: 19093
+  kafka2:
+    clients_advertised_port: 29092
+    brokers_advertised_port: 29091
+    controller_advertised_port: 29093
+  kafka3:
+    clients_advertised_port: 39092
+    brokers_advertised_port: 39091
+    controller_advertised_port: 39093
+
+kafka_listeners_list:
+  # - name: BROKERS
+  #   host: "0.0.0.0:{{ kafka_brokers_port }}"
+  #   advertised_host: "localhost:{{ kafka_advertised_ports[inventory_hostname]['brokers_advertised_port'] }}" # Necessary config to use localhost and the ports published by molecule docker for testing purposes
+  #   protocol: PLAINTEXT
+  - name: BROKERS
+    host: "0.0.0.0:{{ kafka_brokers_port }}"
+    advertised_host: "{{ kafka_host_name }}:{{ kafka_brokers_port }}"
+    protocol: PLAINTEXT
+  - name: CLIENTS
+    host: "0.0.0.0:{{ kafka_clients_port }}"
+    advertised_host: "{{ kafka_host_name }}:{{ kafka_clients_port }}"
+    protocol: PLAINTEXT
+  - name: CONTROLLER
+    host: "0.0.0.0:{{ kafka_controller_port }}"
+    advertised_host: "{{ kafka_host_name }}:{{ kafka_controller_port }}"
+    protocol: PLAINTEXT
+
+kafka_inter_broker_listener_name: BROKERS
+kafka_controller_listener_names: CONTROLLER
 
 kafka_xmx: "768m"
 kafka_xms: "512m"
+
+kafka_listeners: >-
+  {%- for listener in kafka_listeners_list -%}
+    {{ listener.name }}://{{ listener.host }}
+  {%- if not loop.last -%},{%- endif -%}
+  {%- endfor -%}
+
+kafka_advertised_listeners: >-
+  {%- for listener in kafka_listeners_list -%}
+    {{ listener.name }}://{{ listener.advertised_host }}
+  {%- if not loop.last -%},{%- endif -%}
+  {%- endfor -%}
+
+kafka_security_protocol_map: >-
+  {%- for listener in kafka_listeners_list -%}
+    {{ listener.name }}:{{ listener.protocol }}
+  {%- if not loop.last -%},{%- endif -%}
+  {%- endfor -%},SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+
+kafka_initial_controllers: "{{  groups['kafka'] | map('extract', hostvars, 'kafka_initial_controller') | join(',') }}"
 
 kafka_topics:
   - name: 'test'
@@ -27,6 +78,9 @@ kafka_topics:
   - name: 'test2'
     partitions: '5'
     replicas: '1'
+  - name: 'compacted-topic'
+    partitions: '3'
+    replicas: '3'
 
 kafka_topics_config:
   - name: 'test'
@@ -35,6 +89,12 @@ kafka_topics_config:
   - name: 'test2'
     delete.retention.ms: 100000
     max.message.bytes: 2048
+  - name: 'compacted-topic'
+    cleanup.policy: compact
+    min.compaction.lag.ms: 30000
+    max.compaction.lag.ms: 120000
+    delete.retention.ms: 60000
+    segment.ms: 10000
 
 kafka_extra_properties:
   - key: message.max.bytes
