@@ -3,7 +3,7 @@
 kafka_version: 3.9.1
 
 kafka_private_tmp: false
-
+kafka_use_kraft: false
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
@@ -39,3 +39,7 @@ kafka_topics_config:
 kafka_extra_properties:
   - key: message.max.bytes
     value: 409715200
+
+kafka_cfg: []
+broker_cfg: []
+controller_cfg: []

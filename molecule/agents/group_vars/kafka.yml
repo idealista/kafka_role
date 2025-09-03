@@ -1,7 +1,7 @@
 ---
 
 kafka_private_tmp: false
-
+kafka_use_kraft: false
 kafka_zookeeper_hosts:
   - zookeeper:2181
 
@@ -27,3 +27,7 @@ kafka_agents_config:
       application_name: "application_sample_name",
       license_key: "sddsasd"
     }
+
+kafka_cfg: []
+broker_cfg: []
+controller_cfg: []
