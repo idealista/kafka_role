@@ -91,7 +91,7 @@ At a general level or group_vars level:
 kafka_process_roles: "broker,controller"  # broker, controller, or both
 
 # A unique identifier for the Kafka cluster, you can set it to any value but it must be the same for all the nodes in the cluster
-kafka_cluster_uuid: "{{ 'kafka_role' | to_uuid | uuid_to_base64(short=true) }}"
+kafka_cluster_uuid: "{{ 'kafka_role' | to_uuid | uuid_to_base64 }}"
 
 # List of all the controllers in the cluster with their node id and host/ip
 # An example to generate the controller quorum voters value could be:
