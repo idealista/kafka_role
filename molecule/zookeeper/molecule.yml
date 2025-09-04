@@ -100,6 +100,8 @@ provisioner:
   lint:
     - name: ansible-lint
     - name: yamllint
+  env:
+    ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/..
 
 scenario:
   name: zookeeper
