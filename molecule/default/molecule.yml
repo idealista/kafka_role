@@ -109,7 +109,7 @@ provisioner:
       show_per_host_start: true
       show_custom_stats: true
       fact_caching: yaml
-      fact_caching_connection: ./tmp/facts_cache
+      # fact_caching_connection: ./tmp/facts_cache
 
 scenario:
   name: default
