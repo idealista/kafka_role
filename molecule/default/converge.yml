@@ -4,4 +4,4 @@
   hosts: kafka
   serial: 3
   roles:
-    - idealista.kafka_role
+    - kafka_role
