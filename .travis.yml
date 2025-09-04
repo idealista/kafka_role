@@ -3,11 +3,12 @@ dist: focal
 language: python
 python: "3.12"
 os: linux
+sudo: required
 services:
   - docker
 install:
   - pip install -I pipenv
-  - pipenv sync
+  - pipenv install -r test-requirements.txt --skip-lock
 env:
   global:
     - PIPENV_IGNORE_VIRTUALENVS=1
@@ -19,3 +20,9 @@ script:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  email:
+    if: branch = main
+    on_success: change
+    on_failure: always
+    recipients:
+      - desarrollo.benders@idealista.com
