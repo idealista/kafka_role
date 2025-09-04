@@ -8,12 +8,12 @@ services:
   - docker
 install:
   - pip install -I pipenv
-  - pipenv install -r test-requirements.txt --skip-lock
+  - pipenv sync
 env:
   global:
     - PIPENV_IGNORE_VIRTUALENVS=1
   jobs:
-    - MOLECULE_DISTRO=MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk
+    - MOLECULE_DISTRO=idealista/jdk:17.0.8-bullseye-temurin-jdk
 script:
   - pipenv run molecule test
   - pipenv run molecule test -s zookeeper
