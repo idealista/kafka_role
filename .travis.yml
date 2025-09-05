@@ -15,7 +15,8 @@ env:
   jobs:
     - MOLECULE_DISTRO=idealista/jdk:17.0.8-bullseye-temurin-jdk
 script:
-  - travis_wait 40 pipenv run molecule test
+  - pipenv run molecule test
+  - pipenv run molecule test -s zookeeper
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

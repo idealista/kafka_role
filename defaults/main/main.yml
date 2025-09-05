@@ -154,9 +154,10 @@ kafka_extra_properties: []
 #   value: 409715200
 
 kafka_mirror: "https://archive.apache.org/dist/kafka"
+kafka_download_url: "https://downloads.apache.org/kafka"
 kafka_package_name: "kafka_{{ kafka_scala_version }}-{{ kafka_version }}"
 kafka_package: "{{ kafka_package_name }}.tgz"
-kafka_sources_url: "{{ kafka_mirror }}/{{ kafka_version }}/{{ kafka_package }}"
+kafka_sources_url: "{{ kafka_download_url }}/{{ kafka_version }}/{{ kafka_package }}"
 
 
 ## Agent configuration (optional)
