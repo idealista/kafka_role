@@ -1,0 +1,130 @@
+Configuration:
+  name: KafkaLog4j2
+  Appenders:
+    Console:
+      name: STDOUT
+      PatternLayout:
+        pattern: "{{ kafka_log_pattern}}"
+
+    RollingFile:
+      - name: KafkaAppender
+        fileName: "{{ kafka_log_path }}/kafka-server.log"
+        filePattern: "{{ kafka_log_path }}/kafka-server.log.%i"
+        PatternLayout:
+          pattern: "{{ kafka_log_pattern}}"
+        SizeBasedTriggeringPolicy:
+            size: 50MB
+        DefaultRolloverStrategy:
+          max: 4
+      # State Change appender
+      - name: StateChangeAppender
+        fileName: "{{ kafka_log_path }}/state-change.log"
+        filePattern: "{{ kafka_log_path }}/state-change.log.%i"
+        PatternLayout:
+          pattern: "{{ kafka_log_pattern}}"
+        SizeBasedTriggeringPolicy:
+            size: 50MB
+        DefaultRolloverStrategy:
+          max: 4
+      # Controller appender
+      - name: ControllerAppender
+        fileName: "{{ kafka_log_path }}/controller.log"
+        filePattern: "{{ kafka_log_path }}/controller.log.%i"
+        PatternLayout:
+          pattern: "{{ kafka_log_pattern}}"
+        SizeBasedTriggeringPolicy:
+            size: 50MB
+        DefaultRolloverStrategy:
+          max: 4
+      # Request appender
+      - name: RequestAppender
+        fileName: "{{ kafka_log_path }}/kafka-request.log"
+        filePattern: "{{ kafka_log_path }}/kafka-request.log.%d{yyyy-MM-dd-HH}"
+        PatternLayout:
+          pattern: "{{ kafka_log_pattern}}"
+        TimeBasedTriggeringPolicy:
+          modulate: true
+          interval: 1
+      # Cleaner appender
+      - name: CleanerAppender
+        fileName: "{{ kafka_log_path }}/log-cleaner.log"
+        filePattern: "{{ kafka_log_path }}/log-cleaner.log.%d{yyyy-MM-dd-HH}"
+        PatternLayout:
+          pattern: "{{ kafka_log_pattern}}"
+        TimeBasedTriggeringPolicy:
+          modulate: true
+          interval: 1
+      # Authorizer appender
+      - name: AuthorizerAppender
+        fileName: "{{ kafka_log_path }}/kafka-authorizer.log"
+        filePattern: "{{ kafka_log_path }}/kafka-authorizer.log.%d{yyyy-MM-dd-HH}"
+        PatternLayout:
+          pattern: "{{ kafka_log_pattern}}"
+        TimeBasedTriggeringPolicy:
+          modulate: true
+          interval: 1
+
+  Loggers:
+    Root:
+      level: "{{ kafka_log_level }}"
+      AppenderRef:
+        - ref: STDOUT
+        - ref: KafkaAppender
+    Logger:
+      # Kafka logger
+      - name: kafka
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          - ref: KafkaAppender
+      # Kafka org.apache logger
+      - name: org.apache.kafka
+        level: "{{ kafka_log_level }}"
+      # Kafka request logger
+      - name: kafka.request.logger
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          ref: RequestAppender
+      # Kafka network RequestChannel$ logger
+      - name: kafka.network.RequestChannel$
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          ref: RequestAppender
+      # Controller logger
+      - name: org.apache.kafka.controller
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          ref: ControllerAppender
+      # LogCleaner logger
+      - name: kafka.log.LogCleaner
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          ref: CleanerAppender
+      # State change logger
+      - name: state.change.logger
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          ref: StateChangeAppender
+      # Authorizer logger
+      - name: kafka.authorizer.logger
+        level: "{{ kafka_log_level }}"
+        additivity: false
+        AppenderRef:
+          ref: AuthorizerAppender
+      # Uncomment the lines below and change log4j.logger.kafka.network.RequestChannel$ to TRACE
+      # for additional output related to the handling of requests
+#      - name: kafka.network.Processor
+#        level: TRACE
+#        additivity: false
+#        AppenderRef:
+#          ref:
+#      - name: kafka.server.KafkaApis
+#        level: TRACE
+#        additivity: false
+#        AppenderRef:
+#          ref: RequestAppender

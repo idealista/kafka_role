@@ -1,0 +1,32 @@
+---
+
+# General / Server config
+kafka_cfg: "{{ [kafka_cfg_default, kafka_cfg_base | default([]), kafka_cfg_extra | default([])] | community.general.lists_mergeby('section', recursive=true) }}"
+
+kafka_cfg_default:
+  - section: 'broker'  # Section as in Kafka docs https://kafka.apache.org/documentation/#configuration
+    properties:
+      process.roles: "{{ kafka_process_roles | default('broker,controller') }}"
+      node.id: "{{ kafka_node_id }}"
+      controller.quorum.voters: "{{ kafka_controller_quorum_voters }}"
+      listeners: "{{ kafka_listeners }}"
+      inter.broker.listener.name: "{{ kafka_inter_broker_listener_name }}"
+      advertised.listeners: "{{ kafka_advertised_listeners }}"
+      controller.listener.names: "{{ kafka_controller_listener_names }}"
+      listener.security.protocol.map: "{{ kafka_security_protocol_map }}"
+      log.dirs: "{{ kafka_data_path }}"
+      controller.quorum.bootstrap.servers: "{{ kafka_controller_quorum_bootstrap_servers }}"
+# kafka_cfg_base: []
+# kafka_cfg_extra: []
+
+# Brokers
+broker_cfg: "{{ [broker_cfg_default, broker_cfg_base | default([]), broker_cfg_extra | default([])] | community.general.lists_mergeby('section', recursive=true) }}"
+# roker_cfg_default: []
+# broker_cfg_base: []
+# broker_cfg_extra: []
+
+# Controllers
+controller_cfg: "{{ [controller_cfg_default, controller_cfg_base | default([]), controller_cfg_extra | default([])] | community.general.lists_mergeby('section', recursive=true) }}"
+# controller_cfg_default: []
+# controller_cfg_base: []
+# controller_cfg_extra: []

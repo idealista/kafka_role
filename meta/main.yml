@@ -2,15 +2,16 @@
 
 galaxy_info:
   role_name: kafka
+  namespace: idealista
   author: idealista
   company: Idealista S.A.U.
   description: Ansible role for Kafka distributed streaming platform
   min_ansible_version: 2.9.9
   license: Apache 2.0
-  standalone: true
   platforms:
     - name: Debian
       versions:
+        - bookworm
         - bullseye
   galaxy_tags:
     - clustering

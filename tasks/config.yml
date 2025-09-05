@@ -12,24 +12,66 @@
     - "{{ kafka_log_path }}"
 
 - name: KAFKA | Copy server config
-  ansible.builtin.template:
-    src: "{{ kafka_server_template_path }}"
-    dest: "{{ kafka_conf_path }}/server.properties"
-    mode: "0640"
-    owner: "{{ kafka_user }}"
-    group: "{{ kafka_group }}"
-  notify: Restart kafka
-  tags: [server_properties]
+  block:
+    - name: KAFKA | Copy server.properties config
+      ansible.builtin.template:
+        src: "{{ kafka_server_template_path }}"
+        dest: "{{ kafka_conf_path }}/server.properties"
+        mode: "0640"
+        owner: "{{ kafka_user }}"
+        group: "{{ kafka_group }}"
+      when: not kafka_use_kraft or ('broker' in kafka_process_roles | lower and 'controller' in kafka_process_roles | lower)
+      notify: Restart kafka
+      register: bootstrap_storage_controller
+      tags: [server_properties]
+
+    - name: KAFKA | Copy broker.properties config
+      ansible.builtin.template:
+        src: "{{ kafka_broker_template_path }}"
+        dest: "{{ kafka_conf_path }}/broker.properties"
+        mode: "0640"
+        owner: "{{ kafka_user }}"
+        group: "{{ kafka_group }}"
+      when:
+        - kafka_use_kraft
+        - "'broker' in kafka_process_roles | lower"
+        - "'controller' not in kafka_process_roles | lower"
+      notify: Restart kafka
+      tags: [server_properties]
+
+    - name: KAFKA | Copy controller config
+      ansible.builtin.template:
+        src: "{{ kafka_controller_template_path }}"
+        dest: "{{ kafka_conf_path }}/controller.properties"
+        mode: "0640"
+        owner: "{{ kafka_user }}"
+        group: "{{ kafka_group }}"
+      when:
+        - kafka_use_kraft
+        - "'controller' in kafka_process_roles | lower"
+        - "'broker' not in kafka_process_roles | lower"
+      notify: Restart kafka
+      register: bootstrap_storage_controller
+      tags: [server_properties]
+
+    - name: KAFKA | Bootstrap storage controller
+      ansible.builtin.command: "{{ kafka_controller_bootstrap_command }}"
+      args:
+        creates: "{{ kafka_data_path }}/meta.properties"
+      when:
+        - kafka_use_kraft
+        - bootstrap_storage_controller is defined
+      become: true
+      become_user: "{{ kafka_user }}"
 
 - name: KAFKA | Copy log properties
   ansible.builtin.template:
     src: "{{ kafka_log4j_template_path }}"
-    dest: "{{ kafka_conf_path }}/log4j.properties"
+    dest: "{{ kafka_conf_path }}/{{ kafka_log4j_file_name }}"
     mode: "0644"
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
   notify: Restart kafka
-
 - name: KAFKA | Enable GC log
   ansible.builtin.replace:
     path: "{{ kafka_install_path }}/bin/kafka-server-start.sh"

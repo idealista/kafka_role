@@ -3,10 +3,26 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
-## Added
-- *[#104](https://github.com/idealista/kafka_role/pull/104) (2024-01-17)- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
-
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
+
+## [3.0.0](https://github.com/idealista/kafka_role/tree/2.0.0) (2025-09-03)
+
+## Added
+
+- Updated role to support Kafka 4.X versions
+
+## Changed
+
+- Updated default Kafka version to 4.0.0
+- Refactored configuration templates for better maintainability
+- Updated molecule test scenarios
+- Improved error handling and validation
+- Updated molecule test scenarios
+- Updated Readme with examples and explanations
+
+## Fixed
+
+- Resolved compatibility issues with newer Python versions
 
 ## [2.0.0](https://github.com/idealista/kafka_role/tree/2.0.0) (2024-02-05)
 

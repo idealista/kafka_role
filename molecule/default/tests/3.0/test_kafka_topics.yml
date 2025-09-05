@@ -12,7 +12,7 @@ command:
     stdout:
     - "Dynamic configs for topic test are:"
     - "delete.retention.ms=100000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:delete.retention.ms=100000, DEFAULT_CONFIG:log.cleaner.delete.retention.ms=86400000}"
-    - "max.message.bytes=1024 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.message.bytes=1024, STATIC_BROKER_CONFIG:message.max.bytes=409715200, DEFAULT_CONFIG:message.max.bytes=1048588}"
+    - "max.message.bytes=1024 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.message.bytes=1024, DEFAULT_CONFIG:message.max.bytes=1048588}"
     timeout: 20000
 
   {{ kafka_install_path }}/bin/kafka-configs.sh --bootstrap-server {{ ansible_default_ipv4.address }}:{{ kafka_port }} --entity-type topics --entity-name test2 --describe:
@@ -20,5 +20,16 @@ command:
     stdout:
     - "Dynamic configs for topic test2 are:"
     - "delete.retention.ms=100000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:delete.retention.ms=100000, DEFAULT_CONFIG:log.cleaner.delete.retention.ms=86400000}"
-    - "max.message.bytes=2048 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.message.bytes=2048, STATIC_BROKER_CONFIG:message.max.bytes=409715200, DEFAULT_CONFIG:message.max.bytes=1048588}"
+    - "max.message.bytes=2048 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.message.bytes=2048, DEFAULT_CONFIG:message.max.bytes=1048588}"
+    timeout: 20000
+
+  {{ kafka_install_path }}/bin/kafka-configs.sh --bootstrap-server {{ ansible_default_ipv4.address }}:{{ kafka_port }} --entity-type topics --entity-name compacted-topic --describe:
+    exit-status: 0
+    stdout:
+    - "Dynamic configs for topic compacted-topic are:"
+    - "cleanup.policy=compact sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:cleanup.policy=compact, DEFAULT_CONFIG:log.cleanup.policy=delete}"
+    - "delete.retention.ms=60000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:delete.retention.ms=60000, DEFAULT_CONFIG:log.cleaner.delete.retention.ms=86400000}"
+    - "max.compaction.lag.ms=120000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:max.compaction.lag.ms=120000, DEFAULT_CONFIG:log.cleaner.max.compaction.lag.ms=9223372036854775807}"
+    - "min.compaction.lag.ms=30000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:min.compaction.lag.ms=30000, DEFAULT_CONFIG:log.cleaner.min.compaction.lag.ms=0}"
+    - "segment.ms=10000 sensitive=false synonyms={DYNAMIC_TOPIC_CONFIG:segment.ms=10000}"
     timeout: 20000

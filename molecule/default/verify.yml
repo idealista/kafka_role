@@ -14,18 +14,18 @@
   become: true
   gather_facts: true
   vars:
-    goss_version: v0.4.6
+    goss_version: v0.4.9
     goss_arch: amd64
     goss_dst: /usr/local/bin/goss
-    goss_sha256sum: bc818caf99cbab563126297ec568d98911d61d2d7a25f4f37068b7a7916130b5
+    goss_sha256sum: 87dd36cfa1b8b50554e6e2ca29168272e26755b19ba5438341f7c66b36decc19
     goss_url: "https://github.com/goss-org/goss/releases/download/{{ goss_version }}/goss-linux-{{ goss_arch }}"
     goss_test_directory: /tmp
     goss_format: documentation
 
   vars_files:
-    - ../../defaults/main.yml
+    - ../../defaults/main/main.yml
+    - ../../defaults/main/kafka-cfg.yml
     - group_vars/kafka.yml
-    - group_vars/zookeeper.yml
 
   tasks:
     - name: Download and install Goss
@@ -38,7 +38,7 @@
       until: download_goss is succeeded
       retries: 3
 
-    - name: Copy Goss tests to remote
+    - name: Copy Goss tests to remote version 3.x and above
       ansible.builtin.template:
         src: "{{ item }}"
         dest: "{{ goss_test_directory }}/{{ item | basename }}"
@@ -48,7 +48,7 @@
         - "tests/test_*.yml"
         - "tests/3.0/test_*.yml"
 
-    - name: Copy Goss tests to remote
+    - name: Copy Goss tests to remote version 2.x and below
       ansible.builtin.template:
         src: "{{ item }}"
         dest: "{{ goss_test_directory }}/{{ item | basename }}"

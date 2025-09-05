@@ -4,6 +4,7 @@
   ansible.builtin.apt:
     pkg: "{{ kafka_required_libs }}"
     state: present
+  become: true
   tags:
     skip_ansible_lint
 
@@ -39,11 +40,28 @@
   changed_when: false
   ignore_errors: true
 
+- name: KAFKA | Get installed package version
+  ansible.builtin.command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_.*\.jar'"
+  register: kafka_installed_version
+  changed_when: false
+  when: kafka_check is success
+
 - name: KAFKA | Check kafka version
   ansible.builtin.command: bash -c "ls {{ kafka_install_path }}/libs | grep 'kafka_{{ kafka_scala_version }}-{{ kafka_version }}.jar'"
   register: kafka_version_check
   changed_when: false
   ignore_errors: true
+
+- name: KAFKA | Check if upgrading to 4.x
+  ansible.builtin.debug:
+    msg: "Checking if performing a \"safe\" upgrade from Kafka 3.x to 4.x"
+  changed_when: True
+  notify: message about upgrading
+  when:
+    - kafka_check is success
+    - kafka_installed_version.stdout | regex_search('^kafka_[^|-]+-(\\d+\\.\\d+\\.\\d)(?=\\.jar)', '\\1') | first is version('3.3', '>=')
+    - kafka_installed_version.stdout | regex_search('^kafka_[^|-]+-(\\d+\\.\\d+\\.\\d)(?=\\.jar)', '\\1') | first is version('4.0', '<')
+    - kafka_version is version('4.0.0', '>=')
 
 - name: KAFKA | Stop service
   ansible.builtin.systemd:
