@@ -13,3 +13,4 @@ tests/__pycache__
 *.pyc
 Pipfile
 Pipfile.lock
+molecule/**/tmp/

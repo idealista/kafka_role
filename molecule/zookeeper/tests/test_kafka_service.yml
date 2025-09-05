@@ -1,0 +1,24 @@
+---
+
+service:
+  kafka:
+    enabled: true
+    running: true
+
+file:
+  {{ kafka_service_file_path }}:
+    exists: true
+
+# port:
+#   # https://github.com/goss-org/goss/blob/master/docs/gossfile.md#port
+#   # https://github.com/goss-org/goss/issues/149
+#   tcp6:{{ kafka_port }}:
+#     listening: true
+#     ip:
+#       - {{ ansible_default_ipv4.address }}
+# Alternative to check port because tcp and tcp6 inconsistencies
+command:
+  ss -tl | grep {{ kafka_port  }}:
+    exit-status: 0
+    stdout:
+      match-regexp: '^LISTEN(.*)(\:{{ kafka_port  }})(.*)'

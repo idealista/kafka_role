@@ -1,8 +1,9 @@
 ---
 ## General
 
-kafka_version: 2.6.0
-kafka_scala_version: 2.12  # Recommended
+kafka_version: 4.0.0
+kafka_scala_version: 2.13  # Recommended
+kafka_use_kraft: true  # Use KRaft mode (Kafka Raft Metadata mode) instead of Zookeeper
 
 ## Service options
 
@@ -25,9 +26,18 @@ kafka_conf_path: /etc/kafka
 kafka_data_path: "{{ kafka_install_path }}/data"
 kafka_log_path: /var/log/kafka
 
+# Brokers
+kafka_process_roles: "broker,controller"  # broker, controller, or both
+kafka_cluster_uuid: "{{ 'kafka_role' | to_uuid | uuid_to_base64 }}"
+
+# Controllers
+kafka_controller_bootstrap_command: "{{ kafka_install_path }}/bin/kafka-storage.sh format --cluster-id {{ kafka_cluster_uuid }} --initial-controllers {{ kafka_initial_controllers }} -c {{ kafka_conf_path }}/server.properties --ignore-formatted"
+
 # Logging
 kafka_log_level: WARN
+kafka_log_pattern: "[%d] %p %m (%c)%n"
 kafka_gc_log_enabled: false
+kafka_log4j_opts: "{{ -Dlog4j.configurationFile={{ kafka_conf_path }}/{{ kafka_log4j_file_name }} if kafka_version >= '4.0.0' else -Dlog4j.configuration=file:{{ kafka_conf_path }}/{{ kafka_log4j_file_name }} }}"
 
 # JVM
 kafka_xmx: "{{ (ansible_memtotal_mb / 2) | int }}m"
@@ -127,8 +137,11 @@ kafka_transaction_state_log_min_isr: 2
 kafka_force_reinstall: false
 
 ### Templates path
-kafka_log4j_template_path: log4j.properties.j2
-kafka_server_template_path: server.properties.j2
+kafka_log4j_template_path: log4j2.yaml.j2
+kafka_log4j_file_name: log4j2.yaml
+kafka_server_template_path: "{{ 'server.properties.kraft.j2' if kafka_use_kraft else 'server.properties.j2' }}"
+kafka_broker_template_path: broker.properties.kraft.j2
+kafka_controller_template_path: controller.properties.kraft.j2
 kafka_service_template_path: kafka.service.j2
 
 ## Extra properties
@@ -141,9 +154,10 @@ kafka_extra_properties: []
 #   value: 409715200
 
 kafka_mirror: "https://archive.apache.org/dist/kafka"
+kafka_download_url: "https://downloads.apache.org/kafka"
 kafka_package_name: "kafka_{{ kafka_scala_version }}-{{ kafka_version }}"
 kafka_package: "{{ kafka_package_name }}.tgz"
-kafka_sources_url: "{{ kafka_mirror }}/{{ kafka_version }}/{{ kafka_package }}"
+kafka_sources_url: "{{ kafka_download_url }}/{{ kafka_version }}/{{ kafka_package }}"
 
 
 ## Agent configuration (optional)

@@ -1,0 +1,21 @@
+# Molecule managed
+
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+{% if 'bullseye' in item.image %}
+RUN apt-get update && \
+    apt-get install -y python3 sudo bash ca-certificates iproute2 systemd systemd-sysv python3-pip && \
+    apt-get clean
+
+STOPSIGNAL SIGRTMIN+3
+RUN systemctl set-default multi-user.target
+# TIP 2 solution 2
+# RUN systemctl mask getty.target
+{% endif %}
+
+
+RUN mkdir -p /usr/share/man/man1

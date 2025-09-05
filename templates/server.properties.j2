@@ -196,7 +196,7 @@ log.segment.bytes={{ kafka_log_segment_bytes }}
 log.retention.check.interval.ms={{ kafka_log_retention_check_interval_ms }}
 
 ############################# Zookeeper #############################
-
+{% if kafka_zookeeper_hosts is defined %}
 # Zookeeper connection string (see zookeeper docs for details).
 # This is a comma separated host:port pairs, each corresponding to a zk
 # server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".
@@ -209,6 +209,7 @@ zookeeper.connection.timeout.ms={{ kafka_zookeeper_connection_timeout_ms }}
 
 {% if kafka_zookeeper_sasl_enabled is defined %}
 zookeeper.sasl.enabled={{ kafka_zookeeper_sasl_enabled }}
+{% endif %}
 {% endif %}
 
 ############################# Extra Properties #############################

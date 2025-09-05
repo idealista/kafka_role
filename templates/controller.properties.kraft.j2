@@ -1,0 +1,6 @@
+{% for cfg in controller_cfg %}
+############################# {{ cfg.section }} #############################
+{% for key, value in cfg.properties.items() %}
+{{key}}={{value}}
+{% endfor %}
+{% endfor %}

@@ -1,0 +1,73 @@
+status = {{ kafka_log_level }}
+name = KafkaLog4j2
+
+# Console Appender
+appender.stdout.type = Console
+appender.stdout.name = STDOUT
+appender.stdout.layout.type = PatternLayout
+appender.stdout.layout.pattern = [%d] %p %m (%c)%n
+
+# Kafka Rolling File Appender
+appender.kafka.type = RollingFile
+appender.kafka.name = KAFKA
+appender.kafka.fileName = {{ kafka_log_path }}/kafka-server.log
+appender.kafka.filePattern = {{ kafka_log_path }}/kafka-server.log.%i
+appender.kafka.layout.type = PatternLayout
+appender.kafka.layout.pattern = [%d] %p %m (%c)%n
+appender.kafka.policies.type = Policies
+appender.kafka.policies.size.type = SizeBasedTriggeringPolicy
+appender.kafka.policies.size.size = 50MB
+appender.kafka.strategy.type = DefaultRolloverStrategy
+appender.kafka.strategy.max = 4
+
+# State Change Rolling File Appender
+appender.stateChange.type = RollingFile
+appender.stateChange.name = STATECHANGE
+appender.stateChange.fileName = {{ kafka_log_path }}/state-change.log
+appender.stateChange.filePattern = {{ kafka_log_path }}/state-change.log.%i
+appender.stateChange.layout.type = PatternLayout
+appender.stateChange.layout.pattern = [%d] %p %m (%c)%n
+appender.stateChange.policies.type = Policies
+appender.stateChange.policies.size.type = SizeBasedTriggeringPolicy
+appender.stateChange.policies.size.size = 50MB
+appender.stateChange.strategy.type = DefaultRolloverStrategy
+appender.stateChange.strategy.max = 4
+
+# Controller Rolling File Appender
+appender.controller.type = RollingFile
+appender.controller.name = CONTROLLER
+appender.controller.fileName = {{ kafka_log_path }}/controller.log
+appender.controller.filePattern = {{ kafka_log_path }}/controller.log.%i
+appender.controller.layout.type = PatternLayout
+appender.controller.layout.pattern = [%d] %p %m (%c)%n
+appender.controller.policies.type = Policies
+appender.controller.policies.size.type = SizeBasedTriggeringPolicy
+appender.controller.policies.size.size = 50MB
+appender.controller.strategy.type = DefaultRolloverStrategy
+appender.controller.strategy.max = 4
+
+# Root Logger
+rootLogger.level = warn
+rootLogger.appenderRefs = stdout
+rootLogger.appenderRef.stdout.ref = STDOUT
+
+# Kafka Logger
+logger.kafka.name = kafka
+logger.kafka.level = warn
+logger.kafka.additivity = false
+logger.kafka.appenderRefs = kafka
+logger.kafka.appenderRef.kafka.ref = KAFKA
+
+# Kafka Controller Logger
+logger.kafkaController.name = kafka.controller
+logger.kafkaController.level = warn
+logger.kafkaController.additivity = false
+logger.kafkaController.appenderRefs = controller
+logger.kafkaController.appenderRef.controller.ref = CONTROLLER
+
+# State Change Logger
+logger.stateChange.name = state.change.logger
+logger.stateChange.level = warn
+logger.stateChange.additivity = false
+logger.stateChange.appenderRefs = stateChange
+logger.stateChange.appenderRef.stateChange.ref = STATECHANGE

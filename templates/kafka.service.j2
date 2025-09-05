@@ -5,7 +5,11 @@ After=network.target
 [Service]
 PrivateTmp= {{ kafka_private_tmp }}
 Restart=on-failure
-Environment=KAFKA_LOG4J_OPTS=-Dlog4j.configuration=file:{{ kafka_conf_path }}/log4j.properties
+{% if kafka_version is version('4.0.0', '>=') %}
+Environment="KAFKA_LOG4J_OPTS=-Dlog4j.configurationFile={{ kafka_conf_path }}/{{ kafka_log4j_file_name }}"
+{% else %}
+Environment="KAFKA_LOG4J_OPTS=-Dlog4j.configuration=file:{{ kafka_conf_path }}/{{ kafka_log4j_file_name }}"
+{% endif %}
 Environment="KAFKA_HEAP_OPTS=-Xmx{{ kafka_xmx }} -Xms{{ kafka_xms }}"
 Environment="JMX_PORT={{ kafka_jmx_port }}"
 Environment="KAFKA_OPTS={{ kafka_opts }} {{ kafka_agent_java_opts|default([])|join(' ') }}"

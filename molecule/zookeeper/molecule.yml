@@ -31,7 +31,7 @@ platforms:
 
   - name: kafka1
     hostname: kafka1
-    image: ${MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -53,7 +53,7 @@ platforms:
 
   - name: kafka2
     hostname: kafka2
-    image: ${MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -75,7 +75,7 @@ platforms:
 
   - name: kafka3
     hostname: kafka3
-    image: ${MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -100,9 +100,11 @@ provisioner:
   lint:
     - name: ansible-lint
     - name: yamllint
+  env:
+    ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/..
 
 scenario:
-  name: agents
+  name: zookeeper
 
 verifier:
   name: ansible

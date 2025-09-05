@@ -10,28 +10,9 @@ lint: |
   ansible-lint .
 
 platforms:
-  - name: zookeeper
-    image: confluentinc/cp-zookeeper:7.5.0
-    hostname: zookeeper
-    exposed_ports:
-      - 2181/tcp
-    published_ports:
-      - 2181:2181
-    command: "sh /etc/confluent/docker/run"
-    env:
-      ZOOKEEPER_CLIENT_PORT: "2181"
-      ZOOKEEPER_TICK_TIME: "2000"
-    volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
-    groups:
-      - zookeeper
-    networks:
-      - name: kafka-network
-    cgroupns_mode: host
-
   - name: kafka1
     hostname: kafka1
-    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -41,19 +22,26 @@ platforms:
       - /run/lock
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
     stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
+    exposed_ports:
+      - 9091/tcp
+      - 9092/tcp
+      - 9093/tcp
     published_ports:
-      - 0.0.0.0:9092:9092/tcp
+      - 0.0.0.0:19091:9091/tcp
+      - 0.0.0.0:19092:9092/tcp
+      - 0.0.0.0:19093:9093/tcp
     cgroupns_mode: host
 
   - name: kafka2
     hostname: kafka2
-    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -63,19 +51,26 @@ platforms:
       - /run/lock
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
     stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
+    exposed_ports:
+      - 9091/tcp
+      - 9092/tcp
+      - 9093/tcp
     published_ports:
-      - 0.0.0.0:9093:9092/tcp
+      - 0.0.0.0:29091:9091/tcp
+      - 0.0.0.0:29092:9092/tcp
+      - 0.0.0.0:29093:9093/tcp
     cgroupns_mode: host
 
   - name: kafka3
     hostname: kafka3
-    image: ${MOLECULE_DISTRO:-idealista/jdk:8u302-bullseye-corretto-headless}
+    image: ${MOLECULE_DISTRO:-idealista/jdk:17.0.8-bullseye-temurin-jdk}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -85,21 +80,38 @@ platforms:
       - /run/lock
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     groups:
       - kafka
     command: '/lib/systemd/systemd'
     stop_signal: 'RTMIN+3'
     networks:
       - name: kafka-network
+    exposed_ports:
+      - 9091/tcp
+      - 9092/tcp
+      - 9093/tcp
     published_ports:
-      - 0.0.0.0:9094:9092/tcp
+      - 0.0.0.0:39091:9091/tcp
+      - 0.0.0.0:39092:9092/tcp
+      - 0.0.0.0:39093:9093/tcp
     cgroupns_mode: host
 
 provisioner:
   name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/..
   lint:
     - name: ansible-lint
     - name: yamllint
+  config_options:
+    defaults:
+      callback_result_format: yaml
+      callbacks_enabled: timer, profile_tasks, profile_roles
+      show_per_host_start: true
+      show_custom_stats: true
+      fact_caching: yaml
+      # fact_caching_connection: ./tmp/facts_cache
 
 scenario:
   name: default
