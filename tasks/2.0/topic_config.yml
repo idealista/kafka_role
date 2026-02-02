@@ -4,6 +4,8 @@
   ansible.builtin.set_fact:
     string_properties: ""
     properties: {}
+  tags:
+    - kafka_topics_configuration
 
 - name: KAFKA | Init temp vars config (2/3) for {{ item.name }}
   ansible.builtin.set_fact:
@@ -12,6 +14,8 @@
   with_dict: "{{ item }}"
   loop_control:
     loop_var: property
+  tags:
+    - kafka_topics_configuration
 
 - name: KAFKA | Init temp vars config (3/3) for {{ item.name }}
   ansible.builtin.set_fact:
@@ -20,6 +24,8 @@
   loop_control:
     index_var: id
     loop_var: conf
+  tags:
+    - kafka_topics_configuration
 
 - name: KAFKA | Obtain config for topic
   ansible.builtin.command: >
@@ -30,6 +36,8 @@
     --describe
   register: kafka_topics_config_described_full
   changed_when: false
+  tags:
+    - kafka_topics_configuration
 
 - name: KAFKA | Topics to alter
   ansible.builtin.set_fact:
@@ -37,6 +45,8 @@
       {{ kafka_topics_config_described_full.stdout |
           replace("Configs for topic '" + item.name + "' are ", '')
       }}
+  tags:
+    - kafka_topics_configuration
 
 - name: KAFKA | Configure kafka topics
   ansible.builtin.command: >
@@ -50,4 +60,5 @@
   when: kafka_topics_config_to_alter | trim  != string_properties
   changed_when: false
   tags:
-    skip_ansible_lint
+    - skip_ansible_lint
+    - kafka_topics_configuration
