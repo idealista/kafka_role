@@ -5,6 +5,16 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
 
+## [3.1.0](https://github.com/idealista/kafka_role/tree/3.1.0) (2026-01-30)
+
+## Changed
+
+- Bump Kafka version to 4.1.0
+- Add kafka_limit_nofile parameter with recommended values for file descriptor limits
+- Refactor topic management tasks to improve clarity and structure
+- Tag tasks related to Kafka topics configuration for better organization
+- Update service template to include LimitNOFILE setting
+
 ## [3.0.0](https://github.com/idealista/kafka_role/tree/2.0.0) (2025-09-03)
 
 ## Added

@@ -17,6 +17,7 @@ Environment="KAFKA_JVM_PERFORMANCE_OPTS={{ kafka_jvm_performance_opts }}"
 ExecStart={{ kafka_install_path }}/bin/kafka-server-start.sh {{ kafka_conf_path }}/server.properties
 ExecStop={{ kafka_install_path }}/bin/kafka-server-stop.sh
 User={{ kafka_user }}
+LimitNOFILE={{ kafka_limit_nofile }}
 
 [Install]
 WantedBy=multi-user.target
