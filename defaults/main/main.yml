@@ -1,7 +1,7 @@
 ---
 ## General
 
-kafka_version: 4.1.0
+kafka_version: 4.2.0
 kafka_scala_version: 2.13  # Recommended
 kafka_use_kraft: true  # Use KRaft mode (Kafka Raft Metadata mode) instead of Zookeeper
 

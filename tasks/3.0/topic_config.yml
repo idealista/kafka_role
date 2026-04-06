@@ -55,7 +55,6 @@
     --entity-name {{ item.name }}
     --add-config {{ string_properties }}
     --alter
-    --force
     --bootstrap-server 0.0.0.0:{{ kafka_port }}
   when: kafka_topics_config_to_alter | trim  != string_properties
   changed_when: false

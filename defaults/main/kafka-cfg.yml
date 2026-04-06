@@ -8,7 +8,6 @@ kafka_cfg_default:
     properties:
       process.roles: "{{ kafka_process_roles | default('broker,controller') }}"
       node.id: "{{ kafka_node_id }}"
-      controller.quorum.voters: "{{ kafka_controller_quorum_voters }}"
       listeners: "{{ kafka_listeners }}"
       inter.broker.listener.name: "{{ kafka_inter_broker_listener_name }}"
       advertised.listeners: "{{ kafka_advertised_listeners }}"
@@ -21,7 +20,7 @@ kafka_cfg_default:
 
 # Brokers
 broker_cfg: "{{ [broker_cfg_default, broker_cfg_base | default([]), broker_cfg_extra | default([])] | community.general.lists_mergeby('section', recursive=true) }}"
-# roker_cfg_default: []
+# broker_cfg_default: []
 # broker_cfg_base: []
 # broker_cfg_extra: []
 

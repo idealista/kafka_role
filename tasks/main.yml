@@ -11,6 +11,15 @@
     - kafka_agents_config
   when: kafka_agents_config is defined
 
+- name: KAFKA | Install plugins
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+    apply:
+      tags: "{{ ['kafka_plugins_tasks'] + (kafka_plugins_tasks_tags | default([])) }}"
+  loop: "{{ kafka_plugins_tasks }}"
+  tags: "{{ ['kafka_plugins_tasks'] + (kafka_plugins_tasks_tags | default([])) }}"
+  when: kafka_plugins_tasks is defined
+
 - name: KAFKA | Configure
   ansible.builtin.import_tasks: config.yml
   tags:
@@ -41,3 +50,12 @@
     - kafka_acls
   when: kafka_acls is defined
   run_once: true
+
+- name: KAFKA | Extra tasks
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+    apply:
+      tags: "{{ ['kafka_extra_tasks'] + (kafka_extra_tasks_tags | default([])) }}"
+  loop: "{{ kafka_extra_tasks }}"
+  tags: "{{ ['kafka_extra_tasks'] + (kafka_extra_tasks_tags | default([])) }}"
+  when: kafka_extra_tasks is defined

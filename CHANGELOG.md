@@ -5,6 +5,26 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/kafka_role/tree/develop)
 
+## [3.2.0](https://github.com/idealista/kafka_role/tree/3.2.0) (2026-04-06)
+
+## Added
+
+- Add `kafka_plugins_tasks` support to allow running custom plugin installation tasks
+- Add `kafka_extra_tasks` support to allow running arbitrary extra tasks after role execution
+
+## Changed
+
+- Bump default Kafka version to 4.2.0
+- Remove `controller.quorum.voters` from default KRaft configuration (replaced by `controller.quorum.bootstrap.servers`)
+- Update molecule default scenario to Kafka 4.2.0 and remove `kafka_controller_quorum_voters` from group_vars
+- Add `DOCKER_CLIENTS` listener to molecule default scenario for external client access
+- Fix comment typo in `defaults/main/kafka-cfg.yml` (`roker_cfg_default` → `broker_cfg_default`)
+- Update README wording for `controller.quorum.voters` example
+
+## Breaking Changes
+
+- `controller.quorum.voters` is no longer set by default. Users relying on it must add it explicitly via `broker_cfg_extra`
+
 ## [3.1.0](https://github.com/idealista/kafka_role/tree/3.1.0) (2026-01-30)
 
 ## Changed
