@@ -94,7 +94,7 @@ kafka_process_roles: "broker,controller"  # broker, controller, or both
 kafka_cluster_uuid: "{{ 'kafka_role' | to_uuid | uuid_to_base64 }}"
 
 # List of all the controllers in the cluster with their node id and host/ip
-# An example to generate the controller quorum voters value could be:
+# An example (if needed) to generate the controller quorum voters value could be:
 kafka_controller_quorum_voters: "{{  groups['brokers'] | map('extract', hostvars, 'kafka_controller_uri') | join(',') }}"
 
 # List of all the listeners for the cluster
