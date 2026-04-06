@@ -1,6 +1,6 @@
 ---
 
-kafka_version: 4.1.0
+kafka_version: 4.2.0
 
 kafka_private_tmp: false
 
