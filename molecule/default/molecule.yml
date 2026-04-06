@@ -112,6 +112,8 @@ provisioner:
       show_custom_stats: true
       fact_caching: yaml
       # fact_caching_connection: ./tmp/facts_cache
+    connection:
+      pipelining: True
 
 scenario:
   name: default
