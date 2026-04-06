@@ -1,13 +1,12 @@
 ---
 
-kafka_version: 4.0.0
+kafka_version: 4.1.0
 
 kafka_private_tmp: false
 
 kafka_jvm_performance_opts: "-XX:MetaspaceSize=96m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:G1HeapRegionSize=16M -XX:MinMetaspaceFreeRatio=50 -XX:MaxMetaspaceFreeRatio=80"
 
 kafka_controller_quorum_bootstrap_servers: kafka1:9093,kafka2:9093,kafka3:9093
-kafka_controller_quorum_voters: "1@kafka1:9093,2@kafka2:9093,3@kafka3:9093"
 
 kafka_brokers_port: 9091
 kafka_clients_port: 9092
@@ -39,6 +38,10 @@ kafka_listeners_list:
   - name: CLIENTS
     host: "0.0.0.0:{{ kafka_clients_port }}"
     advertised_host: "{{ kafka_host_name }}:{{ kafka_clients_port }}"
+    protocol: PLAINTEXT
+  - name: DOCKER_CLIENTS
+    host: ":{{ kafka_advertised_ports[inventory_hostname]['clients_advertised_port'] }}"
+    advertised_host: "{{ kafka_host_name }}:{{ kafka_advertised_ports[inventory_hostname]['clients_advertised_port'] }}"
     protocol: PLAINTEXT
   - name: CONTROLLER
     host: "0.0.0.0:{{ kafka_controller_port }}"
